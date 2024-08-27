@@ -62,79 +62,93 @@ def load_task(task_id, preprocess=True):
 
     return X_train, y_train, X_test, y_test
 
-
-
 import argparse
 
-parser = argparse.ArgumentParser()
-# number of threads
-parser.add_argument(“-n”, “--n_jobs”, default=30,  required=False, nargs=‘?’)
-#where to save the results/models
-parser.add_argument(“-s”, “--savepath”, default=“binary_results”, required=False, nargs=‘?’)
-#number of total runs for each experiment
-parser.add_argument(“-r”, “--num_runs”, default=1, required=False, nargs=‘?’)
-args = parser.parse_args()
-n_jobs = int(args.n_jobs)
-base_save_folder = args.savepath
-num_runs = int(args.num_runs)
+def main():
+    parser = argparse.ArgumentParser()
+    # number of threads
+    parser.add_argument("-n", "--n_jobs", default=30,  required=False, nargs='?')
+    #where to save the results/models
+    parser.add_argument("-s", "--savepath", default="binary_results", required=False, nargs='?')
+    #number of total runs for each experiment
+    parser.add_argument("-r", "--num_runs", default=1, required=False, nargs='?')
+    args = parser.parse_args()
+    n_jobs = int(args.n_jobs)
+    base_save_folder = args.savepath
+    num_runs = int(args.num_runs)
 
-taskid = 167104
-X_train, y_train, X_test, y_test = load_task(taskid, preprocess=True)
-try:
-    est = tpot2.TPOTEstimator(generations=25, population_size=n_jobs, cv=5, 
-                                        random_state=num_runs, verbose=2, classification=True, scorers=['roc_auc_ovr',tpot2.objectives.complexity_scorer], scorers_weights=[1,-1])
-    est.fit(X_train, y_train)
+    save_folder = base_save_folder
 
-    #scorer = sklearn.metrics.get_scorer('roc_auc_ovo')
-    #print(scorer(est, X_test, y_test))
+    taskid = 167104
+    X_train, y_train, X_test, y_test = load_task(taskid, preprocess=True)
+    try:
+        graph_search_space = tpot2.search_spaces.pipelines.GraphPipeline(
+            root_search_space= tpot2.config.get_search_space("classifiers"),
+            leaf_search_space = tpot2.config.get_search_space("selectors"), 
+            inner_search_space = tpot2.config.get_search_space("transformers"),
+            max_size = 10,
+        )
 
-    pf = est.pareto_front
+        est = tpot2.TPOTEstimator(search_space = graph_search_space, generations=200, population_size=50, cv=5, 
+                                random_state=num_runs, verbose=2, classification=True, 
+                                scorers=['roc_auc_ovr',tpot2.objectives.complexity_scorer], 
+                                scorers_weights=[1,-1], max_eval_time_seconds = 5*60)
+
+        est.fit(X_train, y_train)
+
+        #scorer = sklearn.metrics.get_scorer('roc_auc_ovo')
+        #print(scorer(est, X_test, y_test))
+
+        pf = est.pareto_front
+                        
+        with open(f"{save_folder}/est_pareto_front.pkl", "wb") as f:
+                                pickle.dump(est.pareto_front, f)
+                                print('estimator working as intended')
+
+
+
+        estimators = []
+        scores_out = {}
+
+        for i in range(len(pf)):
+            # print(pf.iloc[i, 0])
+            fitted_pipeline = pf.iloc[i, 10].fit(X_train, y_train)
+            print("pipeline scores")
+            print(roc_auc_score(y_test, fitted_pipeline.predict(X_test)))
+            
+            fitted_pipeline_tuple = ((str(i), fitted_pipeline))
+            estimators.append(fitted_pipeline_tuple)
+
+        scores_out['estimators'] = estimators
+
+
+        stacking_classifier = StackingClassifier(estimators=estimators, 
+                                                final_estimator=VotingClassifier(estimators=estimators, voting='hard'), 
+                                                cv="prefit",
+                                                passthrough=True)
+
+        stacking_classifier.fit(X_train, y_train)
+
+
+        scores_out['ensemble_classifier'] = stacking_classifier
+
+        results = stacking_classifier.predict(X_test)
+        roc_auc = roc_auc_score(y_test, results)
+        print("ensemble score")
+        print(f"ROC_AUC: {roc_auc * 100:.4f}%")
+
+        scores_out['roc_auc'] = roc_auc
+    except Exception as e:
+                    trace =  traceback.format_exc()
+                    pipeline_failure_dict = {"taskid": taskid,"run": num_runs, "error": str(e), "trace": trace}
+                    print("failed on ")
+                    print(save_folder)
+                    print(e)
+                    print(trace)
+                    with open(f"{save_folder}/failed.pkl", "wb") as f:
+                        pickle.dump(pipeline_failure_dict, f)
                     
-    with open(f”{save_folder}/est_pareto_front.pkl”, “wb”) as f:
-                            pickle.dump(est.pareto_front, f)
-                            print(‘estimator working as intended’)
 
-
-
-    estimators = []
-    scores_out = {}
-
-    for i in range(len(pf)):
-        # print(pf.iloc[i, 0])
-        fitted_pipeline = pf.iloc[i, 10].fit(X_train, y_train)
-        print("pipeline scores")
-        print(roc_auc_score(y_test, fitted_pipeline.predict(X_test)))
-        
-        fitted_pipeline_tuple = ((str(i), fitted_pipeline))
-        estimators.append(fitted_pipeline_tuple)
-
-    scores_out['estimators'] = estimators
-
-
-    stacking_classifier = StackingClassifier(estimators=estimators, 
-                                            final_estimator=VotingClassifier(estimators=estimators, voting='hard'), 
-                                            cv="prefit",
-                                            passthrough=True)
-
-    stacking_classifier.fit(X_train, y_train)
-
-
-    scores_out['ensemble_classifier'] = stackng_classifier
-
-    results = stacking_classifier.predict(X_test)
-    roc_auc = roc_auc_score(y_test, results)
-    print("ensemble score")
-    print(f"ROC_AUC: {roc_auc * 100:.4f}%")
-
-    scores_out['roc_auc'] = roc_auc
-except Exception as e:
-                trace =  traceback.format_exc()
-                pipeline_failure_dict = {“taskid”: taskid,“run”: num_runs, “error”: str(e), “trace”: trace}
-                print(“failed on “)
-                print(save_folder)
-                print(e)
-                print(trace)
-                with open(f”{save_folder}/failed.pkl”, “wb”) as f:
-                    pickle.dump(pipeline_failure_dict, f)
-
-print('all done')
+if __name__ == '__main__':
+    main()
+    print('DONE')

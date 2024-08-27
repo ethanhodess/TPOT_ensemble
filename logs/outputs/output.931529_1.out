@@ -1,0 +1,377 @@
+“Run: 1”
+Channels:
+ - conda-forge
+ - defaults
+Platform: linux-64
+Collecting package metadata (repodata.json): ...working... done
+Solving environment: ...working... done
+
+## Package Plan ##
+
+  environment location: /home/hodesse/miniconda3/envs/tpot2env
+
+  added / updated specs:
+    - python=3.10
+
+
+The following packages will be downloaded:
+
+    package                    |            build
+    ---------------------------|-----------------
+    _libgcc_mutex-0.1          |      conda_forge           3 KB  conda-forge
+    _openmp_mutex-4.5          |            2_gnu          23 KB  conda-forge
+    bzip2-1.0.8                |       h4bc722e_7         247 KB  conda-forge
+    ca-certificates-2024.7.4   |       hbcca054_0         151 KB  conda-forge
+    ld_impl_linux-64-2.40      |       hf3520f5_7         691 KB  conda-forge
+    libffi-3.4.2               |       h7f98852_5          57 KB  conda-forge
+    libgcc-ng-14.1.0           |       h77fa898_0         822 KB  conda-forge
+    libgomp-14.1.0             |       h77fa898_0         446 KB  conda-forge
+    libnsl-2.0.1               |       hd590300_0          33 KB  conda-forge
+    libsqlite-3.46.0           |       hde9e2c9_0         845 KB  conda-forge
+    libuuid-2.38.1             |       h0b41bf4_0          33 KB  conda-forge
+    libxcrypt-4.4.36           |       hd590300_1          98 KB  conda-forge
+    libzlib-1.3.1              |       h4ab18f5_1          60 KB  conda-forge
+    ncurses-6.5                |       he02047a_1         868 KB  conda-forge
+    openssl-3.3.1              |       hb9d3cd8_3         2.8 MB  conda-forge
+    pip-24.2                   |     pyhd8ed1ab_0         1.2 MB  conda-forge
+    python-3.10.14             |hd12c33a_0_cpython        24.3 MB  conda-forge
+    readline-8.2               |       h8228510_1         275 KB  conda-forge
+    setuptools-72.2.0          |     pyhd8ed1ab_0         1.4 MB  conda-forge
+    tk-8.6.13                  |noxft_h4845f30_101         3.2 MB  conda-forge
+    tzdata-2024a               |       h8827d51_1         121 KB  conda-forge
+    wheel-0.44.0               |     pyhd8ed1ab_0          57 KB  conda-forge
+    xz-5.2.6                   |       h166bdaf_0         409 KB  conda-forge
+    ------------------------------------------------------------
+                                           Total:        37.9 MB
+
+The following NEW packages will be INSTALLED:
+
+  _libgcc_mutex      conda-forge/linux-64::_libgcc_mutex-0.1-conda_forge 
+  _openmp_mutex      conda-forge/linux-64::_openmp_mutex-4.5-2_gnu 
+  bzip2              conda-forge/linux-64::bzip2-1.0.8-h4bc722e_7 
+  ca-certificates    conda-forge/linux-64::ca-certificates-2024.7.4-hbcca054_0 
+  ld_impl_linux-64   conda-forge/linux-64::ld_impl_linux-64-2.40-hf3520f5_7 
+  libffi             conda-forge/linux-64::libffi-3.4.2-h7f98852_5 
+  libgcc-ng          conda-forge/linux-64::libgcc-ng-14.1.0-h77fa898_0 
+  libgomp            conda-forge/linux-64::libgomp-14.1.0-h77fa898_0 
+  libnsl             conda-forge/linux-64::libnsl-2.0.1-hd590300_0 
+  libsqlite          conda-forge/linux-64::libsqlite-3.46.0-hde9e2c9_0 
+  libuuid            conda-forge/linux-64::libuuid-2.38.1-h0b41bf4_0 
+  libxcrypt          conda-forge/linux-64::libxcrypt-4.4.36-hd590300_1 
+  libzlib            conda-forge/linux-64::libzlib-1.3.1-h4ab18f5_1 
+  ncurses            conda-forge/linux-64::ncurses-6.5-he02047a_1 
+  openssl            conda-forge/linux-64::openssl-3.3.1-hb9d3cd8_3 
+  pip                conda-forge/noarch::pip-24.2-pyhd8ed1ab_0 
+  python             conda-forge/linux-64::python-3.10.14-hd12c33a_0_cpython 
+  readline           conda-forge/linux-64::readline-8.2-h8228510_1 
+  setuptools         conda-forge/noarch::setuptools-72.2.0-pyhd8ed1ab_0 
+  tk                 conda-forge/linux-64::tk-8.6.13-noxft_h4845f30_101 
+  tzdata             conda-forge/noarch::tzdata-2024a-h8827d51_1 
+  wheel              conda-forge/noarch::wheel-0.44.0-pyhd8ed1ab_0 
+  xz                 conda-forge/linux-64::xz-5.2.6-h166bdaf_0 
+
+
+Proceed ([y]/n)? 
+
+Downloading and Extracting Packages: ...working... done
+Preparing transaction: ...working... done
+Verifying transaction: ...working... done
+Executing transaction: ...working... done
+#
+# To activate this environment, use
+#
+#     $ conda activate tpot2env
+#
+# To deactivate an active environment, use
+#
+#     $ conda deactivate
+
+Collecting openml (from -r requirements.txt (line 1))
+  Downloading openml-0.14.2.tar.gz (144 kB)
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Collecting tpot2 (from -r requirements.txt (line 2))
+  Downloading TPOT2-0.1.7a0-py3-none-any.whl.metadata (1.7 kB)
+Collecting dill (from -r requirements.txt (line 3))
+  Downloading dill-0.3.8-py3-none-any.whl.metadata (10 kB)
+Collecting scikit-learn (from -r requirements.txt (line 4))
+  Downloading scikit_learn-1.5.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (12 kB)
+Collecting numpy (from -r requirements.txt (line 5))
+  Downloading numpy-2.1.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (60 kB)
+Collecting liac-arff>=2.4.0 (from openml->-r requirements.txt (line 1))
+  Downloading liac-arff-2.5.0.tar.gz (13 kB)
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Collecting xmltodict (from openml->-r requirements.txt (line 1))
+  Downloading xmltodict-0.13.0-py2.py3-none-any.whl.metadata (7.7 kB)
+Collecting requests (from openml->-r requirements.txt (line 1))
+  Downloading requests-2.32.3-py3-none-any.whl.metadata (4.6 kB)
+Collecting python-dateutil (from openml->-r requirements.txt (line 1))
+  Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+Collecting pandas>=1.0.0 (from openml->-r requirements.txt (line 1))
+  Downloading pandas-2.2.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (19 kB)
+Collecting scipy>=0.13.3 (from openml->-r requirements.txt (line 1))
+  Downloading scipy-1.14.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (60 kB)
+Collecting minio (from openml->-r requirements.txt (line 1))
+  Downloading minio-7.2.8-py3-none-any.whl.metadata (6.5 kB)
+Collecting pyarrow (from openml->-r requirements.txt (line 1))
+  Downloading pyarrow-17.0.0-cp310-cp310-manylinux_2_28_x86_64.whl.metadata (3.3 kB)
+Collecting numpy (from -r requirements.txt (line 5))
+  Downloading numpy-1.26.4-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (61 kB)
+Collecting update-checker>=0.16 (from tpot2->-r requirements.txt (line 2))
+  Downloading update_checker-0.18.0-py3-none-any.whl.metadata (2.3 kB)
+Collecting tqdm>=4.36.1 (from tpot2->-r requirements.txt (line 2))
+  Downloading tqdm-4.66.5-py3-none-any.whl.metadata (57 kB)
+Collecting stopit>=1.1.1 (from tpot2->-r requirements.txt (line 2))
+  Downloading stopit-1.1.2.tar.gz (18 kB)
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Collecting joblib>=1.1.1 (from tpot2->-r requirements.txt (line 2))
+  Downloading joblib-1.4.2-py3-none-any.whl.metadata (5.4 kB)
+Collecting xgboost>=1.7.0 (from tpot2->-r requirements.txt (line 2))
+  Downloading xgboost-2.1.1-py3-none-manylinux_2_28_x86_64.whl.metadata (2.1 kB)
+Collecting matplotlib>=3.6.2 (from tpot2->-r requirements.txt (line 2))
+  Downloading matplotlib-3.9.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (11 kB)
+Collecting traitlets>=5.8.0 (from tpot2->-r requirements.txt (line 2))
+  Downloading traitlets-5.14.3-py3-none-any.whl.metadata (10 kB)
+Collecting lightgbm>=3.3.3 (from tpot2->-r requirements.txt (line 2))
+  Downloading lightgbm-4.5.0-py3-none-manylinux_2_28_x86_64.whl.metadata (17 kB)
+Collecting optuna>=3.0.5 (from tpot2->-r requirements.txt (line 2))
+  Downloading optuna-3.6.1-py3-none-any.whl.metadata (17 kB)
+Collecting baikal>=0.4.2 (from tpot2->-r requirements.txt (line 2))
+  Downloading baikal-0.4.2-py3-none-any.whl.metadata (2.4 kB)
+Collecting networkx>=3.0 (from tpot2->-r requirements.txt (line 2))
+  Downloading networkx-3.3-py3-none-any.whl.metadata (5.1 kB)
+Collecting dask>=2024.4.2 (from tpot2->-r requirements.txt (line 2))
+  Downloading dask-2024.8.1-py3-none-any.whl.metadata (3.8 kB)
+Collecting distributed>=2024.4.2 (from tpot2->-r requirements.txt (line 2))
+  Downloading distributed-2024.8.1-py3-none-any.whl.metadata (3.3 kB)
+Collecting dask-expr>=1.0.12 (from tpot2->-r requirements.txt (line 2))
+  Downloading dask_expr-1.1.11-py3-none-any.whl.metadata (2.5 kB)
+Collecting dask-jobqueue>=0.8.5 (from tpot2->-r requirements.txt (line 2))
+  Downloading dask_jobqueue-0.9.0-py2.py3-none-any.whl.metadata (1.3 kB)
+Collecting func-timeout>=4.3.5 (from tpot2->-r requirements.txt (line 2))
+  Downloading func_timeout-4.3.5.tar.gz (44 kB)
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Collecting configspace>=0.7.1 (from tpot2->-r requirements.txt (line 2))
+  Downloading configspace-1.2.0.tar.gz (130 kB)
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Collecting threadpoolctl>=3.1.0 (from scikit-learn->-r requirements.txt (line 4))
+  Downloading threadpoolctl-3.5.0-py3-none-any.whl.metadata (13 kB)
+Collecting pyparsing (from configspace>=0.7.1->tpot2->-r requirements.txt (line 2))
+  Downloading pyparsing-3.1.4-py3-none-any.whl.metadata (5.1 kB)
+Collecting typing-extensions (from configspace>=0.7.1->tpot2->-r requirements.txt (line 2))
+  Downloading typing_extensions-4.12.2-py3-none-any.whl.metadata (3.0 kB)
+Collecting more-itertools (from configspace>=0.7.1->tpot2->-r requirements.txt (line 2))
+  Downloading more_itertools-10.4.0-py3-none-any.whl.metadata (36 kB)
+Collecting click>=8.1 (from dask>=2024.4.2->tpot2->-r requirements.txt (line 2))
+  Downloading click-8.1.7-py3-none-any.whl.metadata (3.0 kB)
+Collecting cloudpickle>=3.0.0 (from dask>=2024.4.2->tpot2->-r requirements.txt (line 2))
+  Downloading cloudpickle-3.0.0-py3-none-any.whl.metadata (7.0 kB)
+Collecting fsspec>=2021.09.0 (from dask>=2024.4.2->tpot2->-r requirements.txt (line 2))
+  Downloading fsspec-2024.6.1-py3-none-any.whl.metadata (11 kB)
+Collecting packaging>=20.0 (from dask>=2024.4.2->tpot2->-r requirements.txt (line 2))
+  Downloading packaging-24.1-py3-none-any.whl.metadata (3.2 kB)
+Collecting partd>=1.4.0 (from dask>=2024.4.2->tpot2->-r requirements.txt (line 2))
+  Downloading partd-1.4.2-py3-none-any.whl.metadata (4.6 kB)
+Collecting pyyaml>=5.3.1 (from dask>=2024.4.2->tpot2->-r requirements.txt (line 2))
+  Downloading PyYAML-6.0.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (2.1 kB)
+Collecting toolz>=0.10.0 (from dask>=2024.4.2->tpot2->-r requirements.txt (line 2))
+  Downloading toolz-0.12.1-py3-none-any.whl.metadata (5.1 kB)
+Collecting importlib-metadata>=4.13.0 (from dask>=2024.4.2->tpot2->-r requirements.txt (line 2))
+  Downloading importlib_metadata-8.4.0-py3-none-any.whl.metadata (4.7 kB)
+Collecting jinja2>=2.10.3 (from distributed>=2024.4.2->tpot2->-r requirements.txt (line 2))
+  Downloading jinja2-3.1.4-py3-none-any.whl.metadata (2.6 kB)
+Collecting locket>=1.0.0 (from distributed>=2024.4.2->tpot2->-r requirements.txt (line 2))
+  Downloading locket-1.0.0-py2.py3-none-any.whl.metadata (2.8 kB)
+Collecting msgpack>=1.0.2 (from distributed>=2024.4.2->tpot2->-r requirements.txt (line 2))
+  Downloading msgpack-1.0.8-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (9.1 kB)
+Collecting psutil>=5.8.0 (from distributed>=2024.4.2->tpot2->-r requirements.txt (line 2))
+  Downloading psutil-6.0.0-cp36-abi3-manylinux_2_12_x86_64.manylinux2010_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (21 kB)
+Collecting sortedcontainers>=2.0.5 (from distributed>=2024.4.2->tpot2->-r requirements.txt (line 2))
+  Downloading sortedcontainers-2.4.0-py2.py3-none-any.whl.metadata (10 kB)
+Collecting tblib>=1.6.0 (from distributed>=2024.4.2->tpot2->-r requirements.txt (line 2))
+  Downloading tblib-3.0.0-py3-none-any.whl.metadata (25 kB)
+Collecting tornado>=6.2.0 (from distributed>=2024.4.2->tpot2->-r requirements.txt (line 2))
+  Downloading tornado-6.4.1-cp38-abi3-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (2.5 kB)
+Collecting urllib3>=1.26.5 (from distributed>=2024.4.2->tpot2->-r requirements.txt (line 2))
+  Downloading urllib3-2.2.2-py3-none-any.whl.metadata (6.4 kB)
+Collecting zict>=3.0.0 (from distributed>=2024.4.2->tpot2->-r requirements.txt (line 2))
+  Downloading zict-3.0.0-py2.py3-none-any.whl.metadata (899 bytes)
+Collecting contourpy>=1.0.1 (from matplotlib>=3.6.2->tpot2->-r requirements.txt (line 2))
+  Downloading contourpy-1.2.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (5.8 kB)
+Collecting cycler>=0.10 (from matplotlib>=3.6.2->tpot2->-r requirements.txt (line 2))
+  Downloading cycler-0.12.1-py3-none-any.whl.metadata (3.8 kB)
+Collecting fonttools>=4.22.0 (from matplotlib>=3.6.2->tpot2->-r requirements.txt (line 2))
+  Downloading fonttools-4.53.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (162 kB)
+Collecting kiwisolver>=1.3.1 (from matplotlib>=3.6.2->tpot2->-r requirements.txt (line 2))
+  Downloading kiwisolver-1.4.5-cp310-cp310-manylinux_2_12_x86_64.manylinux2010_x86_64.whl.metadata (6.4 kB)
+Collecting pillow>=8 (from matplotlib>=3.6.2->tpot2->-r requirements.txt (line 2))
+  Downloading pillow-10.4.0-cp310-cp310-manylinux_2_28_x86_64.whl.metadata (9.2 kB)
+Collecting alembic>=1.5.0 (from optuna>=3.0.5->tpot2->-r requirements.txt (line 2))
+  Downloading alembic-1.13.2-py3-none-any.whl.metadata (7.4 kB)
+Collecting colorlog (from optuna>=3.0.5->tpot2->-r requirements.txt (line 2))
+  Downloading colorlog-6.8.2-py3-none-any.whl.metadata (10 kB)
+Collecting sqlalchemy>=1.3.0 (from optuna>=3.0.5->tpot2->-r requirements.txt (line 2))
+  Downloading SQLAlchemy-2.0.32-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (9.6 kB)
+Collecting pytz>=2020.1 (from pandas>=1.0.0->openml->-r requirements.txt (line 1))
+  Downloading pytz-2024.1-py2.py3-none-any.whl.metadata (22 kB)
+Collecting tzdata>=2022.7 (from pandas>=1.0.0->openml->-r requirements.txt (line 1))
+  Downloading tzdata-2024.1-py2.py3-none-any.whl.metadata (1.4 kB)
+Collecting six>=1.5 (from python-dateutil->openml->-r requirements.txt (line 1))
+  Downloading six-1.16.0-py2.py3-none-any.whl.metadata (1.8 kB)
+Collecting charset-normalizer<4,>=2 (from requests->openml->-r requirements.txt (line 1))
+  Downloading charset_normalizer-3.3.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (33 kB)
+Collecting idna<4,>=2.5 (from requests->openml->-r requirements.txt (line 1))
+  Downloading idna-3.8-py3-none-any.whl.metadata (9.9 kB)
+Collecting certifi>=2017.4.17 (from requests->openml->-r requirements.txt (line 1))
+  Downloading certifi-2024.7.4-py3-none-any.whl.metadata (2.2 kB)
+Collecting nvidia-nccl-cu12 (from xgboost>=1.7.0->tpot2->-r requirements.txt (line 2))
+  Downloading nvidia_nccl_cu12-2.22.3-py3-none-manylinux2014_x86_64.whl.metadata (1.8 kB)
+Collecting argon2-cffi (from minio->openml->-r requirements.txt (line 1))
+  Downloading argon2_cffi-23.1.0-py3-none-any.whl.metadata (5.2 kB)
+Collecting pycryptodome (from minio->openml->-r requirements.txt (line 1))
+  Downloading pycryptodome-3.20.0-cp35-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (3.4 kB)
+Collecting Mako (from alembic>=1.5.0->optuna>=3.0.5->tpot2->-r requirements.txt (line 2))
+  Downloading Mako-1.3.5-py3-none-any.whl.metadata (2.9 kB)
+Collecting zipp>=0.5 (from importlib-metadata>=4.13.0->dask>=2024.4.2->tpot2->-r requirements.txt (line 2))
+  Downloading zipp-3.20.1-py3-none-any.whl.metadata (3.7 kB)
+Collecting MarkupSafe>=2.0 (from jinja2>=2.10.3->distributed>=2024.4.2->tpot2->-r requirements.txt (line 2))
+  Downloading MarkupSafe-2.1.5-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (3.0 kB)
+Collecting greenlet!=0.4.17 (from sqlalchemy>=1.3.0->optuna>=3.0.5->tpot2->-r requirements.txt (line 2))
+  Downloading greenlet-3.0.3-cp310-cp310-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (3.8 kB)
+Collecting argon2-cffi-bindings (from argon2-cffi->minio->openml->-r requirements.txt (line 1))
+  Downloading argon2_cffi_bindings-21.2.0-cp36-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.7 kB)
+Collecting cffi>=1.0.1 (from argon2-cffi-bindings->argon2-cffi->minio->openml->-r requirements.txt (line 1))
+  Downloading cffi-1.17.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (1.5 kB)
+Collecting pycparser (from cffi>=1.0.1->argon2-cffi-bindings->argon2-cffi->minio->openml->-r requirements.txt (line 1))
+  Downloading pycparser-2.22-py3-none-any.whl.metadata (943 bytes)
+Downloading TPOT2-0.1.7a0-py3-none-any.whl (140 kB)
+Downloading numpy-1.26.4-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (18.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 18.2/18.2 MB 70.7 MB/s eta 0:00:00
+Downloading dill-0.3.8-py3-none-any.whl (116 kB)
+Downloading scikit_learn-1.5.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (13.4 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 13.4/13.4 MB 65.0 MB/s eta 0:00:00
+Downloading baikal-0.4.2-py3-none-any.whl (34 kB)
+Downloading dask-2024.8.1-py3-none-any.whl (1.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.2/1.2 MB 22.8 MB/s eta 0:00:00
+Downloading dask_expr-1.1.11-py3-none-any.whl (242 kB)
+Downloading dask_jobqueue-0.9.0-py2.py3-none-any.whl (52 kB)
+Downloading distributed-2024.8.1-py3-none-any.whl (1.0 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.0/1.0 MB 15.8 MB/s eta 0:00:00
+Downloading joblib-1.4.2-py3-none-any.whl (301 kB)
+Downloading lightgbm-4.5.0-py3-none-manylinux_2_28_x86_64.whl (3.6 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.6/3.6 MB 55.3 MB/s eta 0:00:00
+Downloading matplotlib-3.9.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (8.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 8.3/8.3 MB 46.9 MB/s eta 0:00:00
+Downloading networkx-3.3-py3-none-any.whl (1.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.7/1.7 MB 37.7 MB/s eta 0:00:00
+Downloading optuna-3.6.1-py3-none-any.whl (380 kB)
+Downloading pandas-2.2.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (13.0 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 13.0/13.0 MB 73.7 MB/s eta 0:00:00
+Downloading pyarrow-17.0.0-cp310-cp310-manylinux_2_28_x86_64.whl (39.9 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 39.9/39.9 MB 58.5 MB/s eta 0:00:00
+Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+Downloading scipy-1.14.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (41.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 41.2/41.2 MB 65.3 MB/s eta 0:00:00
+Downloading threadpoolctl-3.5.0-py3-none-any.whl (18 kB)
+Downloading tqdm-4.66.5-py3-none-any.whl (78 kB)
+Downloading traitlets-5.14.3-py3-none-any.whl (85 kB)
+Downloading update_checker-0.18.0-py3-none-any.whl (7.0 kB)
+Downloading requests-2.32.3-py3-none-any.whl (64 kB)
+Downloading xgboost-2.1.1-py3-none-manylinux_2_28_x86_64.whl (153.9 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 153.9/153.9 MB 79.5 MB/s eta 0:00:00
+Downloading minio-7.2.8-py3-none-any.whl (93 kB)
+Downloading xmltodict-0.13.0-py2.py3-none-any.whl (10.0 kB)
+Downloading alembic-1.13.2-py3-none-any.whl (232 kB)
+Downloading certifi-2024.7.4-py3-none-any.whl (162 kB)
+Downloading charset_normalizer-3.3.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (142 kB)
+Downloading click-8.1.7-py3-none-any.whl (97 kB)
+Downloading cloudpickle-3.0.0-py3-none-any.whl (20 kB)
+Downloading contourpy-1.2.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (305 kB)
+Downloading cycler-0.12.1-py3-none-any.whl (8.3 kB)
+Downloading fonttools-4.53.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (4.6 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.6/4.6 MB 59.3 MB/s eta 0:00:00
+Downloading fsspec-2024.6.1-py3-none-any.whl (177 kB)
+Downloading idna-3.8-py3-none-any.whl (66 kB)
+Downloading importlib_metadata-8.4.0-py3-none-any.whl (26 kB)
+Downloading jinja2-3.1.4-py3-none-any.whl (133 kB)
+Downloading kiwisolver-1.4.5-cp310-cp310-manylinux_2_12_x86_64.manylinux2010_x86_64.whl (1.6 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.6/1.6 MB 36.2 MB/s eta 0:00:00
+Downloading locket-1.0.0-py2.py3-none-any.whl (4.4 kB)
+Downloading msgpack-1.0.8-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (385 kB)
+Downloading packaging-24.1-py3-none-any.whl (53 kB)
+Downloading partd-1.4.2-py3-none-any.whl (18 kB)
+Downloading pillow-10.4.0-cp310-cp310-manylinux_2_28_x86_64.whl (4.5 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.5/4.5 MB 36.3 MB/s eta 0:00:00
+Downloading psutil-6.0.0-cp36-abi3-manylinux_2_12_x86_64.manylinux2010_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (290 kB)
+Downloading pyparsing-3.1.4-py3-none-any.whl (104 kB)
+Downloading pytz-2024.1-py2.py3-none-any.whl (505 kB)
+Downloading PyYAML-6.0.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (751 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 751.2/751.2 kB 15.7 MB/s eta 0:00:00
+Downloading six-1.16.0-py2.py3-none-any.whl (11 kB)
+Downloading sortedcontainers-2.4.0-py2.py3-none-any.whl (29 kB)
+Downloading SQLAlchemy-2.0.32-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.1/3.1 MB 33.6 MB/s eta 0:00:00
+Downloading tblib-3.0.0-py3-none-any.whl (12 kB)
+Downloading toolz-0.12.1-py3-none-any.whl (56 kB)
+Downloading tornado-6.4.1-cp38-abi3-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (436 kB)
+Downloading typing_extensions-4.12.2-py3-none-any.whl (37 kB)
+Downloading tzdata-2024.1-py2.py3-none-any.whl (345 kB)
+Downloading urllib3-2.2.2-py3-none-any.whl (121 kB)
+Downloading zict-3.0.0-py2.py3-none-any.whl (43 kB)
+Downloading argon2_cffi-23.1.0-py3-none-any.whl (15 kB)
+Downloading colorlog-6.8.2-py3-none-any.whl (11 kB)
+Downloading more_itertools-10.4.0-py3-none-any.whl (60 kB)
+Downloading nvidia_nccl_cu12-2.22.3-py3-none-manylinux2014_x86_64.whl (190.9 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 190.9/190.9 MB 87.4 MB/s eta 0:00:00
+Downloading pycryptodome-3.20.0-cp35-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 30.7 MB/s eta 0:00:00
+Downloading greenlet-3.0.3-cp310-cp310-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (616 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 616.0/616.0 kB 12.1 MB/s eta 0:00:00
+Downloading MarkupSafe-2.1.5-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (25 kB)
+Downloading zipp-3.20.1-py3-none-any.whl (9.0 kB)
+Downloading argon2_cffi_bindings-21.2.0-cp36-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (86 kB)
+Downloading Mako-1.3.5-py3-none-any.whl (78 kB)
+Downloading cffi-1.17.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (445 kB)
+Downloading pycparser-2.22-py3-none-any.whl (117 kB)
+Building wheels for collected packages: openml, configspace, func-timeout, liac-arff, stopit
+  Building wheel for openml (pyproject.toml): started
+  Building wheel for openml (pyproject.toml): finished with status 'done'
+  Created wheel for openml: filename=openml-0.14.2-py3-none-any.whl size=158702 sha256=b5219f4e046dc54f631dc6e3b8f0fcf503f9e1acd09c94493e6607435c06e3d8
+  Stored in directory: /home/hodesse/.cache/pip/wheels/2e/4e/af/5e721761d86375dbca82e63cc2470019e97815bc39f11451ea
+  Building wheel for configspace (pyproject.toml): started
+  Building wheel for configspace (pyproject.toml): finished with status 'done'
+  Created wheel for configspace: filename=ConfigSpace-1.2.0-py3-none-any.whl size=115854 sha256=6429ca180e4af366d0da557b2c4d3a4dcf4cf7c017f8b645f83faaad4b5881a6
+  Stored in directory: /home/hodesse/.cache/pip/wheels/5f/1f/4b/450c9c9d1ede888e354984d9eba7e60f13878fa079d502d52e
+  Building wheel for func-timeout (setup.py): started
+  Building wheel for func-timeout (setup.py): finished with status 'done'
+  Created wheel for func-timeout: filename=func_timeout-4.3.5-py3-none-any.whl size=15079 sha256=180b300740537eebd18768b7ca53e526639f9b2b1d3f17c8e84fb8f8b20c9094
+  Stored in directory: /home/hodesse/.cache/pip/wheels/3f/83/19/b5552bb9630e353f7c5b15be44bf10900afe1abbbfcf536afd
+  Building wheel for liac-arff (setup.py): started
+  Building wheel for liac-arff (setup.py): finished with status 'done'
+  Created wheel for liac-arff: filename=liac_arff-2.5.0-py3-none-any.whl size=11714 sha256=6265edc68289299e70583af02eeb129f4038a4ca58c504d6b49811550736b874
+  Stored in directory: /home/hodesse/.cache/pip/wheels/5d/2a/9c/3895d9617f8f49a0883ba686326d598e78a1c2f54fe3cae86d
+  Building wheel for stopit (setup.py): started
+  Building wheel for stopit (setup.py): finished with status 'done'
+  Created wheel for stopit: filename=stopit-1.1.2-py3-none-any.whl size=11938 sha256=0f1c204b64c973c7512c717af2c19f9d9eff580f33d166217994eabb667d1ebd
+  Stored in directory: /home/hodesse/.cache/pip/wheels/af/f9/87/bf5b3d565c2a007b4dae9d8142dccc85a9f164e517062dd519
+Successfully built openml configspace func-timeout liac-arff stopit
+Installing collected packages: stopit, sortedcontainers, pytz, func-timeout, zipp, zict, xmltodict, urllib3, tzdata, typing-extensions, traitlets, tqdm, tornado, toolz, threadpoolctl, tblib, six, pyyaml, pyparsing, pycryptodome, pycparser, psutil, pillow, packaging, nvidia-nccl-cu12, numpy, networkx, msgpack, more-itertools, MarkupSafe, locket, liac-arff, kiwisolver, joblib, idna, greenlet, fsspec, fonttools, dill, cycler, colorlog, cloudpickle, click, charset-normalizer, certifi, sqlalchemy, scipy, requests, python-dateutil, pyarrow, partd, Mako, jinja2, importlib-metadata, contourpy, cffi, baikal, xgboost, update-checker, scikit-learn, pandas, matplotlib, lightgbm, dask, configspace, argon2-cffi-bindings, alembic, optuna, distributed, dask-expr, argon2-cffi, minio, dask-jobqueue, tpot2, openml
+Successfully installed Mako-1.3.5 MarkupSafe-2.1.5 alembic-1.13.2 argon2-cffi-23.1.0 argon2-cffi-bindings-21.2.0 baikal-0.4.2 certifi-2024.7.4 cffi-1.17.0 charset-normalizer-3.3.2 click-8.1.7 cloudpickle-3.0.0 colorlog-6.8.2 configspace-1.2.0 contourpy-1.2.1 cycler-0.12.1 dask-2024.8.1 dask-expr-1.1.11 dask-jobqueue-0.9.0 dill-0.3.8 distributed-2024.8.1 fonttools-4.53.1 fsspec-2024.6.1 func-timeout-4.3.5 greenlet-3.0.3 idna-3.8 importlib-metadata-8.4.0 jinja2-3.1.4 joblib-1.4.2 kiwisolver-1.4.5 liac-arff-2.5.0 lightgbm-4.5.0 locket-1.0.0 matplotlib-3.9.2 minio-7.2.8 more-itertools-10.4.0 msgpack-1.0.8 networkx-3.3 numpy-1.26.4 nvidia-nccl-cu12-2.22.3 openml-0.14.2 optuna-3.6.1 packaging-24.1 pandas-2.2.2 partd-1.4.2 pillow-10.4.0 psutil-6.0.0 pyarrow-17.0.0 pycparser-2.22 pycryptodome-3.20.0 pyparsing-3.1.4 python-dateutil-2.9.0.post0 pytz-2024.1 pyyaml-6.0.2 requests-2.32.3 scikit-learn-1.5.1 scipy-1.14.1 six-1.16.0 sortedcontainers-2.4.0 sqlalchemy-2.0.32 stopit-1.1.2 tblib-3.0.0 threadpoolctl-3.5.0 toolz-0.12.1 tornado-6.4.1 tpot2-0.1.7a0 tqdm-4.66.5 traitlets-5.14.3 typing-extensions-4.12.2 tzdata-2024.1 update-checker-0.18.0 urllib3-2.2.2 xgboost-2.1.1 xmltodict-0.13.0 zict-3.0.0 zipp-3.20.1
+RunStart
+  File "/common/hodesse/hpc_test/TPOT2_ensemble/hpc_test1.py", line 71
+    parser.add_argument(“-n”, “--n_jobs”, default=30,  required=False, nargs=‘?’)
+                        ^
+SyntaxError: invalid character '“' (U+201C)
+srun: error: esplhpc-cp001: task 0: Exited with exit code 1
