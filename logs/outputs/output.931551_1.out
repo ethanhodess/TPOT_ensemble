@@ -3,4 +3,287 @@
 /cm/local/apps/slurm/var/spool/job931551/slurm_script: line 27: $'\npip install -r requirements.txt\n': command not found
 RunStart
 data/167104_True.pkl
-  0%|          | 0/200 [00:00<?, ?it/s]Generation:   0%|          | 0/200 [00:00<?, ?it/s]Generation:   0%|          | 1/200 [00:40<2:15:08, 40.74s/it]
+  0%|          | 0/200 [00:00<?, ?it/s]Generation:   0%|          | 0/200 [00:00<?, ?it/s]Generation:   0%|          | 1/200 [00:40<2:15:08, 40.74s/it]Generation:   1%|          | 2/200 [02:25<4:18:14, 78.26s/it]Generation:   2%|▏         | 3/200 [03:32<4:01:07, 73.44s/it]Generation:   2%|▏         | 4/200 [05:42<5:12:33, 95.68s/it]Generation:   2%|▎         | 5/200 [07:14<5:06:50, 94.41s/it]Generation:   3%|▎         | 6/200 [08:51<5:07:23, 95.07s/it]Generation:   4%|▎         | 7/200 [10:28<5:08:23, 95.87s/it]Generation:   4%|▍         | 8/200 [12:17<5:19:37, 99.88s/it]Generation:   4%|▍         | 9/200 [13:45<5:05:59, 96.13s/it]Generation:   5%|▌         | 10/200 [16:04<5:46:54, 109.55s/it]Generation:   6%|▌         | 11/200 [18:07<5:57:30, 113.49s/it]Generation:   6%|▌         | 12/200 [20:31<6:25:17, 122.96s/it]Generation:   6%|▋         | 13/200 [23:30<7:16:01, 139.90s/it]Generation:   7%|▋         | 14/200 [25:36<7:00:27, 135.63s/it]Generation:   8%|▊         | 15/200 [27:11<6:20:37, 123.45s/it]Generation:   8%|▊         | 16/200 [29:02<6:07:07, 119.71s/it]Generation:   8%|▊         | 17/200 [30:32<5:37:38, 110.70s/it]Generation:   9%|▉         | 18/200 [31:53<5:08:39, 101.76s/it]Generation:  10%|▉         | 19/200 [33:08<4:42:31, 93.66s/it] Generation:  10%|█         | 20/200 [34:51<4:49:56, 96.65s/it]Generation:  10%|█         | 21/200 [36:17<4:38:46, 93.44s/it]Generation:  11%|█         | 22/200 [37:35<4:23:24, 88.79s/it]Generation:  12%|█▏        | 23/200 [39:04<4:21:40, 88.70s/it]Generation:  12%|█▏        | 24/200 [41:14<4:56:50, 101.19s/it]Generation:  12%|█▎        | 25/200 [42:38<4:40:26, 96.15s/it] Generation:  13%|█▎        | 26/200 [44:39<5:00:16, 103.54s/it]Generation:  14%|█▎        | 27/200 [46:45<5:17:46, 110.21s/it]Generation:  14%|█▍        | 28/200 [48:27<5:08:59, 107.79s/it]Generation:  14%|█▍        | 29/200 [49:50<4:46:08, 100.40s/it]Generation:  15%|█▌        | 30/200 [51:30<4:43:59, 100.23s/it]Generation:  16%|█▌        | 31/200 [52:47<4:22:48, 93.31s/it] Generation:  16%|█▌        | 32/200 [54:37<4:35:11, 98.28s/it]Generation:  16%|█▋        | 33/200 [56:15<4:32:59, 98.08s/it]Generation:  17%|█▋        | 34/200 [57:50<4:29:10, 97.29s/it]Generation:  18%|█▊        | 35/200 [59:05<4:08:53, 90.50s/it]Generation:  18%|█▊        | 36/200 [1:00:00<3:38:07, 79.80s/it]Generation:  18%|█▊        | 36/200 [1:00:00<4:33:20, 100.01s/it]
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1361) is greater than the total number of samples (463). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/linear_model/_sag.py:349: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+pipeline scores
+0.8372296437659034
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/linear_model/_sag.py:349: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+pipeline scores
+0.8330550254452928
+pipeline scores
+0.6549777353689568
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (724) is greater than the total number of samples (463). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/linear_model/_sag.py:349: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+pipeline scores
+0.8156806615776082
+pipeline scores
+0.8511052798982188
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (724) is greater than the total number of samples (463). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/linear_model/_sag.py:349: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+pipeline scores
+0.8156806615776082
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1361) is greater than the total number of samples (463). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/linear_model/_sag.py:349: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+pipeline scores
+0.8198552798982187
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (724) is greater than the total number of samples (463). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/linear_model/_sag.py:349: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+pipeline scores
+0.822280534351145
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (724) is greater than the total number of samples (463). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/linear_model/_sag.py:349: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+pipeline scores
+0.8208889949109416
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/linear_model/_sag.py:349: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+pipeline scores
+0.8278466921119592
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (724) is greater than the total number of samples (463). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/linear_model/_sag.py:349: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+pipeline scores
+0.8156806615776082
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (724) is greater than the total number of samples (463). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/linear_model/_sag.py:349: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+pipeline scores
+0.8274888676844783
+pipeline scores
+0.8382633587786259
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/linear_model/_sag.py:349: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+pipeline scores
+0.8292382315521629
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/linear_model/_sag.py:349: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+pipeline scores
+0.8330550254452928
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/linear_model/_sag.py:349: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (724) is greater than the total number of samples (463). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/linear_model/_sag.py:349: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (724) is greater than the total number of samples (463). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/linear_model/_sag.py:349: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1361) is greater than the total number of samples (463). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/linear_model/_sag.py:349: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (724) is greater than the total number of samples (463). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/linear_model/_sag.py:349: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (724) is greater than the total number of samples (463). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/linear_model/_sag.py:349: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/linear_model/_sag.py:349: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (724) is greater than the total number of samples (463). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/linear_model/_sag.py:349: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (724) is greater than the total number of samples (463). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/linear_model/_sag.py:349: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+failed on 
+logs
+The 'subsample' parameter of KBinsDiscretizer must be an int in the range [1, inf) or None. Got 'warn' instead.
+Traceback (most recent call last):
+  File "/common/hodesse/hpc_test/TPOT2_ensemble/hpc_test1.py", line 130, in main
+    stacking_classifier.fit(X_train, y_train)
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/ensemble/_stacking.py", line 672, in fit
+    return super().fit(X, y_encoded, sample_weight)
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/base.py", line 1473, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/ensemble/_stacking.py", line 288, in fit
+    _fit_single_estimator(self.final_estimator_, X_meta, y, fit_params=fit_params)
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/ensemble/_base.py", line 40, in _fit_single_estimator
+    estimator.fit(X, y, **fit_params)
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/base.py", line 1473, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/utils/validation.py", line 66, in inner_f
+    return f(*args, **kwargs)
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/ensemble/_voting.py", line 423, in fit
+    return super().fit(X, transformed_y, **fit_params)
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/ensemble/_voting.py", line 104, in fit
+    self.estimators_ = Parallel(n_jobs=self.n_jobs)(
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/utils/parallel.py", line 74, in __call__
+    return super().__call__(iterable_with_config)
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/joblib/parallel.py", line 1918, in __call__
+    return output if self.return_generator else list(output)
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/joblib/parallel.py", line 1847, in _get_sequential_output
+    res = func(*args, **kwargs)
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/utils/parallel.py", line 136, in __call__
+    return self.function(*args, **kwargs)
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/ensemble/_base.py", line 40, in _fit_single_estimator
+    estimator.fit(X, y, **fit_params)
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/tpot2/graphsklearn.py", line 311, in fit
+    fit_sklearn_digraph(   graph=self.graph,
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/tpot2/graphsklearn.py", line 136, in fit_sklearn_digraph
+    transformed, instance = fit_transform_one_cached(instance, this_X, y)#instance.fit_transform(this_X,y)
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/joblib/memory.py", line 312, in __call__
+    return self.func(*args, **kwargs)
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/tpot2/graphsklearn.py", line 90, in _fit_transform_one
+    res = model.fit_transform(X, y, **fit_params)
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/utils/_set_output.py", line 313, in wrapped
+    data_to_wrap = f(self, X, *args, **kwargs)
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/base.py", line 1101, in fit_transform
+    return self.fit(X, y, **fit_params).transform(X)
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/tpot2/builtin_modules/passkbinsdiscretizer.py", line 39, in fit
+    self.transformer.fit(X)
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/compose/_column_transformer.py", line 922, in fit
+    self.fit_transform(X, y=y, **params)
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/utils/_set_output.py", line 313, in wrapped
+    data_to_wrap = f(self, X, *args, **kwargs)
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/base.py", line 1473, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/compose/_column_transformer.py", line 976, in fit_transform
+    result = self._call_func_on_transformers(
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/compose/_column_transformer.py", line 885, in _call_func_on_transformers
+    return Parallel(n_jobs=self.n_jobs)(jobs)
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/utils/parallel.py", line 74, in __call__
+    return super().__call__(iterable_with_config)
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/joblib/parallel.py", line 1918, in __call__
+    return output if self.return_generator else list(output)
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/joblib/parallel.py", line 1847, in _get_sequential_output
+    res = func(*args, **kwargs)
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/utils/parallel.py", line 136, in __call__
+    return self.function(*args, **kwargs)
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/pipeline.py", line 1310, in _fit_transform_one
+    res = transformer.fit_transform(X, y, **params.get("fit_transform", {}))
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/utils/_set_output.py", line 313, in wrapped
+    data_to_wrap = f(self, X, *args, **kwargs)
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/base.py", line 1098, in fit_transform
+    return self.fit(X, **fit_params).transform(X)
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/base.py", line 1466, in wrapper
+    estimator._validate_params()
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/base.py", line 666, in _validate_params
+    validate_parameter_constraints(
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/utils/_param_validation.py", line 95, in validate_parameter_constraints
+    raise InvalidParameterError(
+sklearn.utils._param_validation.InvalidParameterError: The 'subsample' parameter of KBinsDiscretizer must be an int in the range [1, inf) or None. Got 'warn' instead.
+
+DONE

@@ -1,1 +1,1 @@
-# TPOT2_ensemble
+# TPOT2 pareto front ensembling
