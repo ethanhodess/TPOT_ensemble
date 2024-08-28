@@ -90,7 +90,7 @@ def main():
         )
 
         est = tpot2.TPOTEstimator(search_space = graph_search_space, generations=200, population_size=50, cv=5, 
-                                random_state=num_runs, verbose=2, classification=True, 
+                                random_state=42, verbose=2, classification=True, 
                                 scorers=['roc_auc_ovr',tpot2.objectives.complexity_scorer], 
                                 scorers_weights=[1,-1], max_eval_time_seconds = 5*60)
 
@@ -101,9 +101,9 @@ def main():
 
         pf = est.pareto_front
                         
-        with open(f"{save_folder}/est_pareto_front.pkl", "wb") as f:
-                                pickle.dump(est.pareto_front, f)
-                                print('estimator working as intended')
+       # with open(f"{save_folder}/est_pareto_front.pkl", "wb") as f:
+       #                         pickle.dump(est.pareto_front, f)
+       #                         print('estimator working as intended')
 
 
 

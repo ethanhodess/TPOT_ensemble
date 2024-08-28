@@ -1,0 +1,6 @@
+“Run: 1”
+/cm/local/apps/slurm/var/spool/job931551/slurm_script: line 23: $'\nconda create --name tpot2env -c conda-forge python=3.10\n': command not found
+/cm/local/apps/slurm/var/spool/job931551/slurm_script: line 27: $'\npip install -r requirements.txt\n': command not found
+RunStart
+data/167104_True.pkl
+  0%|          | 0/200 [00:00<?, ?it/s]Generation:   0%|          | 0/200 [00:00<?, ?it/s]Generation:   0%|          | 1/200 [00:40<2:15:08, 40.74s/it]
