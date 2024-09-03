@@ -26,7 +26,7 @@ conda activate tpot2env
 pip install -r requirements.txt
 '''
 echo RunStart
-srun -u /home/hodesse/miniconda3/envs/tpot2env/bin/python hpc_test1.py \
+srun -u /home/hodesse/miniconda3/envs/tpot2env/bin/python hpc_test2.py \
 --n_jobs 48 \
 --savepath logs \
 --num_runs ${RUN} \
