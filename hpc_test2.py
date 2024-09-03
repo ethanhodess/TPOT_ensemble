@@ -66,6 +66,7 @@ def load_task(task_id, preprocess=True):
     return X_train, y_train, X_test, y_test
 
 
+X_train, y_train, X_test, y_test = load_task(167104, preprocess=True)
 
 
 def create_stacking_clf_gridsearch(pareto_front):
@@ -100,48 +101,77 @@ def create_stacking_clf_gridsearch(pareto_front):
     return ensemble_grid_search, highest_accuracy
 
 
+import argparse
+
 def main():
+    parser = argparse.ArgumentParser()
+    # number of threads
+    parser.add_argument("-n", "--n_jobs", default=30,  required=False, nargs='?')
+    #where to save the results/models
+    parser.add_argument("-s", "--savepath", default="binary_results", required=False, nargs='?')
+    #number of total runs for each experiment
+    parser.add_argument("-r", "--num_runs", default=1, required=False, nargs='?')
+    args = parser.parse_args()
+    n_jobs = int(args.n_jobs)
+    base_save_folder = args.savepath
+    num_runs = int(args.num_runs)
 
-    task_ids = [167104, 167184, 167168, 167161, 189905]
-    results = []
-    num_runs = 5
-
-    for task_id in task_ids:
-        for i in range(num_runs):
-            X_train, y_train, X_test, y_test = load_task(task_id, preprocess=True)
-            individual_highest_accuracy = 0
-
-            graph_search_space = tpot2.search_spaces.pipelines.GraphPipeline(
-                root_search_space= tpot2.config.get_search_space("classifiers"),
-                leaf_search_space = tpot2.config.get_search_space("selectors"), 
-                inner_search_space = tpot2.config.get_search_space("transformers"),
-                max_size = 10,
-            )
-
-            est = tpot2.TPOTEstimator(search_space = graph_search_space, generations=5, population_size=5, cv=5, 
-                                random_state=30+i, verbose=2, classification=True, scorers=['roc_auc_ovr',tpot2.objectives.complexity_scorer], 
-                                scorers_weights=[1,-1])
+    save_folder = base_save_folder
 
 
-            est.fit(X_train, y_train)
-            fitted_ensemble, individual_highest_accuracy = create_stacking_clf_gridsearch(est.pareto_front)
-        
-            ensemble_accuracy = accuracy_score(y_test, fitted_ensemble.predict(X_test))
-        
-            results.append({"task id": task_id, 
-                            "individual": individual_highest_accuracy, 
-                            "ensemble": ensemble_accuracy, 
-                            "better": (ensemble_accuracy>individual_highest_accuracy),
-                            "random seed": 30+i,
-                            "run #": i
-                        })
+    try:
 
-    print("With grid search")
-    results_df = pd.DataFrame(results)
-    print(results_df)
+        task_ids = [167104, 167184, 167168, 167161, 189905]
+        results = []
+        num_runs = 1
 
-    print("Percent that are better", results_df['better'].sum() / results_df['better'].count())
+        for task_id in task_ids:
+            for i in range(num_runs):
+                X_train, y_train, X_test, y_test = load_task(task_id, preprocess=True)
+                individual_highest_accuracy = 0
 
+                graph_search_space = tpot2.search_spaces.pipelines.GraphPipeline(
+                    root_search_space= tpot2.config.get_search_space("classifiers"),
+                    leaf_search_space = tpot2.config.get_search_space("selectors"), 
+                    inner_search_space = tpot2.config.get_search_space("transformers"),
+                    max_size = 10,
+                )
+
+                est = tpot2.TPOTEstimator(search_space = graph_search_space, generations=5, population_size=5, cv=5, 
+                                    random_state=30+i, verbose=2, classification=True, scorers=['roc_auc_ovr',tpot2.objectives.complexity_scorer], 
+                                    scorers_weights=[1,-1])
+
+
+                est.fit(X_train, y_train)
+                fitted_ensemble, individual_highest_accuracy = create_stacking_clf_gridsearch(est.pareto_front)
+            
+                ensemble_accuracy = accuracy_score(y_test, fitted_ensemble.predict(X_test))
+            
+                results.append({"task id": task_id, 
+                                "individual": individual_highest_accuracy, 
+                                "ensemble": ensemble_accuracy, 
+                                "better": (ensemble_accuracy>individual_highest_accuracy),
+                                "random seed": 30+i,
+                                "run #": i
+                            })
+
+        print("With grid search")
+        results_df = pd.DataFrame(results)
+        print(results_df)
+
+        num_better = results_df['better'].sum()
+        print("Percent that are better", num_better / results_df['better'].count())
+
+
+    except Exception as e:
+                    trace =  traceback.format_exc()
+                    pipeline_failure_dict = {"task_id": task_id,"run": num_runs, "error": str(e), "trace": trace}
+                    print("failed on ")
+                    print(save_folder)
+                    print(e)
+                    print(trace)
+                    #with open(f"{save_folder}/failed.pkl", "wb") as f:
+                    #    pickle.dump(pipeline_failure_dict, f)
 
 
 if __name__ == '__main__':

@@ -1,0 +1,1739 @@
+“Run: 1”
+/cm/local/apps/slurm/var/spool/job939705/slurm_script: line 23: $'\nconda create --name tpot2env -c conda-forge python=3.10\n': command not found
+/cm/local/apps/slurm/var/spool/job939705/slurm_script: line 27: $'\npip install -r requirements.txt\n': command not found
+RunStart
+data/167104_True.pkl
+data/167104_True.pkl
+data/167104_True.pkl
+  0%|          | 0/5 [00:00<?, ?it/s]Generation:   0%|          | 0/5 [00:00<?, ?it/s]Generation:  20%|██        | 1/5 [00:08<00:33,  8.30s/it]Generation:  40%|████      | 2/5 [00:20<00:31, 10.43s/it]Generation:  60%|██████    | 3/5 [00:22<00:13,  6.78s/it]Generation:  80%|████████  | 4/5 [00:25<00:05,  5.22s/it]Generation: 100%|██████████| 5/5 [00:33<00:00,  6.28s/it]Generation: 100%|██████████| 5/5 [00:33<00:00,  6.73s/it]
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:128: ConvergenceWarning: FastICA did not converge. Consider increasing tolerance or the maximum number of iterations.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1439) is greater than the total number of samples (463). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:128: ConvergenceWarning: FastICA did not converge. Consider increasing tolerance or the maximum number of iterations.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1439) is greater than the total number of samples (463). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 45
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:128: ConvergenceWarning: FastICA did not converge. Consider increasing tolerance or the maximum number of iterations.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1439) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 46
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:128: ConvergenceWarning: FastICA did not converge. Consider increasing tolerance or the maximum number of iterations.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1439) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 46
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:128: ConvergenceWarning: FastICA did not converge. Consider increasing tolerance or the maximum number of iterations.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1439) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 46
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [16] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [16] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:128: ConvergenceWarning: FastICA did not converge. Consider increasing tolerance or the maximum number of iterations.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1439) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [16] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 45
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:128: ConvergenceWarning: FastICA did not converge. Consider increasing tolerance or the maximum number of iterations.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1439) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 46
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 18
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:128: ConvergenceWarning: FastICA did not converge. Consider increasing tolerance or the maximum number of iterations.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/numpy/core/_methods.py:176: RuntimeWarning: overflow encountered in multiply
+  x = um.multiply(x, x, out=x)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1439) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 2
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 18
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:128: ConvergenceWarning: FastICA did not converge. Consider increasing tolerance or the maximum number of iterations.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/numpy/core/_methods.py:176: RuntimeWarning: overflow encountered in multiply
+  x = um.multiply(x, x, out=x)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1439) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 2
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 18
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:128: ConvergenceWarning: FastICA did not converge. Consider increasing tolerance or the maximum number of iterations.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/numpy/core/_methods.py:176: RuntimeWarning: overflow encountered in multiply
+  x = um.multiply(x, x, out=x)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1439) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 2
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 18
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:128: ConvergenceWarning: FastICA did not converge. Consider increasing tolerance or the maximum number of iterations.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/numpy/core/_methods.py:176: RuntimeWarning: overflow encountered in multiply
+  x = um.multiply(x, x, out=x)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1439) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 2
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 18
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:128: ConvergenceWarning: FastICA did not converge. Consider increasing tolerance or the maximum number of iterations.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/numpy/core/_methods.py:176: RuntimeWarning: overflow encountered in multiply
+  x = um.multiply(x, x, out=x)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1439) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 2
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:128: ConvergenceWarning: FastICA did not converge. Consider increasing tolerance or the maximum number of iterations.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1439) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 46
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:128: ConvergenceWarning: FastICA did not converge. Consider increasing tolerance or the maximum number of iterations.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1439) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 46
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:128: ConvergenceWarning: FastICA did not converge. Consider increasing tolerance or the maximum number of iterations.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1439) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 46
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [16] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [16] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:128: ConvergenceWarning: FastICA did not converge. Consider increasing tolerance or the maximum number of iterations.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1439) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [16] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 45
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:128: ConvergenceWarning: FastICA did not converge. Consider increasing tolerance or the maximum number of iterations.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1439) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 46
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 18
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:128: ConvergenceWarning: FastICA did not converge. Consider increasing tolerance or the maximum number of iterations.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/numpy/core/_methods.py:176: RuntimeWarning: overflow encountered in multiply
+  x = um.multiply(x, x, out=x)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1439) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 2
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 18
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:128: ConvergenceWarning: FastICA did not converge. Consider increasing tolerance or the maximum number of iterations.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/numpy/core/_methods.py:176: RuntimeWarning: overflow encountered in multiply
+  x = um.multiply(x, x, out=x)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1439) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 2
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 18
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:128: ConvergenceWarning: FastICA did not converge. Consider increasing tolerance or the maximum number of iterations.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/numpy/core/_methods.py:176: RuntimeWarning: overflow encountered in multiply
+  x = um.multiply(x, x, out=x)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1439) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 2
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 18
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:128: ConvergenceWarning: FastICA did not converge. Consider increasing tolerance or the maximum number of iterations.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/numpy/core/_methods.py:176: RuntimeWarning: overflow encountered in multiply
+  x = um.multiply(x, x, out=x)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1439) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 2
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 18
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:128: ConvergenceWarning: FastICA did not converge. Consider increasing tolerance or the maximum number of iterations.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/numpy/core/_methods.py:176: RuntimeWarning: overflow encountered in multiply
+  x = um.multiply(x, x, out=x)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1439) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 2
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 18
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:128: ConvergenceWarning: FastICA did not converge. Consider increasing tolerance or the maximum number of iterations.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/numpy/core/_methods.py:176: RuntimeWarning: overflow encountered in multiply
+  x = um.multiply(x, x, out=x)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1439) is greater than the total number of samples (463). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 2
+  warnings.warn(
+data/167104_True.pkl
+data/167104_True.pkl
+  0%|          | 0/5 [00:00<?, ?it/s]Generation:   0%|          | 0/5 [00:00<?, ?it/s]Generation:  20%|██        | 1/5 [00:01<00:06,  1.74s/it]Generation:  40%|████      | 2/5 [00:03<00:05,  1.77s/it]Generation:  60%|██████    | 3/5 [00:06<00:04,  2.35s/it]Generation:  80%|████████  | 4/5 [00:08<00:02,  2.24s/it]Generation: 100%|██████████| 5/5 [00:12<00:00,  2.99s/it]Generation: 100%|██████████| 5/5 [00:12<00:00,  2.59s/it]
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [17] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [17] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [17] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [17] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [17] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [17] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [17] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [17] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [17] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [17] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [17] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [17] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+data/167104_True.pkl
+data/167104_True.pkl
+  0%|          | 0/5 [00:00<?, ?it/s]Generation:   0%|          | 0/5 [00:00<?, ?it/s]Generation:  20%|██        | 1/5 [00:03<00:12,  3.21s/it]Generation:  40%|████      | 2/5 [00:07<00:12,  4.13s/it]Generation:  60%|██████    | 3/5 [00:13<00:09,  4.55s/it]Generation:  80%|████████  | 4/5 [00:45<00:15, 15.41s/it]Generation: 100%|██████████| 5/5 [00:49<00:00, 11.48s/it]Generation: 100%|██████████| 5/5 [00:49<00:00,  9.92s/it]
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1396) is greater than the total number of samples (463). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/neural_network/_multilayer_perceptron.py:690: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1396) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1396) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1396) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1396) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [ 3  4 21] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [ 3  4 21] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [ 3  4 21] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [ 3  4 21] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [ 3  4 21] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [ 3  4 21] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [ 3  4 21] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [ 3  4 21] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [ 3  4 21] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [ 3  4 21] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [ 3  4 21] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [ 3  4 21] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [ 3  4 21] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [ 3  4 21] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1396) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1396) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1396) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1396) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1396) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1396) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1396) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1396) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1396) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1396) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [ 3  4 21] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [ 3  4 21] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [ 3  4 21] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [ 3  4 21] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [ 3  4 21] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [ 3  4 21] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [ 3  4 21] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [ 3  4 21] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [ 3  4 21] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [ 3  4 21] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [ 3  4 21] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [ 3  4 21] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [ 3  4 21] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [ 3  4 21] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1396) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1396) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1396) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1396) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1396) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1396) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1396) is greater than the total number of samples (463). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: divide by zero encountered in divide
+  f = msb / msw
+data/167104_True.pkl
+data/167104_True.pkl
+  0%|          | 0/5 [00:00<?, ?it/s]Generation:   0%|          | 0/5 [00:00<?, ?it/s]Generation:  20%|██        | 1/5 [00:02<00:10,  2.72s/it]Generation:  40%|████      | 2/5 [00:06<00:09,  3.17s/it]Generation:  60%|██████    | 3/5 [00:07<00:05,  2.52s/it]Generation:  80%|████████  | 4/5 [00:09<00:02,  2.30s/it]Generation: 100%|██████████| 5/5 [00:11<00:00,  2.01s/it]Generation: 100%|██████████| 5/5 [00:11<00:00,  2.28s/it]
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/discriminant_analysis.py:947: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/discriminant_analysis.py:947: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/discriminant_analysis.py:947: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/discriminant_analysis.py:947: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/discriminant_analysis.py:947: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/discriminant_analysis.py:947: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/discriminant_analysis.py:947: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/discriminant_analysis.py:947: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/discriminant_analysis.py:947: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/discriminant_analysis.py:947: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/discriminant_analysis.py:947: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/discriminant_analysis.py:947: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/discriminant_analysis.py:947: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/discriminant_analysis.py:947: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/discriminant_analysis.py:947: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/discriminant_analysis.py:947: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/discriminant_analysis.py:947: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/discriminant_analysis.py:947: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/discriminant_analysis.py:947: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/discriminant_analysis.py:947: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/discriminant_analysis.py:947: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/discriminant_analysis.py:947: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/discriminant_analysis.py:947: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/discriminant_analysis.py:947: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/discriminant_analysis.py:947: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/discriminant_analysis.py:947: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/discriminant_analysis.py:947: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/discriminant_analysis.py:947: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/discriminant_analysis.py:947: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/discriminant_analysis.py:947: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/discriminant_analysis.py:947: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/discriminant_analysis.py:947: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/discriminant_analysis.py:947: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/discriminant_analysis.py:947: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/discriminant_analysis.py:947: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/discriminant_analysis.py:947: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/discriminant_analysis.py:947: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/discriminant_analysis.py:947: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/discriminant_analysis.py:947: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/discriminant_analysis.py:947: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/discriminant_analysis.py:947: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/discriminant_analysis.py:947: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/discriminant_analysis.py:947: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/discriminant_analysis.py:947: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/discriminant_analysis.py:947: UserWarning: Variables are collinear
+  warnings.warn("Variables are collinear")
+data/167104_True.pkl
+data/167104_True.pkl
+  0%|          | 0/5 [00:00<?, ?it/s]Generation:   0%|          | 0/5 [00:00<?, ?it/s]Generation:  20%|██        | 1/5 [00:04<00:19,  4.81s/it]Generation:  40%|████      | 2/5 [00:08<00:12,  4.32s/it]Generation:  60%|██████    | 3/5 [00:12<00:08,  4.16s/it]Generation:  80%|████████  | 4/5 [00:26<00:07,  7.86s/it]Generation: 100%|██████████| 5/5 [00:31<00:00,  6.80s/it]Generation: 100%|██████████| 5/5 [00:31<00:00,  6.24s/it]
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 14
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 14
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 14
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 16
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 16
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 16
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 16
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 16
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 16
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 16
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 16
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 16
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [21] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [21] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 16
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [21] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [21] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 16
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [21] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [21] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [21] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [21] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [21] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 16
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [21] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [21] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [21] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [21] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 16
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 16
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 16
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 2
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 2
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 2
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 2
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 2
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 2
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 2
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 2
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 2
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 2
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 2
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 2
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 2
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 2
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 2
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 16
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 16
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 16
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 16
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 16
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 16
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 16
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 16
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 16
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [21] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [21] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 16
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [21] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [21] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 16
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [21] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [21] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [21] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [21] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [21] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 16
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [21] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [21] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [21] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [21] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 16
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 16
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 16
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 2
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 2
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 2
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 2
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 2
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 2
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 2
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 2
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 2
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 2
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 2
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 2
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 2
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 2
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 2
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 16
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 16
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 16
+  warnings.warn(
+data/167184_True.pkl
+data/167104_True.pkl
+  0%|          | 0/5 [00:00<?, ?it/s]Generation:   0%|          | 0/5 [00:00<?, ?it/s]Generation:  20%|██        | 1/5 [00:04<00:18,  4.60s/it]Generation:  40%|████      | 2/5 [00:10<00:16,  5.35s/it]Generation:  60%|██████    | 3/5 [00:12<00:07,  3.86s/it]Generation:  80%|████████  | 4/5 [00:14<00:03,  3.06s/it]Generation: 100%|██████████| 5/5 [00:16<00:00,  2.64s/it]Generation: 100%|██████████| 5/5 [00:16<00:00,  3.26s/it]
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 3
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1657) is greater than the total number of samples (463). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 10
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1657) is greater than the total number of samples (463). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1657) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 12
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1657) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1657) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 13
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1657) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1657) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 13
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1657) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1657) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 14
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1657) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1657) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 13
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:680: RuntimeWarning: divide by zero encountered in divide
+  S /= S_std
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:681: RuntimeWarning: divide by zero encountered in divide
+  W /= S_std.T
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1657) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 5
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1657) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1657) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 5
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1657) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1657) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 5
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1657) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1657) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 5
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1657) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1657) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 5
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1657) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1657) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 12
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1657) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1657) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 13
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1657) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1657) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 13
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1657) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1657) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 14
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1657) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1657) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 13
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1657) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1657) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 5
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1657) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1657) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 5
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1657) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1657) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 5
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1657) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1657) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 5
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1657) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1657) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 5
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1657) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/model_selection/_validation.py:540: FitFailedWarning: 
+1 fits failed out of a total of 20.
+The score on these train-test partitions for these parameters will be set to nan.
+If these failures are not expected, you can try to debug them by setting error_score='raise'.
+
+Below are more details about the failures:
+--------------------------------------------------------------------------------
+1 fits failed with the following error:
+Traceback (most recent call last):
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/model_selection/_validation.py", line 888, in _fit_and_score
+    estimator.fit(X_train, y_train, **fit_params)
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/ensemble/_stacking.py", line 672, in fit
+    return super().fit(X, y_encoded, sample_weight)
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/base.py", line 1473, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/ensemble/_stacking.py", line 288, in fit
+    _fit_single_estimator(self.final_estimator_, X_meta, y, fit_params=fit_params)
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/ensemble/_base.py", line 40, in _fit_single_estimator
+    estimator.fit(X, y, **fit_params)
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/base.py", line 1473, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/utils/validation.py", line 66, in inner_f
+    return f(*args, **kwargs)
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/ensemble/_voting.py", line 423, in fit
+    return super().fit(X, transformed_y, **fit_params)
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/ensemble/_voting.py", line 104, in fit
+    self.estimators_ = Parallel(n_jobs=self.n_jobs)(
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/utils/parallel.py", line 74, in __call__
+    return super().__call__(iterable_with_config)
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/joblib/parallel.py", line 1918, in __call__
+    return output if self.return_generator else list(output)
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/joblib/parallel.py", line 1847, in _get_sequential_output
+    res = func(*args, **kwargs)
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/utils/parallel.py", line 136, in __call__
+    return self.function(*args, **kwargs)
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/ensemble/_base.py", line 40, in _fit_single_estimator
+    estimator.fit(X, y, **fit_params)
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/tpot2/graphsklearn.py", line 311, in fit
+    fit_sklearn_digraph(   graph=self.graph,
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/tpot2/graphsklearn.py", line 136, in fit_sklearn_digraph
+    transformed, instance = fit_transform_one_cached(instance, this_X, y)#instance.fit_transform(this_X,y)
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/joblib/memory.py", line 312, in __call__
+    return self.func(*args, **kwargs)
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/tpot2/graphsklearn.py", line 90, in _fit_transform_one
+    res = model.fit_transform(X, y, **fit_params)
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/utils/_set_output.py", line 313, in wrapped
+    data_to_wrap = f(self, X, *args, **kwargs)
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/base.py", line 1473, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py", line 713, in fit_transform
+    return self._fit_transform(X, compute_sources=True)
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py", line 689, in _fit_transform
+    self.mixing_ = linalg.pinv(self.components_, check_finite=False)
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/scipy/linalg/_basic.py", line 1447, in pinv
+    u, s, vh = _decomp_svd.svd(a, full_matrices=False, check_finite=False)
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/scipy/linalg/_decomp_svd.py", line 166, in svd
+    raise ValueError('illegal value in %dth argument of internal gesdd'
+ValueError: illegal value in 4th argument of internal gesdd
+
+  warnings.warn(some_fits_failed_message, FitFailedWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/model_selection/_search.py:1102: UserWarning: One or more of the test scores are non-finite: [       nan 0.90481533 0.87674147 0.89406265]
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1657) is greater than the total number of samples (463). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 5
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1657) is greater than the total number of samples (463). n_quantiles is set to n_samples.
+  warnings.warn(
+Traceback (most recent call last):
+  File "/common/hodesse/hpc_test/TPOT2_ensemble/hpc_test2.py", line 148, in main
+    ensemble_accuracy = accuracy_score(y_test, fitted_ensemble.predict(X_test))
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/model_selection/_search.py", line 597, in predict
+    return self.best_estimator_.predict(X)
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/ensemble/_stacking.py", line 695, in predict
+    y_pred = super().predict(X, **predict_params)
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/ensemble/_stacking.py", line 382, in predict
+    return self.final_estimator_.predict(self.transform(X), **predict_params)
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/utils/_set_output.py", line 313, in wrapped
+    data_to_wrap = f(self, X, *args, **kwargs)
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/ensemble/_stacking.py", line 766, in transform
+    return self._transform(X)
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/ensemble/_stacking.py", line 306, in _transform
+    predictions = [
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/ensemble/_stacking.py", line 307, in <listcomp>
+    getattr(est, meth)(X)
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/tpot2/graphsklearn.py", line 359, in predict_proba
+    this_X = get_inputs_to_node(self.graph,
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/tpot2/graphsklearn.py", line 200, in get_inputs_to_node
+    transformed_steps = transform_sklearn_digraph(graph,
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/tpot2/graphsklearn.py", line 177, in transform_sklearn_digraph
+    transformed = instance.transform(this_X)
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/utils/_set_output.py", line 313, in wrapped
+    data_to_wrap = f(self, X, *args, **kwargs)
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_base.py", line 102, in transform
+    X = self._validate_data(
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/base.py", line 654, in _validate_data
+    self._check_n_features(X, reset=reset)
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/base.py", line 443, in _check_n_features
+    raise ValueError(
+ValueError: X has 4 features, but VarianceThreshold is expecting 42 features as input.
+
+DONE

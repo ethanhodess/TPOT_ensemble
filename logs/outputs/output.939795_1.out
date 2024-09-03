@@ -1,0 +1,1003 @@
+“Run: 1”
+/cm/local/apps/slurm/var/spool/job939795/slurm_script: line 23: $'\nconda create --name tpot2env -c conda-forge python=3.10\n': command not found
+/cm/local/apps/slurm/var/spool/job939795/slurm_script: line 27: $'\npip install -r requirements.txt\n': command not found
+RunStart
+data/167104_True.pkl
+hihihi
+data/167104_True.pkl
+data/167104_True.pkl
+  0%|          | 0/5 [00:00<?, ?it/s]Generation:   0%|          | 0/5 [00:00<?, ?it/s]Generation:  20%|██        | 1/5 [00:05<00:20,  5.12s/it]Generation:  40%|████      | 2/5 [00:12<00:19,  6.57s/it]Generation:  60%|██████    | 3/5 [00:49<00:40, 20.40s/it]Generation:  80%|████████  | 4/5 [01:15<00:22, 22.53s/it]Generation: 100%|██████████| 5/5 [01:52<00:00, 27.69s/it]Generation: 100%|██████████| 5/5 [01:52<00:00, 22.44s/it]
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (674) is greater than the total number of samples (463). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (674) is greater than the total number of samples (463). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 28
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (674) is greater than the total number of samples (463). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (674) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 31
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (674) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (674) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 31
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (674) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (674) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 30
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (674) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [18] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (674) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [18] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [18] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 28
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [18] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (674) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [18] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [18] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [18] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [18] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [18] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (674) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 31
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (674) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (674) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 4
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (674) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (674) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 5
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (674) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (674) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 4
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (674) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (674) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 5
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (674) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (674) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 5
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (674) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (674) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 31
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (674) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (674) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 31
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (674) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (674) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 30
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (674) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [18] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (674) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [18] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [18] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 28
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [18] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (674) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [18] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [18] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [18] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [18] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [18] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (674) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 31
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (674) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (674) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 4
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (674) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (674) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 5
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (674) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (674) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 4
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (674) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (674) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 5
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (674) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (674) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 5
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (674) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (674) is greater than the total number of samples (463). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 5
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (674) is greater than the total number of samples (463). n_quantiles is set to n_samples.
+  warnings.warn(
+data/167104_True.pkl
+data/167104_True.pkl
+  0%|          | 0/5 [00:00<?, ?it/s]Generation:   0%|          | 0/5 [00:00<?, ?it/s]Generation:  20%|██        | 1/5 [00:01<00:06,  1.57s/it]Generation:  40%|████      | 2/5 [00:05<00:09,  3.23s/it]Generation:  60%|██████    | 3/5 [00:11<00:08,  4.36s/it]Generation:  80%|████████  | 4/5 [00:13<00:03,  3.49s/it]Generation: 100%|██████████| 5/5 [00:24<00:00,  5.90s/it]Generation: 100%|██████████| 5/5 [00:24<00:00,  4.80s/it]
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [18] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [18] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [18] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [18] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [18] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [18] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [18] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [18] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [18] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [18] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [18] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [18] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [18] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [18] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [18] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [18] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+data/167104_True.pkl
+data/167104_True.pkl
+  0%|          | 0/5 [00:00<?, ?it/s]Generation:   0%|          | 0/5 [00:00<?, ?it/s]Generation:  20%|██        | 1/5 [00:04<00:17,  4.26s/it]Generation:  40%|████      | 2/5 [00:07<00:10,  3.59s/it]Generation:  60%|██████    | 3/5 [00:11<00:07,  3.83s/it]Generation:  80%|████████  | 4/5 [00:15<00:03,  3.84s/it]Generation: 100%|██████████| 5/5 [00:22<00:00,  5.20s/it]Generation: 100%|██████████| 5/5 [00:22<00:00,  4.59s/it]
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1211) is greater than the total number of samples (463). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1211) is greater than the total number of samples (463). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1211) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1211) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1211) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1211) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1211) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1211) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [17] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1211) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [17] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [17] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1211) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [17] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1211) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1211) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1211) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1211) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1211) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1211) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1211) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1211) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1211) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1211) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1211) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1211) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1211) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1211) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1211) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1211) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1211) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1211) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [17] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1211) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [17] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [17] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1211) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [17] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1211) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1211) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1211) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1211) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1211) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1211) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1211) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1211) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1211) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1211) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1211) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1211) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1211) is greater than the total number of samples (463). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1211) is greater than the total number of samples (463). n_quantiles is set to n_samples.
+  warnings.warn(
+data/167104_True.pkl
+data/167104_True.pkl
+  0%|          | 0/5 [00:00<?, ?it/s]Generation:   0%|          | 0/5 [00:00<?, ?it/s]Generation:  20%|██        | 1/5 [00:02<00:09,  2.40s/it]Generation:  40%|████      | 2/5 [00:03<00:05,  1.92s/it]Generation:  60%|██████    | 3/5 [00:07<00:05,  2.52s/it]Generation:  80%|████████  | 4/5 [00:18<00:06,  6.06s/it]Generation: 100%|██████████| 5/5 [00:20<00:00,  4.60s/it]Generation: 100%|██████████| 5/5 [00:20<00:00,  4.14s/it]
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 12
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 15
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 15
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 14
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 14
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 16
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 5
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 5
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 5
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 5
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 5
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 15
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 15
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 14
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 14
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 16
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 5
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 5
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 5
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 5
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 5
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/decomposition/_fastica.py:595: UserWarning: n_components is too large: it will be set to 5
+  warnings.warn(
+data/167104_True.pkl
+data/167104_True.pkl
+  0%|          | 0/5 [00:00<?, ?it/s]Generation:   0%|          | 0/5 [00:00<?, ?it/s]Generation:  20%|██        | 1/5 [00:12<00:48, 12.25s/it]Generation:  40%|████      | 2/5 [00:16<00:22,  7.52s/it]Generation:  60%|██████    | 3/5 [00:21<00:12,  6.34s/it]Generation:  80%|████████  | 4/5 [00:23<00:04,  4.78s/it]Generation: 100%|██████████| 5/5 [00:29<00:00,  5.07s/it]Generation: 100%|██████████| 5/5 [00:29<00:00,  5.88s/it]
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1533) is greater than the total number of samples (463). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1533) is greater than the total number of samples (463). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/linear_model/_sag.py:349: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1533) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1533) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/linear_model/_sag.py:349: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/linear_model/_sag.py:349: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1533) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1533) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/linear_model/_sag.py:349: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/linear_model/_sag.py:349: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1533) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1533) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/linear_model/_sag.py:349: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/linear_model/_sag.py:349: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [20] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [20] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [20] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [20] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1533) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [20] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [20] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1533) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [20] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/linear_model/_sag.py:349: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [20] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [20] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [20] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/linear_model/_sag.py:349: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1533) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1533) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/linear_model/_sag.py:349: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/linear_model/_sag.py:349: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1533) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1533) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/linear_model/_sag.py:349: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/linear_model/_sag.py:349: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1533) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1533) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/linear_model/_sag.py:349: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/linear_model/_sag.py:349: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1533) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1533) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/linear_model/_sag.py:349: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/linear_model/_sag.py:349: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1533) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1533) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/linear_model/_sag.py:349: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/linear_model/_sag.py:349: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1533) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1533) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/linear_model/_sag.py:349: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/linear_model/_sag.py:349: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1533) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1533) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/linear_model/_sag.py:349: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/linear_model/_sag.py:349: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1533) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1533) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/linear_model/_sag.py:349: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/linear_model/_sag.py:349: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1533) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1533) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/linear_model/_sag.py:349: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/linear_model/_sag.py:349: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [20] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [20] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [20] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [20] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1533) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [20] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [20] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1533) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [20] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/linear_model/_sag.py:349: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [20] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [20] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [20] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/linear_model/_sag.py:349: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1533) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1533) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/linear_model/_sag.py:349: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/linear_model/_sag.py:349: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1533) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1533) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/linear_model/_sag.py:349: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/linear_model/_sag.py:349: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1533) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1533) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/linear_model/_sag.py:349: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/linear_model/_sag.py:349: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1533) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1533) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/linear_model/_sag.py:349: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/linear_model/_sag.py:349: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1533) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1533) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/linear_model/_sag.py:349: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/linear_model/_sag.py:349: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1533) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1533) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/linear_model/_sag.py:349: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/linear_model/_sag.py:349: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1533) is greater than the total number of samples (463). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1533) is greater than the total number of samples (463). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/linear_model/_sag.py:349: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/linear_model/_sag.py:349: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+hihihi
+data/167184_True.pkl
+data/167104_True.pkl
+  0%|          | 0/5 [00:00<?, ?it/s]Generation:   0%|          | 0/5 [00:00<?, ?it/s]Generation:  20%|██        | 1/5 [00:04<00:16,  4.17s/it]Generation:  40%|████      | 2/5 [00:09<00:14,  4.77s/it]Generation:  60%|██████    | 3/5 [00:14<00:09,  4.89s/it]Generation:  80%|████████  | 4/5 [00:16<00:03,  3.74s/it]Generation: 100%|██████████| 5/5 [00:19<00:00,  3.36s/it]Generation: 100%|██████████| 5/5 [00:19<00:00,  3.82s/it]
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1190) is greater than the total number of samples (463). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1190) is greater than the total number of samples (463). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1190) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1190) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1190) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1190) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1190) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1190) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1190) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1190) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1190) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1190) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1190) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1190) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1190) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1190) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1190) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1190) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1190) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1190) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1190) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1190) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1190) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1190) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1190) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1190) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1190) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1190) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1190) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1190) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [19] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1190) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1190) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1190) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1190) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1190) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1190) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1190) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1190) is greater than the total number of samples (370). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1190) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1190) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1190) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1190) is greater than the total number of samples (371). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1190) is greater than the total number of samples (463). n_quantiles is set to n_samples.
+  warnings.warn(
+/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/preprocessing/_data.py:2785: UserWarning: n_quantiles (1190) is greater than the total number of samples (463). n_quantiles is set to n_samples.
+  warnings.warn(
+Traceback (most recent call last):
+  File "/common/hodesse/hpc_test/TPOT2_ensemble/hpc_test2.py", line 149, in main
+    ensemble_accuracy = accuracy_score(y_test, fitted_ensemble.predict(X_test))
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/model_selection/_search.py", line 597, in predict
+    return self.best_estimator_.predict(X)
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/ensemble/_stacking.py", line 695, in predict
+    y_pred = super().predict(X, **predict_params)
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/ensemble/_stacking.py", line 382, in predict
+    return self.final_estimator_.predict(self.transform(X), **predict_params)
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/utils/_set_output.py", line 313, in wrapped
+    data_to_wrap = f(self, X, *args, **kwargs)
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/ensemble/_stacking.py", line 766, in transform
+    return self._transform(X)
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/ensemble/_stacking.py", line 306, in _transform
+    predictions = [
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/ensemble/_stacking.py", line 307, in <listcomp>
+    getattr(est, meth)(X)
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/tpot2/graphsklearn.py", line 359, in predict_proba
+    this_X = get_inputs_to_node(self.graph,
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/tpot2/graphsklearn.py", line 200, in get_inputs_to_node
+    transformed_steps = transform_sklearn_digraph(graph,
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/tpot2/graphsklearn.py", line 177, in transform_sklearn_digraph
+    transformed = instance.transform(this_X)
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/utils/_set_output.py", line 313, in wrapped
+    data_to_wrap = f(self, X, *args, **kwargs)
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/feature_selection/_base.py", line 102, in transform
+    X = self._validate_data(
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/base.py", line 654, in _validate_data
+    self._check_n_features(X, reset=reset)
+  File "/home/hodesse/miniconda3/envs/tpot2env/lib/python3.10/site-packages/sklearn/base.py", line 443, in _check_n_features
+    raise ValueError(
+ValueError: X has 4 features, but SelectPercentile is expecting 42 features as input.
+
+DONE
