@@ -99,8 +99,8 @@ def main():
 
     try: 
 
-        task_ids = [359954, 2073, 190146, 168784]
-        num_runs = 5
+        task_ids = [359954, 2073, 190146, 168784, 359959]
+        num_runs = 15
 
         full_results = []
         constrained_search_space = get_pipeline_space(seed=42)
@@ -110,12 +110,12 @@ def main():
             for i in range(num_runs):
 
                 # load the data
-                file_path = f'/Volumes/MY PASSPORT/{task_id}_True.pkl'
+                file_path = f'/data/{task_id}_True.pkl'
                 d = pickle.load(open(file_path, "rb"))
                 X_train, y_train, X_test, y_test = d['X_train'], d['y_train'], d['X_test'], d['y_test']
 
                 # individual_highest_accuracy = 0
-                est = tpot.TPOTEstimator(search_space=constrained_search_space, generations=12, population_size=10, cv=5,
+                est = tpot.TPOTEstimator(search_space=constrained_search_space, generations=100, population_size=50, cv=5,
                                         random_state=42+i, verbose=2, classification=True, scorers=['roc_auc_ovr', tpot.objectives.complexity_scorer], scorers_weights=[1, -1])
                 est.fit(X_train, y_train)
                 pf = est.pareto_front
@@ -138,48 +138,42 @@ def main():
                 accuracy_2 = accuracy_score(y_test, results)
 
                 # Model 3: top 50%, hard voting
-                model_3 = VotingClassifier(
-                    estimators=top_half_estimators, voting='hard')
+                model_3 = VotingClassifier(estimators=top_half_estimators, voting='hard')
 
                 model_3.fit(X_train, y_train)
                 results = model_3.predict(X_test)
                 accuracy_3 = accuracy_score(y_test, results)
 
                 # Model 4: top 50%, soft voting
-                model_4 = VotingClassifier(
-                    estimators=top_half_estimators, voting='soft')
+                model_4 = VotingClassifier(estimators=top_half_estimators, voting='soft')
 
                 model_4.fit(X_train, y_train)
                 results = model_4.predict(X_test)
                 accuracy_4 = accuracy_score(y_test, results)
 
                 # Model 5: Random sample, hard voting
-                model_5 = VotingClassifier(
-                    estimators=random_sample_estimators, voting='hard')
+                model_5 = VotingClassifier(estimators=random_sample_estimators, voting='hard')
 
                 model_5.fit(X_train, y_train)
                 results = model_5.predict(X_test)
                 accuracy_5 = accuracy_score(y_test, results)
 
                 # Model 6: Random sample, soft voting
-                model_6 = VotingClassifier(
-                    estimators=random_sample_estimators, voting='soft')
+                model_6 = VotingClassifier(estimators=random_sample_estimators, voting='soft')
 
                 model_6.fit(X_train, y_train)
                 results = model_6.predict(X_test)
                 accuracy_6 = accuracy_score(y_test, results)
 
                 # Model 7: Weighted, hard voting
-                model_7 = VotingClassifier(
-                    estimators=estimators, voting='hard', weights=voting_weights)
+                model_7 = VotingClassifier(estimators=estimators, voting='hard', weights=voting_weights)
 
                 model_7.fit(X_train, y_train)
                 results = model_7.predict(X_test)
                 accuracy_7 = accuracy_score(y_test, results)
 
                 # Model 8: Weighted, soft voting
-                model_8 = VotingClassifier(
-                    estimators=estimators, voting='soft', weights=voting_weights)
+                model_8 = VotingClassifier(estimators=estimators, voting='soft', weights=voting_weights)
 
                 model_8.fit(X_train, y_train)
                 results = model_8.predict(X_test)
