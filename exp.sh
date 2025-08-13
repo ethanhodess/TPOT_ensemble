@@ -4,7 +4,7 @@
 #SBATCH --cpus-per-task=48
 #SBATCH -t 110:00:00
 #SBATCH --mem=0
-#SBATCH --job-name=tpot2-ensemble
+#SBATCH --job-name=tpot-ensemble
 #SBATCH -p moore
 #SBATCH --exclusive
 #SBATCH --exclude=esplhpc-cp040
@@ -26,7 +26,7 @@ conda activate tpot2env
 pip install -r requirements.txt
 '''
 echo RunStart
-srun -u /home/hodesse/miniconda3/envs/tpot2env/bin/python hpc_test2.py \
+srun -u /home/hodesse/miniconda3/envs/tpot2env/bin/python 9_models_tests.py \
 --n_jobs 48 \
 --savepath logs \
 --num_runs ${RUN} \
