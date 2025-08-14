@@ -1,9 +1,0 @@
-“Run: 1”
-/cm/local/apps/slurm/var/spool/job931530/slurm_script: line 23: $'\nconda create --name tpot2env -c conda-forge python=3.10\n': command not found
-/cm/local/apps/slurm/var/spool/job931530/slurm_script: line 27: $'\npip install -r requirements.txt\n': command not found
-RunStart
-  File "/common/hodesse/hpc_test/TPOT2_ensemble/hpc_test1.py", line 71
-    parser.add_argument('-n', “--n_jobs”, default=30,  required=False, nargs=‘?’)
-                              ^
-SyntaxError: invalid character '“' (U+201C)
-srun: error: esplhpc-cp001: task 0: Exited with exit code 1

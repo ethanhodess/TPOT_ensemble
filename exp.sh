@@ -12,7 +12,7 @@
 #SBATCH --mail-user=Ethan.Hodess@cshs.org
 #SBATCH --mail-user=ethanhodess@gmail.com
 #SBATCH -o ./logs/outputs/output.%j_%a.out # STDOUT
-#SBATCH --array=0-74%3
+#SBATCH --array=0-74
 RUN=${SLURM_ARRAY_TASK_ID:-1}
 echo “Run: ${RUN}”
 module load git/2.33.1

@@ -37,7 +37,7 @@ def get_pipeline_space(seed):
         tpot.config.get_search_space("classifiers", random_state=seed, base_node=EstimatorNodeGradual)])
 
 
-def set_up_estimators(pareto_front, X_train, y_train, X_test, y_test):
+def set_up_estimators(pareto_front, X_train, y_train, X_test, y_test, seed):
     estimators = []
     voting_weights = []
     top_half_estimators = []
@@ -48,7 +48,7 @@ def set_up_estimators(pareto_front, X_train, y_train, X_test, y_test):
     middle_row = pareto_front.shape[0] // 2
     top_half = pareto_front.sort_values(
         by='roc_auc_score', ascending=False).iloc[:middle_row]
-    random_sample = pareto_front.sample(frac=0.5, random_state=42)
+    random_sample = pareto_front.sample(frac=0.5, random_state=seed)
 
     # evaluates single model performance and creates full estimators list
     for i in range(len(pareto_front)):
@@ -59,7 +59,7 @@ def set_up_estimators(pareto_front, X_train, y_train, X_test, y_test):
         if accuracy > highest_accuracy:
             highest_accuracy = accuracy
 
-        voting_weights.append(accuracy**2)
+        voting_weights.append(accuracy)
 
         fitted_pipeline_tuple = ((str(i), fitted_pipeline))
         estimators.append(fitted_pipeline_tuple)
@@ -108,7 +108,7 @@ def main():
         task_id, run_num = jobs[array_id]
 
         full_results = []
-        constrained_search_space = get_pipeline_space(seed=42)
+        constrained_search_space = get_pipeline_space(seed=run_num)
 
 
         # load the data
@@ -116,14 +116,13 @@ def main():
         d = pickle.load(open(file_path, "rb"))
         X_train, y_train, X_test, y_test = d['X_train'], d['y_train'], d['X_test'], d['y_test']
 
-        # individual_highest_accuracy = 0
-        est = tpot.TPOTEstimator(search_space=constrained_search_space, generations=25, population_size=25, cv=5, n_jobs=n_jobs,
-                                random_state=42+run_num, verbose=2, classification=True, scorers=['roc_auc_ovr', tpot.objectives.complexity_scorer], scorers_weights=[1, -1])
+        est = tpot.TPOTEstimator(search_space=constrained_search_space, generations=100, population_size=50, cv=5, n_jobs=n_jobs, max_time_mins=None,
+                                random_state=run_num, verbose=2, classification=True, scorers=['roc_auc_ovr', tpot.objectives.complexity_scorer], scorers_weights=[1, -1])
         est.fit(X_train, y_train)
         pf = est.pareto_front
 
         estimators, top_half_estimators, random_sample_estimators, voting_weights, individual_highest_accuracy = set_up_estimators(
-            pf, X_train, y_train, X_test, y_test)
+            pf, X_train, y_train, X_test, y_test, run_num)
 
         # Model 1: includes all, hard voting
         model_1 = VotingClassifier(estimators=estimators, voting='hard')
