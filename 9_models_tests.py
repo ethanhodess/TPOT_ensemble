@@ -86,7 +86,7 @@ def main():
     # number of threads
     parser.add_argument("-n", "--n_jobs", default=30,  required=False, nargs='?')
     #where to save the results/models
-    parser.add_argument("-s", "--savepath", default="binary_results", required=False, nargs='?')
+    parser.add_argument("-s", "--savepath", default="results_tables", required=False, nargs='?')
     #number of total runs for each experiment
     parser.add_argument("-r", "--num_runs", default=1, required=False, nargs='?')
     args = parser.parse_args()
@@ -102,99 +102,101 @@ def main():
         task_ids = [359954, 2073, 190146, 168784, 359959]
         num_runs = 15
 
+        jobs = [(tid, run) for tid in task_ids for run in range(num_runs)]
+
+        array_id = int(os.environ["SLURM_ARRAY_TASK_ID"])
+        task_id, run_num = jobs[array_id]
+
         full_results = []
         constrained_search_space = get_pipeline_space(seed=42)
 
 
-        for task_id in task_ids:
-            for i in range(num_runs):
+        # load the data
+        file_path = f'/common/hodesse/hpc_test/TPOT2_ensemble/data/{task_id}_True.pkl'
+        d = pickle.load(open(file_path, "rb"))
+        X_train, y_train, X_test, y_test = d['X_train'], d['y_train'], d['X_test'], d['y_test']
 
-                # load the data
-                file_path = f'/data/{task_id}_True.pkl'
-                d = pickle.load(open(file_path, "rb"))
-                X_train, y_train, X_test, y_test = d['X_train'], d['y_train'], d['X_test'], d['y_test']
+        # individual_highest_accuracy = 0
+        est = tpot.TPOTEstimator(search_space=constrained_search_space, generations=25, population_size=25, cv=5, n_jobs=n_jobs,
+                                random_state=42+run_num, verbose=2, classification=True, scorers=['roc_auc_ovr', tpot.objectives.complexity_scorer], scorers_weights=[1, -1])
+        est.fit(X_train, y_train)
+        pf = est.pareto_front
 
-                # individual_highest_accuracy = 0
-                est = tpot.TPOTEstimator(search_space=constrained_search_space, generations=100, population_size=50, cv=5,
-                                        random_state=42+i, verbose=2, classification=True, scorers=['roc_auc_ovr', tpot.objectives.complexity_scorer], scorers_weights=[1, -1])
-                est.fit(X_train, y_train)
-                pf = est.pareto_front
+        estimators, top_half_estimators, random_sample_estimators, voting_weights, individual_highest_accuracy = set_up_estimators(
+            pf, X_train, y_train, X_test, y_test)
 
-                estimators, top_half_estimators, random_sample_estimators, voting_weights, individual_highest_accuracy = set_up_estimators(
-                    pf, X_train, y_train, X_test, y_test)
+        # Model 1: includes all, hard voting
+        model_1 = VotingClassifier(estimators=estimators, voting='hard')
 
-                # Model 1: includes all, hard voting
-                model_1 = VotingClassifier(estimators=estimators, voting='hard')
+        model_1.fit(X_train, y_train)
+        results = model_1.predict(X_test)
+        accuracy_1 = accuracy_score(y_test, results)
 
-                model_1.fit(X_train, y_train)
-                results = model_1.predict(X_test)
-                accuracy_1 = accuracy_score(y_test, results)
+        # Model 2: includes all, soft voting
+        model_2 = VotingClassifier(estimators=estimators, voting='soft')
 
-                # Model 2: includes all, soft voting
-                model_2 = VotingClassifier(estimators=estimators, voting='soft')
+        model_2.fit(X_train, y_train)
+        results = model_2.predict(X_test)
+        accuracy_2 = accuracy_score(y_test, results)
 
-                model_2.fit(X_train, y_train)
-                results = model_2.predict(X_test)
-                accuracy_2 = accuracy_score(y_test, results)
+        # Model 3: top 50%, hard voting
+        model_3 = VotingClassifier(estimators=top_half_estimators, voting='hard')
 
-                # Model 3: top 50%, hard voting
-                model_3 = VotingClassifier(estimators=top_half_estimators, voting='hard')
+        model_3.fit(X_train, y_train)
+        results = model_3.predict(X_test)
+        accuracy_3 = accuracy_score(y_test, results)
 
-                model_3.fit(X_train, y_train)
-                results = model_3.predict(X_test)
-                accuracy_3 = accuracy_score(y_test, results)
+        # Model 4: top 50%, soft voting
+        model_4 = VotingClassifier(estimators=top_half_estimators, voting='soft')
 
-                # Model 4: top 50%, soft voting
-                model_4 = VotingClassifier(estimators=top_half_estimators, voting='soft')
+        model_4.fit(X_train, y_train)
+        results = model_4.predict(X_test)
+        accuracy_4 = accuracy_score(y_test, results)
 
-                model_4.fit(X_train, y_train)
-                results = model_4.predict(X_test)
-                accuracy_4 = accuracy_score(y_test, results)
+        # Model 5: Random sample, hard voting
+        model_5 = VotingClassifier(estimators=random_sample_estimators, voting='hard')
 
-                # Model 5: Random sample, hard voting
-                model_5 = VotingClassifier(estimators=random_sample_estimators, voting='hard')
+        model_5.fit(X_train, y_train)
+        results = model_5.predict(X_test)
+        accuracy_5 = accuracy_score(y_test, results)
 
-                model_5.fit(X_train, y_train)
-                results = model_5.predict(X_test)
-                accuracy_5 = accuracy_score(y_test, results)
+        # Model 6: Random sample, soft voting
+        model_6 = VotingClassifier(estimators=random_sample_estimators, voting='soft')
 
-                # Model 6: Random sample, soft voting
-                model_6 = VotingClassifier(estimators=random_sample_estimators, voting='soft')
+        model_6.fit(X_train, y_train)
+        results = model_6.predict(X_test)
+        accuracy_6 = accuracy_score(y_test, results)
 
-                model_6.fit(X_train, y_train)
-                results = model_6.predict(X_test)
-                accuracy_6 = accuracy_score(y_test, results)
+        # Model 7: Weighted, hard voting
+        model_7 = VotingClassifier(estimators=estimators, voting='hard', weights=voting_weights)
 
-                # Model 7: Weighted, hard voting
-                model_7 = VotingClassifier(estimators=estimators, voting='hard', weights=voting_weights)
+        model_7.fit(X_train, y_train)
+        results = model_7.predict(X_test)
+        accuracy_7 = accuracy_score(y_test, results)
 
-                model_7.fit(X_train, y_train)
-                results = model_7.predict(X_test)
-                accuracy_7 = accuracy_score(y_test, results)
+        # Model 8: Weighted, soft voting
+        model_8 = VotingClassifier(estimators=estimators, voting='soft', weights=voting_weights)
 
-                # Model 8: Weighted, soft voting
-                model_8 = VotingClassifier(estimators=estimators, voting='soft', weights=voting_weights)
-
-                model_8.fit(X_train, y_train)
-                results = model_8.predict(X_test)
-                accuracy_8 = accuracy_score(y_test, results)
+        model_8.fit(X_train, y_train)
+        results = model_8.predict(X_test)
+        accuracy_8 = accuracy_score(y_test, results)
 
 
-                full_results.append({"task id": task_id,
-                                    "run #": i,
-                                    "individual": individual_highest_accuracy,
-                                    "model 1": accuracy_1,
-                                    "model 2": accuracy_2,
-                                    "model 3": accuracy_3,
-                                    "model 4": accuracy_4,
-                                    "model 5": accuracy_5,
-                                    "model 6": accuracy_6,
-                                    "model 7": accuracy_7,
-                                    "model 8": accuracy_8
-                                    })
+        full_results.append({"task id": task_id,
+                            "run #": run_num,
+                            "individual": individual_highest_accuracy,
+                            "model 1": accuracy_1,
+                            "model 2": accuracy_2,
+                            "model 3": accuracy_3,
+                            "model 4": accuracy_4,
+                            "model 5": accuracy_5,
+                            "model 6": accuracy_6,
+                            "model 7": accuracy_7,
+                            "model 8": accuracy_8
+                            })
 
         full_results_df = pd.DataFrame(full_results)
-        full_results_df.to_csv(os.path.join(save_folder, f"results_ensemble.csv"), index=False)
+        full_results_df.to_csv(os.path.join(save_folder, f"results_ensemble_{task_id}_#{run_num}.csv"), index=False)
 
 
 
