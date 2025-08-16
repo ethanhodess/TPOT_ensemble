@@ -196,7 +196,7 @@ def main():
                             })
 
         full_results_df = pd.DataFrame(full_results)
-        full_results_df.to_csv(os.path.join(save_folder, f"results_ensemble_{task_id}_#{run_num}.csv"), index=False)
+        full_results_df.to_csv(os.path.join(save_folder, f"results_stack_LR_{task_id}_#{run_num}.csv"), index=False)
 
 
 

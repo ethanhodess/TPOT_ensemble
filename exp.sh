@@ -23,7 +23,7 @@ conda activate tpot2env
 #pip install -r requirements.txt
 
 echo RunStart
-srun -u /home/hodesse/miniconda3/envs/tpot2env/bin/python 9_models_tests.py \
+srun -u /home/hodesse/miniconda3/envs/tpot2env/bin/python LR_models_tests.py \
 --n_jobs 48 \
 --savepath logs \
 --num_runs ${RUN} \
