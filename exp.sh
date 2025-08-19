@@ -10,7 +10,6 @@
 #SBATCH --exclude=esplhpc-cp040
 #SBATCH --mail-type=FAIL,BEGIN,END
 #SBATCH --mail-user=Ethan.Hodess@cshs.org
-#SBATCH --mail-user=ethanhodess@gmail.com
 #SBATCH -o ./logs/outputs/output.%j_%a.out # STDOUT
 #SBATCH --array=0-74
 RUN=${SLURM_ARRAY_TASK_ID:-1}
@@ -23,7 +22,7 @@ conda activate tpot2env
 #pip install -r requirements.txt
 
 echo RunStart
-srun -u /home/hodesse/miniconda3/envs/tpot2env/bin/python LR_models_tests.py \
+srun -u /home/hodesse/miniconda3/envs/tpot2env/bin/python xgb_models_tests.py \
 --n_jobs 48 \
 --savepath logs \
 --num_runs ${RUN} \
