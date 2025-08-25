@@ -46,7 +46,8 @@ def set_up_estimators(pareto_front, X_train, y_train, X_test, y_test, seed):
 
     # setting values for top 50% and random sampling
     middle_row = pareto_front.shape[0] // 2
-    top_half = pareto_front.sort_values(by='roc_auc_score', ascending=False).iloc[:middle_row]
+    top_half = pareto_front.sort_values(
+        by='roc_auc_score', ascending=False).iloc[:middle_row]
 
     random_sample = pareto_front.sample(frac=0.5, random_state=seed)
 
@@ -81,8 +82,8 @@ def set_up_estimators(pareto_front, X_train, y_train, X_test, y_test, seed):
 
 def vote_hard(estimators, X_test, weights=None):
     # Collect predictions from each estimator
-    predictions = np.asarray([est.predict(X_test) for est in estimators]).T  
-    
+    predictions = np.asarray([est.predict(X_test) for est in estimators]).T
+
     if weights is None:
         # Majority vote
         return np.array([np.bincount(row).argmax() for row in predictions])
@@ -90,21 +91,23 @@ def vote_hard(estimators, X_test, weights=None):
         # Weighted vote
         weighted_preds = []
         for row in predictions:
-            counts = np.bincount(row, weights=weights, minlength=len(np.unique(row)))
+            counts = np.bincount(row, weights=weights,
+                                 minlength=len(np.unique(row)))
             weighted_preds.append(np.argmax(counts))
         return np.array(weighted_preds)
-
-
 
 
 def main():
     parser = argparse.ArgumentParser()
     # number of threads
-    parser.add_argument("-n", "--n_jobs", default=30,  required=False, nargs='?')
-    #where to save the results/models
-    parser.add_argument("-s", "--savepath", default="results_tables", required=False, nargs='?')
-    #number of total runs for each experiment
-    parser.add_argument("-r", "--num_runs", default=1, required=False, nargs='?')
+    parser.add_argument("-n", "--n_jobs", default=30,
+                        required=False, nargs='?')
+    # where to save the results/models
+    parser.add_argument("-s", "--savepath",
+                        default="results_tables", required=False, nargs='?')
+    # number of total runs for each experiment
+    parser.add_argument("-r", "--num_runs", default=1,
+                        required=False, nargs='?')
     args = parser.parse_args()
     n_jobs = int(args.n_jobs)
     base_save_folder = args.savepath
@@ -112,8 +115,7 @@ def main():
 
     save_folder = base_save_folder
 
-
-    try: 
+    try:
 
         task_ids = [359954, 2073, 190146, 168784, 359959]
         num_runs = 15
@@ -126,20 +128,26 @@ def main():
         full_results = []
         constrained_search_space = get_pipeline_space(seed=run_num)
 
+        pf_file = f'/common/hodesse/hpc_test/TPOT2_ensemble/saved_fronts/pareto_front_{task_id}_#{run_num}.pkl'
 
-        # load the data
-        file_path = f'/common/hodesse/hpc_test/TPOT2_ensemble/data/{task_id}_True.pkl'
-        d = pickle.load(open(file_path, "rb"))
-        X_train, y_train, X_test, y_test = d['X_train'], d['y_train'], d['X_test'], d['y_test']
+        # tpot runs and save fronts
+        if os.path.exists(pf_file):
+            with open(pf_file, "rb") as f:
+                pf = pickle.load(f)
+        else:
+            # load the data
+            file_path = (f'/common/hodesse/hpc_test/TPOT2_ensemble/data/{task_id}_True.pkl')
+            d = pickle.load(open(file_path, "rb"))
+            X_train, y_train, X_test, y_test = d['X_train'], d['y_train'], d['X_test'], d['y_test']
 
-        est = tpot.TPOTEstimator(search_space=constrained_search_space, generations=100, population_size=50, cv=5, n_jobs=n_jobs, max_time_mins=None,
-                                random_state=run_num, verbose=2, classification=True, scorers=['roc_auc_ovr', 'balanced_accuracy'], scorers_weights=[1, 1])
-        est.fit(X_train, y_train)
-        pf = est.pareto_front
+            est = tpot.TPOTEstimator(search_space=constrained_search_space, generations=100, population_size=50, cv=5, n_jobs=n_jobs, max_time_mins=None,
+                                     random_state=run_num, verbose=2, classification=True, scorers=['roc_auc_ovr', 'balanced_accuracy'], scorers_weights=[1, 1])
+            est.fit(X_train, y_train)
+            pf = est.pareto_front
 
-        # save the front
-        with open(f'pareto_front_{task_id}_#{run_num}.pkl', "wb") as f:
-            pickle.dump(pf, f)
+            # save the front
+            with open((f'pareto_front_{task_id}_#{run_num}.pkl'), "wb") as f:
+                pickle.dump(pf, f)
 
         estimators, top_half_estimators, random_sample_estimators, voting_weights, individual_highest_accuracy = set_up_estimators(
             pf, X_train, y_train, X_test, y_test, run_num)
@@ -149,31 +157,28 @@ def main():
         accuracy_1 = accuracy_score(y_test, results_1)
 
         # Model 2: weighted, hard voting
-        results_2 = vote_hard(estimators=estimators, X_test=X_test, weights=voting_weights)
+        results_2 = vote_hard(estimators=estimators,
+                              X_test=X_test, weights=voting_weights)
         accuracy_2 = accuracy_score(y_test, results_2)
-
-
 
         full_results.append({"task id": task_id,
                             "run #": run_num,
-                            "individual": individual_highest_accuracy,
-                            "model 1": accuracy_1,
-                            "model 2": accuracy_2
-                            })
+                             "individual": individual_highest_accuracy,
+                             "model 1": accuracy_1,
+                             "model 2": accuracy_2
+                             })
 
         full_results_df = pd.DataFrame(full_results)
-        full_results_df.to_csv(os.path.join(save_folder, f"results_ensemble_{task_id}_#{run_num}.csv"), index=False)
-
-
+        full_results_df.to_csv(os.path.join(save_folder, (f'results_ensemble_{task_id}_#{run_num}.csv')), index=False)
 
     except Exception as e:
-                    trace =  traceback.format_exc()
-                    pipeline_failure_dict = {"task_id": task_id,"run": num_runs, "error": str(e), "trace": trace}
-                    print("failed on ")
-                    print(save_folder)
-                    print(e)
-                    print(trace)
-
+        trace = traceback.format_exc()
+        pipeline_failure_dict = {"task_id": task_id,
+                                 "run": num_runs, "error": str(e), "trace": trace}
+        print("failed on ")
+        print(save_folder)
+        print(e)
+        print(trace)
 
 
 if __name__ == '__main__':
