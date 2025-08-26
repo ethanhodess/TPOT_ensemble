@@ -40,14 +40,14 @@ def get_pipeline_space(seed):
 def set_up_estimators(pareto_front, X_train, y_train, X_test, y_test, seed):
     estimators = []
     voting_weights = []
-    top_half_estimators = []
+    top_80_estimators = []
     random_sample_estimators = []
     highest_accuracy = 0
 
     # setting values for top 50% and random sampling
-    middle_row = pareto_front.shape[0] // 2
-    top_half = pareto_front.sort_values(
-        by='roc_auc_score', ascending=False).iloc[:middle_row]
+    #middle_row = pareto_front.shape[0] // 2
+    top_80_row = int(len(pareto_front) * 0.8)
+    top_80 = pareto_front.sort_values(by='balanced_accuracy_score', ascending=False).iloc[:top_80_row]
 
     random_sample = pareto_front.sample(frac=0.5, random_state=seed)
 
@@ -60,16 +60,16 @@ def set_up_estimators(pareto_front, X_train, y_train, X_test, y_test, seed):
         if accuracy > highest_accuracy:
             highest_accuracy = accuracy
 
-        voting_weights.append(accuracy)
+        voting_weights.append(accuracy**40)
 
-        fitted_pipeline_tuple = ((str(i), fitted_pipeline))
-        estimators.append(fitted_pipeline_tuple)
+        #fitted_pipeline_tuple = ((str(i), fitted_pipeline))
+        estimators.append(fitted_pipeline)
 
-    # creates top 50% primary objective (auroc) list
-    for i in range(len(top_half)):
-        fitted_pipeline = top_half.iloc[i, 10].fit(X_train, y_train)
-        fitted_pipeline_tuple = ((str(i), fitted_pipeline))
-        top_half_estimators.append(fitted_pipeline_tuple)
+    # creates top 80% primary objective (bacc) list
+    for i in range(len(top_80)):
+        fitted_pipeline = top_80.iloc[i, 10].fit(X_train, y_train)
+        #fitted_pipeline_tuple = ((str(i), fitted_pipeline))
+        top_80_estimators.append(fitted_pipeline)
 
     # creates random sample list
     for i in range(len(random_sample)):
@@ -77,24 +77,28 @@ def set_up_estimators(pareto_front, X_train, y_train, X_test, y_test, seed):
         fitted_pipeline_tuple = ((str(i), fitted_pipeline))
         random_sample_estimators.append(fitted_pipeline_tuple)
 
-    return estimators, top_half_estimators, random_sample_estimators, voting_weights, highest_accuracy
+    return estimators, top_80_estimators, random_sample_estimators, voting_weights, highest_accuracy
 
 
 def vote_hard(estimators, X_test, weights=None):
-    # Collect predictions from each estimator
     predictions = np.asarray([est.predict(X_test) for est in estimators]).T
-
     if weights is None:
-        # Majority vote
         return np.array([np.bincount(row).argmax() for row in predictions])
     else:
-        # Weighted vote
         weighted_preds = []
         for row in predictions:
             counts = np.bincount(row, weights=weights,
                                  minlength=len(np.unique(row)))
             weighted_preds.append(np.argmax(counts))
         return np.array(weighted_preds)
+    
+def vote_soft(estimators, X_test, weights=None):
+    probas = np.stack([est.predict_proba(X_test) for est in estimators])
+    if weights is not None:
+        weights = np.asarray(weights).reshape(-1, 1, 1)
+        probas *= weights
+    
+    return np.argmax(probas.sum(axis=0), axis=1)
 
 
 def main():
@@ -130,16 +134,16 @@ def main():
 
         pf_file = f'/common/hodesse/hpc_test/TPOT2_ensemble/saved_fronts/pareto_front_{task_id}_#{run_num}.pkl'
 
+        # load the data
+        file_path = (f'/common/hodesse/hpc_test/TPOT2_ensemble/data/{task_id}_True.pkl')
+        d = pickle.load(open(file_path, "rb"))
+        X_train, y_train, X_test, y_test = d['X_train'], d['y_train'], d['X_test'], d['y_test']
+
         # tpot runs and save fronts
         if os.path.exists(pf_file):
             with open(pf_file, "rb") as f:
                 pf = pickle.load(f)
         else:
-            # load the data
-            file_path = (f'/common/hodesse/hpc_test/TPOT2_ensemble/data/{task_id}_True.pkl')
-            d = pickle.load(open(file_path, "rb"))
-            X_train, y_train, X_test, y_test = d['X_train'], d['y_train'], d['X_test'], d['y_test']
-
             est = tpot.TPOTEstimator(search_space=constrained_search_space, generations=100, population_size=50, cv=5, n_jobs=n_jobs, max_time_mins=None,
                                      random_state=run_num, verbose=2, classification=True, scorers=['roc_auc_ovr', 'balanced_accuracy'], scorers_weights=[1, 1])
             est.fit(X_train, y_train)
@@ -152,13 +156,12 @@ def main():
         estimators, top_half_estimators, random_sample_estimators, voting_weights, individual_highest_accuracy = set_up_estimators(
             pf, X_train, y_train, X_test, y_test, run_num)
 
-        # Model 1: includes all, hard voting
-        results_1 = vote_hard(estimators=estimators, X_test=X_test)
+        # Model 1: all, hard voting, weighted
+        results_1 = vote_hard(estimators=estimators, X_test=X_test, weights=voting_weights)
         accuracy_1 = accuracy_score(y_test, results_1)
 
-        # Model 2: weighted, hard voting
-        results_2 = vote_hard(estimators=estimators,
-                              X_test=X_test, weights=voting_weights)
+        # Model 2: all, soft voting, weighted
+        results_2 = vote_soft(estimators=estimators, X_test=X_test, weights=voting_weights)
         accuracy_2 = accuracy_score(y_test, results_2)
 
         full_results.append({"task id": task_id,
