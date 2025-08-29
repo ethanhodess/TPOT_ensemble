@@ -19,6 +19,7 @@ from sklearn.ensemble import VotingClassifier
 from sklearn.linear_model import RidgeCV
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import GridSearchCV
+from sklearn.model_selection import StratifiedKFold
 from sklearn.svm import SVC
 from sklearn.metrics import accuracy_score
 from xgboost import XGBClassifier
@@ -37,6 +38,17 @@ def get_pipeline_space(seed):
         tpot.config.get_search_space("classifiers", random_state=seed, base_node=EstimatorNodeGradual)])
 
 
+def get_cv_predictions(estimator, X_train, y_train, cv_splits, random_state):
+    cv = StratifiedKFold(n_splits=cv_splits, shuffle=True, random_state=random_state)
+    cv_preds = np.empty(len(y_train), dtype=int)
+
+    for train_idx, valid_idx in cv.split(X_train, y_train):
+        est_clone = clone(estimator) 
+        est_clone.fit(X_train[train_idx], y_train[train_idx])
+        cv_preds[valid_idx] = est_clone.predict(X_train[valid_idx])
+
+    return cv_preds
+
 def set_up_estimators(pareto_front, X_train, y_train, X_test, y_test, seed):
     estimators = []
     voting_weights = []
@@ -45,7 +57,7 @@ def set_up_estimators(pareto_front, X_train, y_train, X_test, y_test, seed):
     highest_accuracy = 0
     best_estimator = None
     diverse_estimators = []
-    corr_threshold = 0.90
+    error_overlap_threshold = 0.90
     voting_weights_diverse = []
 
     # setting values for top 50% and random sampling
@@ -64,7 +76,7 @@ def set_up_estimators(pareto_front, X_train, y_train, X_test, y_test, seed):
             highest_accuracy = accuracy
             best_estimator = fitted_pipeline
 
-        voting_weights.append(accuracy**40)
+        voting_weights.append(accuracy**10)
 
         #fitted_pipeline_tuple = ((str(i), fitted_pipeline))
         estimators.append(fitted_pipeline)
@@ -83,21 +95,27 @@ def set_up_estimators(pareto_front, X_train, y_train, X_test, y_test, seed):
 
     # creates diverse pipeline list
     if best_estimator is not None:
-        best_preds = best_estimator.predict(X_test)
+        best_cv_preds = get_cv_predictions(estimator=best_estimator, X_train=X_train, y_train=y_train, cv_splits=5, random_state=seed)
         diverse_estimators.append(best_estimator)
-        voting_weights_diverse.append(highest_accuracy**40)
+
+        best_acc = accuracy_score(y_train, best_cv_preds)
+        voting_weights_diverse.append(best_acc**10)
+
+        best_errors = np.where(best_cv_preds != y_train)[0]
 
         for est in estimators:
-            preds = est.predict(X_test)
-            if np.std(preds) == 0 or np.std(best_preds) == 0:  # avoid NaN corr
-                corr = 1.0 if np.all(preds == best_preds) else 0.0
-            else:
-                corr = np.corrcoef(best_preds, preds)[0, 1]
+            est_cv_preds = get_cv_predictions(estimator=est, X_train=X_train, y_train=y_train, cv_splits=5, random_state=seed)
+            est_errors = np.where(est_cv_preds != y_train)[0]
 
-            if corr < corr_threshold:
+            if len(best_errors) > 0:
+                error_overlap = len(np.intersect1d(best_errors, est_errors)) / len(best_errors)
+            else:
+                error_overlap = 0.0  # best model had no mistakes
+            
+            if error_overlap < error_overlap_threshold:
                 diverse_estimators.append(est)
-                acc = accuracy_score(y_test, preds)
-                voting_weights_diverse.append(acc**40)
+                acc = accuracy_score(y_train, est_cv_preds)
+                voting_weights_diverse.append(acc**10)
 
     return estimators, top_half_estimators, random_sample_estimators, voting_weights, highest_accuracy, diverse_estimators, voting_weights_diverse
 
@@ -178,12 +196,12 @@ def main():
         estimators, top_half_estimators, random_sample_estimators, voting_weights, individual_highest_accuracy, diverse_estimators, voting_weights_diverse = set_up_estimators(
             pf, X_train, y_train, X_test, y_test, run_num)
 
-        # Model 1: all, hard voting, weighted
-        results_1 = vote_hard(estimators=diverse_estimators, X_test=X_test, weights=voting_weights_diverse)
+        # Model 1: diverse, hard voting, 
+        results_1 = vote_hard(estimators=diverse_estimators, X_test=X_test)
         accuracy_1 = accuracy_score(y_test, results_1)
 
-        # Model 2: all, soft voting, weighted
-        results_2 = vote_soft(estimators=diverse_estimators, X_test=X_test, weights=voting_weights_diverse)
+        # Model 2: diverse, soft voting, 
+        results_2 = vote_soft(estimators=diverse_estimators, X_test=X_test)
         accuracy_2 = accuracy_score(y_test, results_2)
 
         full_results.append({"task id": task_id,
