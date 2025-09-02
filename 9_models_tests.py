@@ -51,20 +51,10 @@ def get_cv_predictions(estimator, X_train, y_train, cv_splits, random_state):
 
 def set_up_estimators(pareto_front, X_train, y_train, X_test, y_test, seed):
     estimators = []
-    voting_weights = []
-    top_half_estimators = []
-    random_sample_estimators = []
     highest_accuracy = 0
     best_estimator = None
-    diverse_estimators = []
-    error_overlap_threshold = 0.90
-    voting_weights_diverse = []
+    
 
-    # setting values for top 50% and random sampling
-    middle_row = pareto_front.shape[0] // 2
-    top_half = pareto_front.sort_values(by='balanced_accuracy_score', ascending=False).iloc[:middle_row]
-
-    random_sample = pareto_front.sample(frac=0.5, random_state=seed)
 
     # evaluates single model performance and creates full estimators list
     for i in range(len(pareto_front)):
@@ -76,48 +66,67 @@ def set_up_estimators(pareto_front, X_train, y_train, X_test, y_test, seed):
             highest_accuracy = accuracy
             best_estimator = fitted_pipeline
 
-        voting_weights.append(accuracy**10)
 
         #fitted_pipeline_tuple = ((str(i), fitted_pipeline))
         estimators.append(fitted_pipeline)
 
-    # creates top 50% primary objective (bacc) list
-    for i in range(len(top_half)):
-        fitted_pipeline = top_half.iloc[i, 10].fit(X_train, y_train)
-        #fitted_pipeline_tuple = ((str(i), fitted_pipeline))
-        top_half_estimators.append(fitted_pipeline)
-
-    # creates random sample list
-    for i in range(len(random_sample)):
-        fitted_pipeline = random_sample.iloc[i, 10].fit(X_train, y_train)
-        fitted_pipeline_tuple = ((str(i), fitted_pipeline))
-        random_sample_estimators.append(fitted_pipeline_tuple)
 
     # creates diverse pipeline list
-    if best_estimator is not None:
-        best_cv_preds = get_cv_predictions(estimator=best_estimator, X_train=X_train, y_train=y_train, cv_splits=5, random_state=seed)
-        diverse_estimators.append(best_estimator)
 
-        best_acc = accuracy_score(y_train, best_cv_preds)
-        voting_weights_diverse.append(best_acc**10)
+    diverse_estimators = []
+    voting_weights_diverse = []
 
-        best_errors = np.where(best_cv_preds != y_train)[0]
+    # cache CV predictions, accuracies, and errors
+    est_cv_preds = {}
+    est_cv_acc = {}
+    errors = {}
+    for est in estimators:
+        preds = get_cv_predictions(estimator=est,
+                                   X_train=X_train, y_train=y_train,
+                                   cv_splits=5, random_state=seed)
+        acc = accuracy_score(y_train, preds)
+        est_cv_preds[est] = preds
+        est_cv_acc[est] = acc
+        errors[est] = np.where(preds != y_train)[0]
+    
+    # start with best estimator
+    diverse_estimators.append(best_estimator)
+    voting_weights_diverse.append(highest_accuracy)
+    ensemble_preds = est_cv_preds[best_estimator]
+    ensemble_acc = est_cv_acc[best_estimator]
+
+
+    improved = True
+    while improved:
+        improved = False
+        best_candidate = None
+        best_overlap = 1
 
         for est in estimators:
-            est_cv_preds = get_cv_predictions(estimator=est, X_train=X_train, y_train=y_train, cv_splits=5, random_state=seed)
-            est_errors = np.where(est_cv_preds != y_train)[0]
+            if est in diverse_estimators:
+                continue
 
-            if len(best_errors) > 0:
-                error_overlap = len(np.intersect1d(best_errors, est_errors)) / len(best_errors)
-            else:
-                error_overlap = 0.0  # best model had no mistakes
-            
-            if error_overlap < error_overlap_threshold:
-                diverse_estimators.append(est)
-                acc = accuracy_score(y_train, est_cv_preds)
-                voting_weights_diverse.append(acc**10)
+            ensemble_errors = np.where(ensemble_preds != y_train)[0]
+            error_overlap = len(np.intersect1d(errors[est], ensemble_errors)) / len(ensemble_errors)
 
-    return estimators, top_half_estimators, random_sample_estimators, voting_weights, highest_accuracy, diverse_estimators, voting_weights_diverse
+            if error_overlap < best_overlap:
+                best_overlap = error_overlap
+                best_candidate = est
+
+        if best_candidate is not None:
+            new_preds = vote_soft(diverse_estimators + [best_candidate], X_train)
+            new_acc = accuracy_score(y_train, new_preds)
+
+            if new_acc > ensemble_acc:
+                print("adding a pipeline!")
+                diverse_estimators.append(best_candidate)
+                voting_weights_diverse.append(est_cv_acc[best_candidate])
+                ensemble_preds = new_preds
+                ensemble_acc = new_acc
+                improved = True
+
+
+    return estimators, highest_accuracy, diverse_estimators, voting_weights_diverse
 
 
 def vote_hard(estimators, X_test, weights=None):
@@ -193,7 +202,7 @@ def main():
             with open((f'pareto_front_{task_id}_#{run_num}.pkl'), "wb") as f:
                 pickle.dump(pf, f)
 
-        estimators, top_half_estimators, random_sample_estimators, voting_weights, individual_highest_accuracy, diverse_estimators, voting_weights_diverse = set_up_estimators(
+        estimators, individual_highest_accuracy, diverse_estimators, voting_weights_diverse = set_up_estimators(
             pf, X_train, y_train, X_test, y_test, run_num)
 
         # Model 1: diverse, hard voting, 

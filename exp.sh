@@ -1,12 +1,11 @@
 #!/bin/bash -l
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=48
+#SBATCH --cpus-per-task=24
 #SBATCH -t 110:00:00
 #SBATCH --mem=0
 #SBATCH --job-name=tpot-ensemble
 #SBATCH -p defq
-#SBATCH --exclusive
 #SBATCH --exclude=esplhpc-cp040
 #SBATCH --mail-type=FAIL,BEGIN,END
 #SBATCH --mail-user=Ethan.Hodess@cshs.org
@@ -23,6 +22,6 @@ conda activate tpot2env
 
 echo RunStart
 srun -u /home/hodesse/miniconda3/envs/tpot2env/bin/python 9_models_tests.py \
---n_jobs 48 \
+--n_jobs 24 \
 --savepath logs \
 --num_runs ${RUN} \
