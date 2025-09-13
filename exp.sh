@@ -1,7 +1,7 @@
 #!/bin/bash -l
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=24
+#SBATCH --cpus-per-task=48
 #SBATCH -t 110:00:00
 #SBATCH --mem=0
 #SBATCH --job-name=tpot-ensemble
@@ -21,7 +21,7 @@ conda activate tpot2env
 #pip install -r requirements.txt
 
 echo RunStart
-srun -u /home/hodesse/miniconda3/envs/tpot2env/bin/python 9_models_tests.py \
---n_jobs 24 \
+srun -u /home/hodesse/miniconda3/envs/tpot2env/bin/python new_runs.py \
+--n_jobs 48 \
 --savepath logs \
 --num_runs ${RUN} \

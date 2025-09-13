@@ -80,7 +80,6 @@ def set_up_estimators(pareto_front, X_train, y_train, X_test, y_test, seed):
             best_estimator = fitted_pipeline
 
 
-        #fitted_pipeline_tuple = ((str(i), fitted_pipeline))
         estimators.append(fitted_pipeline)
 
 
@@ -89,11 +88,11 @@ def set_up_estimators(pareto_front, X_train, y_train, X_test, y_test, seed):
     diverse_estimators = []
     voting_weights_diverse = []
 
-    # cache CV predictions, accuracies, and errors
+    # cache CV predictions, accuracies
     est_cv_preds = {}
     est_cv_probas = {}
     est_cv_acc = {}
-    errors = {}
+
     for est in estimators:
         est_cv_probas[est] = get_cv_probas(est, X_train, y_train, cv_splits=5, random_state=seed)
 
@@ -103,49 +102,49 @@ def set_up_estimators(pareto_front, X_train, y_train, X_test, y_test, seed):
         acc = accuracy_score(y_train, preds)
         est_cv_preds[est] = preds
         est_cv_acc[est] = acc
-        errors[est] = np.where(preds != y_train)[0]
-    
+
+
+    best_estimator_cv = max(estimators, key=lambda e: est_cv_acc[e])
+    best_acc_cv = est_cv_acc[best_estimator_cv]
+
     # start with best estimator
-    diverse_estimators.append(best_estimator)
-    voting_weights_diverse.append(highest_accuracy)
-    ensemble_preds = est_cv_preds[best_estimator]
-    ensemble_acc = est_cv_acc[best_estimator]
+    diverse_estimators.append(best_estimator_cv)
+    voting_weights_diverse.append(best_acc_cv)
+    ensemble_preds = est_cv_preds[best_estimator_cv]
+    ensemble_acc = est_cv_acc[best_estimator_cv]
 
 
     while True:
-        scored_candidates = []
+        improvement_found = False
+        best_candidate = None
+        best_candidate_acc = ensemble_acc
+        best_candidate_preds = None
+        best_candidate_weight = None
 
         for est in estimators:
             if est in diverse_estimators:
                 continue
 
-            ensemble_errors = np.where(ensemble_preds != y_train)[0]
-            if len(ensemble_errors) > 0:
-                error_overlap = len(np.intersect1d(errors[est], ensemble_errors)) / len(ensemble_errors)
-            else:
-                error_overlap = 0
-
-            scored_candidates.append((error_overlap, est))
-
-        # sort by score descending
-        scored_candidates.sort(reverse=True, key=lambda x: x[0])
-
-        improvement_found = False
-        for error_overlap, est in scored_candidates:
             candidate_probas = [est_cv_probas[e] for e in diverse_estimators + [est]]
-            temp_weights = voting_weights_diverse + [est_cv_acc[est]]
-            temp_preds = combine_preds(candidate_probas, temp_weights)
+            candidate_weights = voting_weights_diverse + [est_cv_acc[est]]
+            temp_preds = combine_preds(candidate_probas, candidate_weights)
             temp_acc = accuracy_score(y_train, temp_preds)
-            print("temp accuracy:", temp_acc)
 
-            if temp_acc > ensemble_acc:
-                print("adding a pipeline!")
-                diverse_estimators.append(est)
-                voting_weights_diverse.append(est_cv_acc[est])
-                ensemble_preds = temp_preds
-                ensemble_acc = temp_acc
-                improvement_found = True
-                break
+            if temp_acc > best_candidate_acc:
+                best_candidate = est
+                best_candidate_acc = temp_acc
+                best_candidate_preds = temp_preds
+                best_candidate_weight = est_cv_acc[est]
+            
+        if best_candidate is not None:
+            print(f"Adding model with CV acc {est_cv_acc[best_candidate]:.4f}, "
+                  f"ensemble acc improves to {best_candidate_acc:.4f}")
+            diverse_estimators.append(best_candidate)
+            voting_weights_diverse.append(best_candidate_weight)
+            ensemble_preds = best_candidate_preds
+            ensemble_acc = best_candidate_acc
+            improvement_found = True
+        
         if not improvement_found:
             break
 
