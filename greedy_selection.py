@@ -64,12 +64,11 @@ def get_cv_probas(estimator, X_train, y_train, cv_splits, random_state):
 
     return cv_probas
 
-def set_up_estimators(pareto_front, X_train, y_train, X_test, y_test, seed):
-    estimators = []
-    highest_accuracy = 0
-    best_estimator = None
+def set_up_estimators(eval_inds, pareto_front, X_train, y_train, X_test, y_test, seed):
     
-    # evaluates single model performance and creates full estimators list
+    highest_accuracy = 0
+    
+    # evaluates single model performance on test set
     for i in range(len(pareto_front)):
         fitted_pipeline = pareto_front.iloc[i, 10].fit(X_train, y_train)
 
@@ -77,14 +76,20 @@ def set_up_estimators(pareto_front, X_train, y_train, X_test, y_test, seed):
 
         if accuracy > highest_accuracy:
             highest_accuracy = accuracy
-            best_estimator = fitted_pipeline
 
+        
+    # filter estimators to include top 100 auroc and top 100 bal acc
+    top_auroc = eval_inds.nlargest(100, "roc_auc_score")
+    remaining = eval_inds.drop(top_auroc.index)
+    top_bal_acc = remaining.nlargest(100, "balanced_accuracy_score")
+    top_200 = pd.concat([top_auroc, top_bal_acc])
 
-        estimators.append(fitted_pipeline)
-
+    # pull the pipelines and fit 
+    filtered_estimators = []
+    for i in range(len(top_200)):
+        filtered_estimators.append(top_200.iloc[i, 10].fit(X_train, y_train))
 
     # creates diverse pipeline list
-
     diverse_estimators = []
     voting_weights_diverse = []
 
@@ -93,7 +98,7 @@ def set_up_estimators(pareto_front, X_train, y_train, X_test, y_test, seed):
     est_cv_probas = {}
     est_cv_acc = {}
 
-    for est in estimators:
+    for est in filtered_estimators:
         est_cv_probas[est] = get_cv_probas(est, X_train, y_train, cv_splits=5, random_state=seed)
 
         preds = get_cv_predictions(estimator=est,
@@ -103,8 +108,8 @@ def set_up_estimators(pareto_front, X_train, y_train, X_test, y_test, seed):
         est_cv_preds[est] = preds
         est_cv_acc[est] = acc
 
-
-    best_estimator_cv = max(estimators, key=lambda e: est_cv_acc[e])
+    # select best estimator by CV accuracy score
+    best_estimator_cv = max(filtered_estimators, key=lambda e: est_cv_acc[e])
     best_acc_cv = est_cv_acc[best_estimator_cv]
 
     # start with best estimator
@@ -114,6 +119,7 @@ def set_up_estimators(pareto_front, X_train, y_train, X_test, y_test, seed):
     ensemble_acc = est_cv_acc[best_estimator_cv]
 
 
+    # greedy selection
     while True:
         improvement_found = False
         best_candidate = None
@@ -121,10 +127,11 @@ def set_up_estimators(pareto_front, X_train, y_train, X_test, y_test, seed):
         best_candidate_preds = None
         best_candidate_weight = None
 
-        for est in estimators:
+        for est in filtered_estimators:
             if est in diverse_estimators:
                 continue
 
+            # test ensemble CV accuracy when each candidate is added
             candidate_probas = [est_cv_probas[e] for e in diverse_estimators + [est]]
             candidate_weights = voting_weights_diverse + [est_cv_acc[est]]
             temp_preds = combine_preds(candidate_probas, candidate_weights)
@@ -148,7 +155,7 @@ def set_up_estimators(pareto_front, X_train, y_train, X_test, y_test, seed):
         if not improvement_found:
             break
 
-    return estimators, highest_accuracy, diverse_estimators, voting_weights_diverse
+    return highest_accuracy, diverse_estimators, voting_weights_diverse
 
 
 def vote_hard(estimators, X_test, weights=None):
@@ -217,6 +224,7 @@ def main():
         full_results = []
         constrained_search_space = get_pipeline_space(seed=run_num)
 
+        eval_inds_file = f'/common/hodesse/hpc_test/TPOT2_ensemble/saved_eval_inds/evaluated_individuals_{task_id}_#{run_num}.pkl'
         pf_file = f'/common/hodesse/hpc_test/TPOT2_ensemble/saved_fronts/pareto_front_{task_id}_#{run_num}.pkl'
 
         print("task id:", task_id, "run num:", run_num)
@@ -226,22 +234,28 @@ def main():
         d = pickle.load(open(file_path, "rb"))
         X_train, y_train, X_test, y_test = d['X_train'], d['y_train'], d['X_test'], d['y_test']
 
-        # tpot runs and save fronts
+        # loads the pareto front
         if os.path.exists(pf_file):
             with open(pf_file, "rb") as f:
                 pf = pickle.load(f)
+
+        # tpot runs and save evaluated individuals
+        if os.path.exists(eval_inds_file):
+            with open(eval_inds_file, "rb") as f:
+                eval_inds = pickle.load(f)
         else:
             est = tpot.TPOTEstimator(search_space=constrained_search_space, generations=100, population_size=50, cv=5, n_jobs=n_jobs, max_time_mins=None,
                                      random_state=run_num, verbose=2, classification=True, scorers=['roc_auc_ovr', 'balanced_accuracy'], scorers_weights=[1, 1])
             est.fit(X_train, y_train)
-            pf = est.pareto_front
+            eval_inds = est.evaluated_individuals
+            
 
             # save the front
-            with open((f'pareto_front_{task_id}_#{run_num}.pkl'), "wb") as f:
-                pickle.dump(pf, f)
+            with open((f'evaluated_individuals_{task_id}_#{run_num}.pkl'), "wb") as f:
+                pickle.dump(eval_inds, f)
 
-        estimators, individual_highest_accuracy, diverse_estimators, voting_weights_diverse = set_up_estimators(
-            pf, X_train, y_train, X_test, y_test, run_num)
+        individual_highest_accuracy, diverse_estimators, voting_weights_diverse = set_up_estimators(
+            eval_inds, pf, X_train, y_train, X_test, y_test, run_num)
 
         # Model 1: diverse, hard voting, 
         results_1 = vote_hard(estimators=diverse_estimators, X_test=X_test, weights=voting_weights_diverse)
