@@ -7,6 +7,7 @@ import traceback
 import dill as pickle
 import os
 import time
+import random
 import numpy as np
 import sklearn.model_selection
 from tpot.search_spaces.pipelines import ChoicePipeline, SequentialPipeline
@@ -20,6 +21,8 @@ from sklearn.linear_model import RidgeCV
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import GridSearchCV
 from sklearn.model_selection import StratifiedKFold
+from sklearn.cluster import KMeans
+
 from sklearn.svm import SVC
 from sklearn.metrics import accuracy_score
 from xgboost import XGBClassifier
@@ -47,8 +50,14 @@ def get_cv_predictions(estimator, X_train, y_train, cv_splits, random_state):
 
     for train_idx, valid_idx in cv.split(X_train, y_train):
         est_clone = clone(estimator) 
-        est_clone.fit(X_train[train_idx], y_train[train_idx])
-        cv_preds[valid_idx] = est_clone.predict(X_train[valid_idx])
+
+        try:
+            est_clone.fit(X_train[train_idx], y_train[train_idx])
+            cv_preds[valid_idx] = est_clone.predict(X_train[valid_idx])
+        except Exception as E:
+            print('pipeline failed')
+
+        
 
     return cv_preds
 
@@ -59,103 +68,140 @@ def get_cv_probas(estimator, X_train, y_train, cv_splits, random_state):
 
     for train_idx, valid_idx in cv.split(X_train, y_train):
         est_clone = clone(estimator)
-        est_clone.fit(X_train[train_idx], y_train[train_idx])
-        cv_probas[valid_idx] = est_clone.predict_proba(X_train[valid_idx])
-
+        
+        try:
+            est_clone.fit(X_train[train_idx], y_train[train_idx])
+            cv_probas[valid_idx] = est_clone.predict_proba(X_train[valid_idx])
+        except Exception as E:
+            print('pipeline failed')       
     return cv_probas
+
 
 def set_up_estimators(eval_inds, pareto_front, X_train, y_train, X_test, y_test, seed):
     
     highest_accuracy = 0
+    pf_pipelines = []
     
     # evaluates single model performance on test set
     for i in range(len(pareto_front)):
         fitted_pipeline = pareto_front.iloc[i, 10].fit(X_train, y_train)
+        pf_pipelines.append(fitted_pipeline)
 
         accuracy = accuracy_score(y_test, fitted_pipeline.predict(X_test))
 
         if accuracy > highest_accuracy:
             highest_accuracy = accuracy
 
+    # filter out the broken pipelines
+    filtered_eval_inds = eval_inds[eval_inds["roc_auc_score"].notna()]
         
-    # filter estimators to include top 100 auroc and top 100 bal acc
-    top_auroc = eval_inds.nlargest(100, "roc_auc_score")
-    remaining = eval_inds.drop(top_auroc.index)
-    top_bal_acc = remaining.nlargest(100, "balanced_accuracy_score")
-    top_200 = pd.concat([top_auroc, top_bal_acc])
+    # filter estimators to include top 3000
+    mid_pool = filtered_eval_inds#.nlargest(3000, "roc_auc_score")
+    
+    # prediction clustering for diversity
+    preds_matrix = []
+    est_list = []
+
+    for i in range(len(mid_pool)):
+        est = mid_pool.iloc[i, 10]
+        oof_preds = get_cv_predictions(est, X_train, y_train, cv_splits=5, random_state=seed+20)
+
+        # sample only 200 points from OOF predictions for clustering
+        #sample_size = 200
+        #rng = np.random.RandomState(seed+40)
+        #sample_idx = rng.choice(len(X_train), size=sample_size, replace=False)
+
+        #preds_matrix.append(oof_preds[sample_idx])
+        preds_matrix.append(oof_preds)
+
+        est_list.append(est)
+
+    preds_matrix = np.array(preds_matrix)
+
+    # clustering
+    k = 60
+    kmeans = KMeans(n_clusters=k, random_state=seed+40, n_init="auto")
+    labels = kmeans.fit_predict(preds_matrix)
+
+    # pick one per cluster
+    cluster_chosen = []
+    for c in range(k):
+        cluster_idx = np.where(labels == c)[0]
+        if len(cluster_idx) == 0:
+            continue
+        cluster_models = mid_pool.iloc[cluster_idx]
+        best_in_cluster = cluster_models.loc[cluster_models["roc_auc_score"].idxmax()]
+        cluster_chosen.append(best_in_cluster)
+
+    cluster_df = pd.DataFrame(cluster_chosen)
 
     # pull the pipelines and fit 
-    filtered_estimators = []
-    for i in range(len(top_200)):
-        filtered_estimators.append(top_200.iloc[i, 10].fit(X_train, y_train))
+    filtered_candidates = []
+    for i in range(len(cluster_df)):
+        try:
+            filtered_candidates.append(cluster_df.iloc[i, 10].fit(X_train, y_train))
+        except Exception as E:
+            print('fit failed')
 
     # creates diverse pipeline list
-    diverse_estimators = []
-    voting_weights_diverse = []
+    diverse_estimators_running = []
+    best_ensemble = []
+    best_ensemble_acc = 0
 
     # cache CV predictions, accuracies
     est_cv_preds = {}
     est_cv_probas = {}
     est_cv_acc = {}
 
-    for est in filtered_estimators:
-        est_cv_probas[est] = get_cv_probas(est, X_train, y_train, cv_splits=5, random_state=seed)
+    for est in filtered_candidates:
+        est_cv_probas[est] = get_cv_probas(est, X_train, y_train, cv_splits=5, random_state=seed+60)
 
         preds = get_cv_predictions(estimator=est,
                                    X_train=X_train, y_train=y_train,
-                                   cv_splits=5, random_state=seed)
+                                   cv_splits=5, random_state=seed+60)
         acc = accuracy_score(y_train, preds)
         est_cv_preds[est] = preds
         est_cv_acc[est] = acc
 
-    # select best estimator by CV accuracy score
-    best_estimator_cv = max(filtered_estimators, key=lambda e: est_cv_acc[e])
-    best_acc_cv = est_cv_acc[best_estimator_cv]
+    # initialize with top 5 
+    sorted_estimators = sorted(filtered_candidates, key=lambda e: est_cv_acc[e], reverse=True)
+    top5_estimators = sorted_estimators[:5]
+    diverse_estimators_running.extend(top5_estimators)
+    #top5_acc = [est_cv_acc[e] for e in top5_estimators]
 
-    # start with best estimator
-    diverse_estimators.append(best_estimator_cv)
-    voting_weights_diverse.append(best_acc_cv)
-    ensemble_preds = est_cv_preds[best_estimator_cv]
-    ensemble_acc = est_cv_acc[best_estimator_cv]
 
 
     # greedy selection
-    while True:
-        improvement_found = False
+    for i in range(25):
         best_candidate = None
-        best_candidate_acc = ensemble_acc
-        best_candidate_preds = None
-        best_candidate_weight = None
+        best_candidate_acc = 0
 
-        for est in filtered_estimators:
-            if est in diverse_estimators:
-                continue
+        # bagged selection (50% of candidates eligible each step)
+        subset = random.sample(filtered_candidates, k=len(filtered_candidates)//2)
+        for est in subset:
 
             # test ensemble CV accuracy when each candidate is added
-            candidate_probas = [est_cv_probas[e] for e in diverse_estimators + [est]]
-            candidate_weights = voting_weights_diverse + [est_cv_acc[est]]
-            temp_preds = combine_preds(candidate_probas, candidate_weights)
+            candidate_probas = [est_cv_probas[e] for e in diverse_estimators_running + [est]]
+            temp_preds = combine_preds(candidate_probas)
             temp_acc = accuracy_score(y_train, temp_preds)
 
             if temp_acc > best_candidate_acc:
                 best_candidate = est
                 best_candidate_acc = temp_acc
-                best_candidate_preds = temp_preds
-                best_candidate_weight = est_cv_acc[est]
-            
-        if best_candidate is not None:
-            print(f"Adding model with CV acc {est_cv_acc[best_candidate]:.4f}, "
-                  f"ensemble acc improves to {best_candidate_acc:.4f}")
-            diverse_estimators.append(best_candidate)
-            voting_weights_diverse.append(best_candidate_weight)
-            ensemble_preds = best_candidate_preds
-            ensemble_acc = best_candidate_acc
-            improvement_found = True
         
-        if not improvement_found:
-            break
+        print(f"ensemble acc changes to {best_candidate_acc:.4f}")
+        diverse_estimators_running.append(best_candidate)
+        temp_ensemble_probas = [est_cv_probas[e] for e in diverse_estimators_running]
+        temp_ensemble_preds = combine_preds(temp_ensemble_probas)
+        temp_ensemble_acc = accuracy_score(y_train, temp_ensemble_preds)
 
-    return highest_accuracy, diverse_estimators, voting_weights_diverse
+        if(temp_ensemble_acc > best_ensemble_acc):
+            best_ensemble_acc = temp_ensemble_acc
+            best_ensemble = diverse_estimators_running.copy()
+
+    print(f"FINAL best ensemble acc: {best_ensemble_acc:.4f}")
+    print(f"FINAL ensemble size: {len(best_ensemble)}")
+    return highest_accuracy, best_ensemble
 
 
 def vote_hard(estimators, X_test, weights=None):
@@ -254,26 +300,23 @@ def main():
             with open((f'evaluated_individuals_{task_id}_#{run_num}.pkl'), "wb") as f:
                 pickle.dump(eval_inds, f)
 
-        individual_highest_accuracy, diverse_estimators, voting_weights_diverse = set_up_estimators(
+        individual_highest_accuracy, best_ensemble = set_up_estimators(
             eval_inds, pf, X_train, y_train, X_test, y_test, run_num)
-
-        # Model 1: diverse, hard voting, 
-        results_1 = vote_hard(estimators=diverse_estimators, X_test=X_test, weights=voting_weights_diverse)
-        accuracy_1 = accuracy_score(y_test, results_1)
+        
+        tpot_accuracy = accuracy_score(y_test, est.predict(X_test))
 
         # Model 2: diverse, soft voting, 
-        results_2 = vote_soft(estimators=diverse_estimators, X_test=X_test, weights=voting_weights_diverse)
+        results_2 = vote_soft(estimators=best_ensemble, X_test=X_test)
         accuracy_2 = accuracy_score(y_test, results_2)
 
         full_results.append({"task id": task_id,
                              "run #": run_num,
-                             "individual": individual_highest_accuracy,
-                             "model 1": accuracy_1,
+                             "individual": tpot_accuracy,
                              "model 2": accuracy_2
                              })
 
         full_results_df = pd.DataFrame(full_results)
-        full_results_df.to_csv(os.path.join(save_folder, (f'results_ensemble_{task_id}_#{run_num}.csv')), index=False)
+        full_results_df.to_csv(os.path.join(save_folder, (f'2_results_ensemble_{task_id}_#{run_num}.csv')), index=False)
 
     except Exception as e:
         trace = traceback.format_exc()
