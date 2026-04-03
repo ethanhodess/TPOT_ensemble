@@ -28,6 +28,7 @@ from sklearn.metrics import accuracy_score
 from xgboost import XGBClassifier
 from sklearn.base import clone
 import argparse
+from joblib import Parallel, delayed
 
 
 import warnings
@@ -79,30 +80,21 @@ def get_cv_probas(estimator, X_train, y_train, cv_splits, random_state):
 
 def set_up_estimators(eval_inds, pareto_front, X_train, y_train, X_test, y_test, seed):
     
-    highest_accuracy = 0
-    pf_pipelines = []
+    # highest_accuracy = 0
+
+    # best_individual_model = pareto_front.sort_values("roc_auc_score", ascending=False).iloc[0, 10].fit(X_train, y_train)
+    # highest_accuracy = accuracy_score(y_test, best_individual_model.predict(X_test))
     
-    # evaluates single model performance on test set
-    for i in range(len(pareto_front)):
-        fitted_pipeline = pareto_front.iloc[i, 10].fit(X_train, y_train)
-        pf_pipelines.append(fitted_pipeline)
-
-        accuracy = accuracy_score(y_test, fitted_pipeline.predict(X_test))
-
-        if accuracy > highest_accuracy:
-            highest_accuracy = accuracy
-
+    
     # filter out the broken pipelines
     filtered_eval_inds = eval_inds[eval_inds["roc_auc_score"].notna()]
         
     # filter estimators to include top 3000
     mid_pool = filtered_eval_inds#.nlargest(3000, "roc_auc_score")
     
-    # prediction clustering for diversity
-    preds_matrix = []
-    est_list = []
-
-    for i in range(len(mid_pool)):
+    # prediction clustering for diversity        
+    # cache the oof predictions
+    def _get_preds(i):
         est = mid_pool.iloc[i, 10]
         oof_preds = get_cv_predictions(est, X_train, y_train, cv_splits=5, random_state=seed+20)
 
@@ -111,12 +103,13 @@ def set_up_estimators(eval_inds, pareto_front, X_train, y_train, X_test, y_test,
         #rng = np.random.RandomState(seed+40)
         #sample_idx = rng.choice(len(X_train), size=sample_size, replace=False)
 
-        #preds_matrix.append(oof_preds[sample_idx])
-        preds_matrix.append(oof_preds)
+        return oof_preds, est
 
-        est_list.append(est)
-
-    preds_matrix = np.array(preds_matrix)
+    results = Parallel(n_jobs=-1)(
+        delayed(_get_preds)(i) for i in range(len(mid_pool))
+    )
+    preds_matrix_list, est_list = zip(*results)
+    preds_matrix = np.array(preds_matrix_list)
 
     # clustering
     k = 60
@@ -170,7 +163,6 @@ def set_up_estimators(eval_inds, pareto_front, X_train, y_train, X_test, y_test,
     #top5_acc = [est_cv_acc[e] for e in top5_estimators]
 
 
-
     # greedy selection
     for i in range(25):
         best_candidate = None
@@ -201,7 +193,7 @@ def set_up_estimators(eval_inds, pareto_front, X_train, y_train, X_test, y_test,
 
     print(f"FINAL best ensemble acc: {best_ensemble_acc:.4f}")
     print(f"FINAL ensemble size: {len(best_ensemble)}")
-    return highest_accuracy, best_ensemble
+    return best_ensemble
 
 
 def vote_hard(estimators, X_test, weights=None):
@@ -259,8 +251,9 @@ def main():
 
     try:
 
-        task_ids = [359954, 2073, 190146, 168784, 359959]
-        num_runs = 15
+        #task_ids = [359954, 2073, 190146, 168784, 359959]
+        task_ids = [359954]
+        num_runs = 6
 
         jobs = [(tid, run) for tid in task_ids for run in range(num_runs)]
 
@@ -270,7 +263,7 @@ def main():
         full_results = []
         constrained_search_space = get_pipeline_space(seed=run_num)
 
-        eval_inds_file = f'/common/hodesse/hpc_test/TPOT2_ensemble/saved_eval_inds/evaluated_individuals_{task_id}_#{run_num}.pkl'
+        eval_inds_file = f'/common/hodesse/hpc_test/TPOT2_ensemble/saved_eval_inds/DELETE/evaluated_individuals_{task_id}_#{run_num}.pkl'
         pf_file = f'/common/hodesse/hpc_test/TPOT2_ensemble/saved_fronts/pareto_front_{task_id}_#{run_num}.pkl'
 
         print("task id:", task_id, "run num:", run_num)
@@ -291,7 +284,7 @@ def main():
                 eval_inds = pickle.load(f)
         else:
             est = tpot.TPOTEstimator(search_space=constrained_search_space, generations=100, population_size=50, cv=5, n_jobs=n_jobs, max_time_mins=None,
-                                     random_state=run_num, verbose=2, classification=True, scorers=['roc_auc_ovr', 'balanced_accuracy'], scorers_weights=[1, 1])
+                                     random_state=run_num, verbose=2, classification=True, scorers=['roc_auc_ovr', tpot.objectives.complexity_scorer], scorers_weights=[1, -1])
             est.fit(X_train, y_train)
             eval_inds = est.evaluated_individuals
             
@@ -300,7 +293,7 @@ def main():
             with open((f'evaluated_individuals_{task_id}_#{run_num}.pkl'), "wb") as f:
                 pickle.dump(eval_inds, f)
 
-        individual_highest_accuracy, best_ensemble = set_up_estimators(
+        best_ensemble = set_up_estimators(
             eval_inds, pf, X_train, y_train, X_test, y_test, run_num)
         
         tpot_accuracy = accuracy_score(y_test, est.predict(X_test))
@@ -316,7 +309,7 @@ def main():
                              })
 
         full_results_df = pd.DataFrame(full_results)
-        full_results_df.to_csv(os.path.join(save_folder, (f'2_results_ensemble_{task_id}_#{run_num}.csv')), index=False)
+        full_results_df.to_csv(os.path.join(save_folder, (f'APR_results_ensemble_{task_id}_#{run_num}.csv')), index=False)
 
     except Exception as e:
         trace = traceback.format_exc()
