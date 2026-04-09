@@ -32,10 +32,9 @@ from joblib import Parallel, delayed
 
 
 import warnings
-warnings.filterwarnings("ignore")
+warnings.filterwarnings('ignore')
 
 # defines a constrained search space with only three steps
-
 def get_pipeline_space(seed):
     return tpot.search_spaces.pipelines.SequentialPipeline([
         tpot.config.get_search_space(
@@ -58,8 +57,6 @@ def get_cv_predictions(estimator, X_train, y_train, cv_splits, random_state):
         except Exception as E:
             print('pipeline failed')
 
-        
-
     return cv_preds
 
 def get_cv_probas(estimator, X_train, y_train, cv_splits, random_state):
@@ -78,33 +75,53 @@ def get_cv_probas(estimator, X_train, y_train, cv_splits, random_state):
     return cv_probas
 
 
-def set_up_estimators(eval_inds, pareto_front, X_train, y_train, X_test, y_test, seed):
-    
-    # highest_accuracy = 0
-
-    # best_individual_model = pareto_front.sort_values("roc_auc_score", ascending=False).iloc[0, 10].fit(X_train, y_train)
-    # highest_accuracy = accuracy_score(y_test, best_individual_model.predict(X_test))
-    
+def set_up_estimators(eval_inds, X_train, y_train, seed):
     
     # filter out the broken pipelines
     filtered_eval_inds = eval_inds[eval_inds["roc_auc_score"].notna()]
+
+    # randomly sample 500 pipelines (100 from each acc quantile)
+    filtered_eval_inds["quantile"] = pd.qcut(filtered_eval_inds["roc_auc_score"], q=5, labels=False)
+    mid_pool = filtered_eval_inds.groupby("quantile").apply(
+        lambda x: x.sample(n=min(100, len(x)), random_state=seed)
+    ).reset_index(drop=True)
         
-    # filter estimators to include top 3000
-    mid_pool = filtered_eval_inds#.nlargest(3000, "roc_auc_score")
     
-    # prediction clustering for diversity        
+    # prediction clustering for diversity   
+    # sample indices for clustering (stratified by class)
+    sample_size = 50
+    rng = np.random.RandomState(seed + 40)
+
+    unique_classes, class_counts = np.unique(y_train, return_counts=True)
+    class_proportions = class_counts / len(y_train)
+    samples_per_class = np.maximum(1, np.round(class_proportions * sample_size).astype(int))
+
+    # rounding adjustment
+    diff = sample_size - samples_per_class.sum()
+    if diff != 0:
+        # add/remove from the largest class
+        largest_class_idx = np.argmax(samples_per_class)
+        samples_per_class[largest_class_idx] += diff
+
+    # save indices
+    sample_idx = []
+    for cls, n_samples in zip(unique_classes, samples_per_class):
+        cls_indices = np.where(y_train == cls)[0]
+        chosen = rng.choice(cls_indices, size=n_samples, replace=False)
+        sample_idx.append(chosen)
+
+    sample_idx = np.concatenate(sample_idx)
+
     # cache the oof predictions
     def _get_preds(i):
         est = mid_pool.iloc[i, 10]
-        oof_preds = get_cv_predictions(est, X_train, y_train, cv_splits=5, random_state=seed+20)
-
-        # sample only 200 points from OOF predictions for clustering
-        #sample_size = 200
-        #rng = np.random.RandomState(seed+40)
-        #sample_idx = rng.choice(len(X_train), size=sample_size, replace=False)
+        X_sub = X_train[sample_idx]
+        y_sub = y_train[sample_idx]
+        oof_preds = get_cv_predictions(est, X_sub, y_sub, cv_splits=3, random_state=seed+20)
 
         return oof_preds, est
-
+    
+    print("start cache preds")
     results = Parallel(n_jobs=-1)(
         delayed(_get_preds)(i) for i in range(len(mid_pool))
     )
@@ -112,6 +129,7 @@ def set_up_estimators(eval_inds, pareto_front, X_train, y_train, X_test, y_test,
     preds_matrix = np.array(preds_matrix_list)
 
     # clustering
+    print("clustering start")
     k = 60
     kmeans = KMeans(n_clusters=k, random_state=seed+40, n_init="auto")
     labels = kmeans.fit_predict(preds_matrix)
@@ -127,6 +145,8 @@ def set_up_estimators(eval_inds, pareto_front, X_train, y_train, X_test, y_test,
         cluster_chosen.append(best_in_cluster)
 
     cluster_df = pd.DataFrame(cluster_chosen)
+
+    print("clustering finished")
 
     # pull the pipelines and fit 
     filtered_candidates = []
@@ -162,7 +182,7 @@ def set_up_estimators(eval_inds, pareto_front, X_train, y_train, X_test, y_test,
     diverse_estimators_running.extend(top5_estimators)
     #top5_acc = [est_cv_acc[e] for e in top5_estimators]
 
-
+    print("greedy selection start")
     # greedy selection
     for i in range(25):
         best_candidate = None
@@ -252,8 +272,8 @@ def main():
     try:
 
         #task_ids = [359954, 2073, 190146, 168784, 359959]
-        task_ids = [359954]
-        num_runs = 6
+        task_ids = [359959]
+        num_runs = 3
 
         jobs = [(tid, run) for tid in task_ids for run in range(num_runs)]
 
@@ -263,7 +283,7 @@ def main():
         full_results = []
         constrained_search_space = get_pipeline_space(seed=run_num)
 
-        eval_inds_file = f'/common/hodesse/hpc_test/TPOT2_ensemble/saved_eval_inds/DELETE/evaluated_individuals_{task_id}_#{run_num}.pkl'
+        eval_inds_file = f'/common/hodesse/hpc_test/TPOT2_ensemble/test_eval_inds/evaluated_individuals_{task_id}_#{run_num}.pkl'
         pf_file = f'/common/hodesse/hpc_test/TPOT2_ensemble/saved_fronts/pareto_front_{task_id}_#{run_num}.pkl'
 
         print("task id:", task_id, "run num:", run_num)
@@ -294,9 +314,9 @@ def main():
                 pickle.dump(eval_inds, f)
 
         best_ensemble = set_up_estimators(
-            eval_inds, pf, X_train, y_train, X_test, y_test, run_num)
+            eval_inds, X_train, y_train, run_num)
         
-        tpot_accuracy = accuracy_score(y_test, est.predict(X_test))
+        #tpot_accuracy = accuracy_score(y_test, est.predict(X_test))
 
         # Model 2: diverse, soft voting, 
         results_2 = vote_soft(estimators=best_ensemble, X_test=X_test)
@@ -304,12 +324,12 @@ def main():
 
         full_results.append({"task id": task_id,
                              "run #": run_num,
-                             "individual": tpot_accuracy,
+                             #"individual": tpot_accuracy,
                              "model 2": accuracy_2
                              })
 
         full_results_df = pd.DataFrame(full_results)
-        full_results_df.to_csv(os.path.join(save_folder, (f'APR_results_ensemble_{task_id}_#{run_num}.csv')), index=False)
+        full_results_df.to_csv(os.path.join(save_folder, (f'test_APR_results_ensemble_{task_id}_#{run_num}.csv')), index=False)
 
     except Exception as e:
         trace = traceback.format_exc()
