@@ -29,6 +29,7 @@ from xgboost import XGBClassifier
 from sklearn.base import clone
 import argparse
 from joblib import Parallel, delayed
+import ray
 
 
 import warnings
@@ -76,6 +77,9 @@ def get_cv_probas(estimator, X_train, y_train, cv_splits, random_state):
 
 
 def set_up_estimators(eval_inds, X_train, y_train, seed):
+
+    # get the best individual
+    best_individual = eval_inds.loc[eval_inds["roc_auc_score"].idxmax()]
     
     # filter out the broken pipelines
     filtered_eval_inds = eval_inds[eval_inds["roc_auc_score"].notna()]
@@ -85,11 +89,17 @@ def set_up_estimators(eval_inds, X_train, y_train, seed):
     mid_pool = filtered_eval_inds.groupby("quantile").apply(
         lambda x: x.sample(n=min(100, len(x)), random_state=seed)
     ).reset_index(drop=True)
+
+    # manually add the best individual
+    mid_pool = pd.concat(
+        [mid_pool, best_individual.to_frame().T],
+        ignore_index=True
+    )
         
     
     # prediction clustering for diversity   
     # sample indices for clustering (stratified by class)
-    sample_size = 50
+    sample_size = 100
     rng = np.random.RandomState(seed + 40)
 
     unique_classes, class_counts = np.unique(y_train, return_counts=True)
@@ -111,20 +121,19 @@ def set_up_estimators(eval_inds, X_train, y_train, seed):
         sample_idx.append(chosen)
 
     sample_idx = np.concatenate(sample_idx)
+    X_sub = X_train[sample_idx]
+    y_sub = y_train[sample_idx]
 
     # cache the oof predictions
-    def _get_preds(i):
+    @ray.remote
+    def _get_preds(i, mid_pool, X_sub, y_sub, seed):
         est = mid_pool.iloc[i, 10]
-        X_sub = X_train[sample_idx]
-        y_sub = y_train[sample_idx]
         oof_preds = get_cv_predictions(est, X_sub, y_sub, cv_splits=3, random_state=seed+20)
 
         return oof_preds, est
     
     print("start cache preds")
-    results = Parallel(n_jobs=-1)(
-        delayed(_get_preds)(i) for i in range(len(mid_pool))
-    )
+    results = ray.get([_get_preds.remote(i, mid_pool, X_sub, y_sub, seed) for i in range(len(mid_pool))])
     preds_matrix_list, est_list = zip(*results)
     preds_matrix = np.array(preds_matrix_list)
 
@@ -271,9 +280,8 @@ def main():
 
     try:
 
-        #task_ids = [359954, 2073, 190146, 168784, 359959]
-        task_ids = [359959]
-        num_runs = 3
+        task_ids = [359954, 2073, 190146, 168784, 359959]
+        num_runs = 10
 
         jobs = [(tid, run) for tid in task_ids for run in range(num_runs)]
 
@@ -283,7 +291,7 @@ def main():
         full_results = []
         constrained_search_space = get_pipeline_space(seed=run_num)
 
-        eval_inds_file = f'/common/hodesse/hpc_test/TPOT2_ensemble/test_eval_inds/evaluated_individuals_{task_id}_#{run_num}.pkl'
+        eval_inds_file = f'/common/hodesse/hpc_test/TPOT2_ensemble/test_eval_inds/complexity_evaluated_individuals_{task_id}_#{run_num}.pkl'
         pf_file = f'/common/hodesse/hpc_test/TPOT2_ensemble/saved_fronts/pareto_front_{task_id}_#{run_num}.pkl'
 
         print("task id:", task_id, "run num:", run_num)
@@ -308,15 +316,14 @@ def main():
             est.fit(X_train, y_train)
             eval_inds = est.evaluated_individuals
             
-
             # save the front
-            with open((f'evaluated_individuals_{task_id}_#{run_num}.pkl'), "wb") as f:
+            with open((f'complexity_evaluated_individuals_{task_id}_#{run_num}.pkl'), "wb") as f:
                 pickle.dump(eval_inds, f)
 
         best_ensemble = set_up_estimators(
             eval_inds, X_train, y_train, run_num)
         
-        #tpot_accuracy = accuracy_score(y_test, est.predict(X_test))
+        tpot_accuracy = accuracy_score(y_test, est.predict(X_test))
 
         # Model 2: diverse, soft voting, 
         results_2 = vote_soft(estimators=best_ensemble, X_test=X_test)
@@ -324,7 +331,7 @@ def main():
 
         full_results.append({"task id": task_id,
                              "run #": run_num,
-                             #"individual": tpot_accuracy,
+                             "individual": tpot_accuracy,
                              "model 2": accuracy_2
                              })
 
