@@ -80,6 +80,13 @@ def set_up_estimators(eval_inds, X_train, y_train, seed):
 
     # get the best individual
     best_individual = eval_inds.loc[eval_inds["roc_auc_score"].idxmax()]
+
+    # get the best individual's CV accuracy
+    best_individual_est = best_individual.iloc[10]
+    best_individual_preds = get_cv_predictions(
+        best_individual_est, X_train, y_train, cv_splits=5, random_state=seed+60
+    )
+    best_individual_acc = accuracy_score(y_train, best_individual_preds)
     
     # filter out the broken pipelines
     filtered_eval_inds = eval_inds[eval_inds["roc_auc_score"].notna()]
@@ -222,6 +229,12 @@ def set_up_estimators(eval_inds, X_train, y_train, seed):
 
     print(f"FINAL best ensemble acc: {best_ensemble_acc:.4f}")
     print(f"FINAL ensemble size: {len(best_ensemble)}")
+
+    # safety check
+    if best_ensemble_acc <= best_individual_acc:
+        print("using best single model as ensemble")
+        best_ensemble = [best_individual_est.fit(X_train, y_train)]
+
     return best_ensemble
 
 
@@ -291,7 +304,7 @@ def main():
         full_results = []
         constrained_search_space = get_pipeline_space(seed=run_num)
 
-        eval_inds_file = f'/common/hodesse/hpc_test/TPOT2_ensemble/test_eval_inds/complexity_evaluated_individuals_{task_id}_#{run_num}.pkl'
+        eval_inds_file = f'/common/hodesse/hpc_test/TPOT2_ensemble/short_40_25_eval_inds/complexity_evaluated_individuals_{task_id}_#{run_num}.pkl'
         pf_file = f'/common/hodesse/hpc_test/TPOT2_ensemble/saved_fronts/pareto_front_{task_id}_#{run_num}.pkl'
 
         print("task id:", task_id, "run num:", run_num)
@@ -323,7 +336,7 @@ def main():
         best_ensemble = set_up_estimators(
             eval_inds, X_train, y_train, run_num)
         
-        tpot_accuracy = accuracy_score(y_test, est.predict(X_test))
+        #tpot_accuracy = accuracy_score(y_test, est.predict(X_test))
 
         # Model 2: diverse, soft voting, 
         results_2 = vote_soft(estimators=best_ensemble, X_test=X_test)
@@ -331,7 +344,7 @@ def main():
 
         full_results.append({"task id": task_id,
                              "run #": run_num,
-                             "individual": tpot_accuracy,
+                             #"individual": tpot_accuracy,
                              "model 2": accuracy_2
                              })
 
