@@ -76,17 +76,15 @@ def get_cv_probas(estimator, X_train, y_train, cv_splits, random_state):
     return cv_probas
 
 
-def set_up_estimators(eval_inds, X_train, y_train, seed):
+def set_up_estimators(eval_inds, X_train, y_train, X_val, y_val, seed):
 
-    # get the best individual
+    # get the best individual by auroc
     best_individual = eval_inds.loc[eval_inds["roc_auc_score"].idxmax()]
 
-    # get the best individual's CV accuracy
-    best_individual_est = best_individual.iloc[10]
-    best_individual_preds = get_cv_predictions(
-        best_individual_est, X_train, y_train, cv_splits=5, random_state=seed+60
-    )
-    best_individual_acc = accuracy_score(y_train, best_individual_preds)
+    # get the best individual's validation accuracy
+    best_individual_est = best_individual.iloc[10].fit(X_train, y_train)
+    best_individual_preds = best_individual_est.predict(X_val)
+    best_individual_acc = accuracy_score(y_val, best_individual_preds)
     
     # filter out the broken pipelines
     filtered_eval_inds = eval_inds[eval_inds["roc_auc_score"].notna()]
@@ -227,13 +225,20 @@ def set_up_estimators(eval_inds, X_train, y_train, seed):
             best_ensemble_acc = temp_ensemble_acc
             best_ensemble = diverse_estimators_running.copy()
 
-    print(f"FINAL best ensemble acc: {best_ensemble_acc:.4f}")
+    print(f"FINAL best ensemble CV acc: {best_ensemble_acc:.4f}")
     print(f"FINAL ensemble size: {len(best_ensemble)}")
 
+    best_ensemble = [est.fit(X_train, y_train) for est in best_ensemble]
+    ensemble_val_accuracy = accuracy_score(y_val, combine_preds([est.predict_proba(X_val) for est in best_ensemble]))
+    
+    print(f"FINAL ensemble val acc: {ensemble_val_accuracy:.4f}")
+    print(f"FINAL best individual val acc: {best_individual_acc:.4f}")
+
     # safety check
-    if best_ensemble_acc <= best_individual_acc:
+    if ensemble_val_accuracy <= best_individual_acc:
         print("using best single model as ensemble")
-        best_ensemble = [best_individual_est.fit(X_train, y_train)]
+        best_ensemble = [best_individual_est]
+        
 
     return best_ensemble
 
@@ -304,8 +309,7 @@ def main():
         full_results = []
         constrained_search_space = get_pipeline_space(seed=run_num)
 
-        eval_inds_file = f'/common/hodesse/hpc_test/TPOT2_ensemble/short_40_25_eval_inds/complexity_evaluated_individuals_{task_id}_#{run_num}.pkl'
-        pf_file = f'/common/hodesse/hpc_test/TPOT2_ensemble/saved_fronts/pareto_front_{task_id}_#{run_num}.pkl'
+        eval_inds_file = f'/common/hodesse/hpc_test/TPOT2_ensemble/complexity_eval_inds/safety_evaluated_individuals_{task_id}_#{run_num}.pkl'
 
         print("task id:", task_id, "run num:", run_num)
 
@@ -314,10 +318,10 @@ def main():
         d = pickle.load(open(file_path, "rb"))
         X_train, y_train, X_test, y_test = d['X_train'], d['y_train'], d['X_test'], d['y_test']
 
-        # loads the pareto front
-        if os.path.exists(pf_file):
-            with open(pf_file, "rb") as f:
-                pf = pickle.load(f)
+        # validation split
+        X_train, X_val, y_train, y_val = sklearn.model_selection.train_test_split(
+            X_train, y_train, test_size=0.2, random_state=run_num, stratify=y_train
+        )
 
         # tpot runs and save evaluated individuals
         if os.path.exists(eval_inds_file):
@@ -329,14 +333,13 @@ def main():
             est.fit(X_train, y_train)
             eval_inds = est.evaluated_individuals
             
-            # save the front
+            # save the evaluated individuals
             with open((f'complexity_evaluated_individuals_{task_id}_#{run_num}.pkl'), "wb") as f:
                 pickle.dump(eval_inds, f)
 
-        best_ensemble = set_up_estimators(
-            eval_inds, X_train, y_train, run_num)
+        best_ensemble = set_up_estimators(eval_inds, X_train, y_train, X_val, y_val, run_num)
         
-        #tpot_accuracy = accuracy_score(y_test, est.predict(X_test))
+        tpot_accuracy = accuracy_score(y_test, est.predict(X_test))
 
         # Model 2: diverse, soft voting, 
         results_2 = vote_soft(estimators=best_ensemble, X_test=X_test)
@@ -344,7 +347,7 @@ def main():
 
         full_results.append({"task id": task_id,
                              "run #": run_num,
-                             #"individual": tpot_accuracy,
+                             "individual": tpot_accuracy,
                              "model 2": accuracy_2
                              })
 
