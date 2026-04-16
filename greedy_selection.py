@@ -76,15 +76,20 @@ def get_cv_probas(estimator, X_train, y_train, cv_splits, random_state):
     return cv_probas
 
 
-def set_up_estimators(eval_inds, X_train, y_train, X_val, y_val, seed):
+def set_up_estimators(eval_inds, X_train, y_train, seed):
 
-    # get the best individual by auroc
-    best_individual = eval_inds.loc[eval_inds["roc_auc_score"].idxmax()]
+    # get the best individual by auroc from the front
+    pareto_front = eval_inds[eval_inds['Pareto_Front']==1]
+    best_individual = pareto_front.loc[pareto_front["roc_auc_score"].idxmax()]
+    best_individual_est = best_individual.iloc[10]
 
-    # get the best individual's validation accuracy
-    best_individual_est = best_individual.iloc[10].fit(X_train, y_train)
-    best_individual_preds = best_individual_est.predict(X_val)
-    best_individual_acc = accuracy_score(y_val, best_individual_preds)
+    best_individual_preds = get_cv_predictions(
+        best_individual_est, X_train, y_train, cv_splits=5, random_state=seed+60
+    )
+    best_individual_acc = accuracy_score(y_train, best_individual_preds)
+
+    print(f"best individual CV acc: {best_individual_acc:.4f}")
+
     
     # filter out the broken pipelines
     filtered_eval_inds = eval_inds[eval_inds["roc_auc_score"].notna()]
@@ -104,7 +109,7 @@ def set_up_estimators(eval_inds, X_train, y_train, X_val, y_val, seed):
     
     # prediction clustering for diversity   
     # sample indices for clustering (stratified by class)
-    sample_size = 100
+    sample_size = 150
     rng = np.random.RandomState(seed + 40)
 
     unique_classes, class_counts = np.unique(y_train, return_counts=True)
@@ -229,15 +234,11 @@ def set_up_estimators(eval_inds, X_train, y_train, X_val, y_val, seed):
     print(f"FINAL ensemble size: {len(best_ensemble)}")
 
     best_ensemble = [est.fit(X_train, y_train) for est in best_ensemble]
-    ensemble_val_accuracy = accuracy_score(y_val, combine_preds([est.predict_proba(X_val) for est in best_ensemble]))
-    
-    print(f"FINAL ensemble val acc: {ensemble_val_accuracy:.4f}")
-    print(f"FINAL best individual val acc: {best_individual_acc:.4f}")
 
     # safety check
-    if ensemble_val_accuracy <= best_individual_acc:
+    if best_ensemble_acc <= best_individual_acc:
         print("using best single model as ensemble")
-        best_ensemble = [best_individual_est]
+        best_ensemble = [best_individual_est.fit(X_train, y_train)]
         
 
     return best_ensemble
@@ -309,7 +310,7 @@ def main():
         full_results = []
         constrained_search_space = get_pipeline_space(seed=run_num)
 
-        eval_inds_file = f'/common/hodesse/hpc_test/TPOT2_ensemble/complexity_eval_inds/safety_evaluated_individuals_{task_id}_#{run_num}.pkl'
+        eval_inds_file = f'/common/hodesse/hpc_test/TPOT2_ensemble/short_40_25_eval_inds/complexity_evaluated_individuals_{task_id}_#{run_num}.pkl'
 
         print("task id:", task_id, "run num:", run_num)
 
@@ -318,17 +319,12 @@ def main():
         d = pickle.load(open(file_path, "rb"))
         X_train, y_train, X_test, y_test = d['X_train'], d['y_train'], d['X_test'], d['y_test']
 
-        # validation split
-        X_train, X_val, y_train, y_val = sklearn.model_selection.train_test_split(
-            X_train, y_train, test_size=0.2, random_state=run_num, stratify=y_train
-        )
-
         # tpot runs and save evaluated individuals
         if os.path.exists(eval_inds_file):
             with open(eval_inds_file, "rb") as f:
                 eval_inds = pickle.load(f)
         else:
-            est = tpot.TPOTEstimator(search_space=constrained_search_space, generations=100, population_size=50, cv=5, n_jobs=n_jobs, max_time_mins=None,
+            est = tpot.TPOTEstimator(search_space=constrained_search_space, generations=40, population_size=25, cv=5, n_jobs=n_jobs, max_time_mins=None,
                                      random_state=run_num, verbose=2, classification=True, scorers=['roc_auc_ovr', tpot.objectives.complexity_scorer], scorers_weights=[1, -1])
             est.fit(X_train, y_train)
             eval_inds = est.evaluated_individuals
@@ -337,9 +333,9 @@ def main():
             with open((f'complexity_evaluated_individuals_{task_id}_#{run_num}.pkl'), "wb") as f:
                 pickle.dump(eval_inds, f)
 
-        best_ensemble = set_up_estimators(eval_inds, X_train, y_train, X_val, y_val, run_num)
+        best_ensemble = set_up_estimators(eval_inds, X_train, y_train, run_num)
         
-        tpot_accuracy = accuracy_score(y_test, est.predict(X_test))
+        #tpot_accuracy = accuracy_score(y_test, est.predict(X_test))
 
         # Model 2: diverse, soft voting, 
         results_2 = vote_soft(estimators=best_ensemble, X_test=X_test)
@@ -347,7 +343,7 @@ def main():
 
         full_results.append({"task id": task_id,
                              "run #": run_num,
-                             "individual": tpot_accuracy,
+                             #"individual": tpot_accuracy,
                              "model 2": accuracy_2
                              })
 
