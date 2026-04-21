@@ -1,7 +1,7 @@
 #!/bin/bash -l
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=16
+#SBATCH --cpus-per-task=24
 #SBATCH -t 110:00:00
 #SBATCH --mem=128GB
 #SBATCH --job-name=tpot-ensemble
@@ -10,7 +10,7 @@
 #SBATCH --mail-type=FAIL,BEGIN,END
 #SBATCH --mail-user=Ethan.Hodess@cshs.org
 #SBATCH -o ./logs/outputs/output.%j_%a.out # STDOUT
-#SBATCH --array=0-49
+#SBATCH --array=0-104
 RUN=${SLURM_ARRAY_TASK_ID:-1}
 echo “Run: ${RUN}”
 module load git/2.33.1
@@ -22,7 +22,7 @@ conda activate tpot2env
 
 
 echo RunStart
-srun -u /home/hodesse/miniconda3/envs/tpot2env/bin/python greedy_selection.py \
---n_jobs 16 \
+srun -u /home/hodesse/miniconda3/envs/tpot2env/bin/python tpot_ensemble.py \
+--n_jobs 24 \
 --savepath logs \
 --num_runs ${RUN} \
