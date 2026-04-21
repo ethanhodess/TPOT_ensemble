@@ -98,7 +98,8 @@ def clean_eval_inds(eval_inds):
 
 def clustering_pruning(filtered_eval_inds, X_train, y_train, seed):
     # number of clusters
-    k = 600
+    k_values = [800, 600, 400, 200, 100, 50, 25, 10]
+    cluster_df = {}
 
     X_ref = ray.put(X_train)
     y_ref = ray.put(y_train)
@@ -111,20 +112,49 @@ def clustering_pruning(filtered_eval_inds, X_train, y_train, seed):
     results = ray.get(futures)
     preds_matrix = np.array(results)
 
-    kmeans = KMeans(n_clusters=k, random_state=seed+210, n_init="auto")
-    labels = kmeans.fit_predict(preds_matrix)
+    for k in k_values:
+        kmeans = KMeans(n_clusters=k, random_state=seed+210, n_init="auto")
+        labels = kmeans.fit_predict(preds_matrix)
 
-    # pick one per cluster
-    cluster_chosen = []
-    for c in range(k):
-        cluster_idx = np.where(labels == c)[0]
-        if len(cluster_idx) == 0:
-            continue
-        cluster_models = filtered_eval_inds.iloc[cluster_idx]
-        best_in_cluster = cluster_models.loc[cluster_models["roc_auc_score"].idxmax()]
-        cluster_chosen.append(best_in_cluster)
+        # pick one per cluster
+        cluster_chosen = []
+        for c in range(k):
+            cluster_idx = np.where(labels == c)[0]
+            if len(cluster_idx) == 0:
+                continue
+            cluster_models = filtered_eval_inds.iloc[cluster_idx]
+            best_in_cluster = cluster_models.loc[cluster_models["roc_auc_score"].idxmax()]
+            cluster_chosen.append(best_in_cluster)
+        cluster_df[k] = pd.DataFrame(cluster_chosen)
 
-    return pd.DataFrame(cluster_chosen)
+    return cluster_df
+
+def get_clustering_ensemble_results(cluster_df, X_train, y_train, X_test, y_test, task_id, run_num, tpot_test_accuracy):
+    full_results = []
+    for k, ensemble in cluster_df.items():
+            ensemble_estimators = ensemble.iloc[:, 10].tolist()
+
+            # refit each estimator on full training data
+            fitted_ensemble = []
+            for est in ensemble_estimators:
+                try:
+                    est_clone = clone(est)
+                    est_clone.fit(X_train, y_train)
+                    fitted_ensemble.append(est_clone)
+                except Exception as e:
+                    print(f"estimator failed to fit: {e}")
+
+            ensemble_test_results = vote_soft(estimators=fitted_ensemble, X_test=X_test)
+            ensemble_test_accuracy = accuracy_score(y_test, ensemble_test_results)
+
+            full_results.append({"task id": task_id,
+                                "run #": run_num,
+                                "num clusters": k,
+                                "individual": tpot_test_accuracy,
+                                "ensemble": ensemble_test_accuracy
+                                })
+    return full_results
+
 
 def get_ensemble_probas_parallel(estimators, X_train, y_train, cv_splits, random_state):
 
@@ -188,10 +218,9 @@ def main():
         array_id = int(os.environ["SLURM_ARRAY_TASK_ID"])
         task_id, run_num = jobs[array_id]
 
-        full_results = []
         constrained_search_space = get_pipeline_space(seed=run_num)
 
-        eval_inds_file = f'/common/hodesse/hpc_test/TPOT2_ensemble/short_40_25_eval_inds/complexity_evaluated_individuals_{task_id}_#{run_num}.pkl'
+        eval_inds_file = f'/common/hodesse/hpc_test/TPOT2_ensemble/short_40_25_eval_inds/short_complexity_evaluated_individuals_{task_id}_#{run_num}.pkl'
 
         print("task id:", task_id, "run num:", run_num)
 
@@ -216,33 +245,15 @@ def main():
                 pickle.dump(eval_inds, f)
 
         filtered_eval_inds = clean_eval_inds(eval_inds)
-        ensemble = clustering_pruning(filtered_eval_inds, X_train, y_train, run_num)
-
         tpot_test_accuracy = accuracy_score(y_test, est.predict(X_test)) if est is not None else None
-
-        ensemble_estimators = ensemble.iloc[:, 10].tolist()
-
-        # refit each estimator on full training data
-        fitted_ensemble = []
-        for est in ensemble_estimators:
-            try:
-                est_clone = clone(est)
-                est_clone.fit(X_train, y_train)
-                fitted_ensemble.append(est_clone)
-            except Exception as e:
-                print(f"estimator failed to fit: {e}")
-
-        ensemble_test_results = vote_soft(estimators=fitted_ensemble, X_test=X_test)
-        ensemble_test_accuracy = accuracy_score(y_test, ensemble_test_results)
-
-        full_results.append({"task id": task_id,
-                             "run #": run_num,
-                             "individual": tpot_test_accuracy,
-                             "ensemble": ensemble_test_accuracy
-                             })
+        
+        cluster_df = clustering_pruning(filtered_eval_inds, X_train, y_train, run_num)
+        full_results = get_clustering_ensemble_results(cluster_df, X_train, y_train, X_test, y_test, 
+                                                       task_id, run_num, tpot_test_accuracy)
+        
 
         full_results_df = pd.DataFrame(full_results)
-        full_results_df.to_csv(os.path.join(save_folder, (f'cluster_ensemble_results_{task_id}_#{run_num}.csv')), index=False)
+        full_results_df.to_csv(os.path.join(save_folder, (f'cluster_{task_id}_#{run_num}.csv')), index=False)
 
     except Exception as e:
         trace = traceback.format_exc()
