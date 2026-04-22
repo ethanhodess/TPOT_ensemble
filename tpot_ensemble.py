@@ -98,7 +98,7 @@ def clean_eval_inds(eval_inds):
 
 def clustering_pruning(filtered_eval_inds, X_train, y_train, seed):
     # number of clusters
-    k_values = [800, 600, 400, 200, 100, 50, 25, 10]
+    k_values = [5]
     cluster_df = {}
 
     X_ref = ray.put(X_train)
@@ -167,12 +167,22 @@ def greedy_forward_search(filtered_eval_inds, X_train, y_train, seed):
     
     est_cv_probas = {est: ray.get(fut) for est, fut in futures.items()}
 
+    # initial_ensemble = cluster_df[5]
+    # best_ensemble = initial_ensemble.iloc[:, 10].tolist()
+    # best_ensemble_acc = accuracy_score(y_train, combine_preds([est_cv_probas[e] for e in best_ensemble]))
+
+    # temp_ensemble = best_ensemble.copy()
+
     best_ensemble_acc = 0
     best_ensemble = []
     temp_ensemble = []
+
+    #print(f"initial ensemble CV acc: {best_ensemble_acc:.4f}")
+
     for i in range(len(filtered_eval_inds)):
         best_candidate = None
         best_candidate_acc = 0
+        temp_ensemble = best_ensemble.copy()
 
         # bagged selection (50% of candidates eligible each step)
         subset = random.sample(estimators, k=len(estimators)//2)
