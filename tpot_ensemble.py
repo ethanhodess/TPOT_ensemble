@@ -72,9 +72,9 @@ def _ray_get_preds(i, filtered_eval_inds, X_train, y_train, seed):
 
 
 @ray.remote
-def _ray_get_probas(estimator, X_train, y_train, cv_splits, random_state):
+def _ray_get_probas(estimator, X_train, y_train, seed):
     # run full CV probas (for ensemble step)
-    return get_cv_probas(estimator, X_train, y_train, cv_splits, random_state)
+    return get_cv_probas(estimator, X_train, y_train, cv_splits=3, random_state=seed + 105)
 
 
 def clean_eval_inds(eval_inds):
@@ -155,16 +155,55 @@ def get_clustering_ensemble_results(cluster_df, X_train, y_train, X_test, y_test
                                 })
     return full_results
 
-
-def get_ensemble_probas_parallel(estimators, X_train, y_train, cv_splits, random_state):
-
+def greedy_forward_search(filtered_eval_inds, X_train, y_train, seed):
     X_ref = ray.put(X_train)
     y_ref = ray.put(y_train)
 
-    futures = [
-        _ray_get_probas.remote(est, X_ref, y_ref, cv_splits, random_state) for est in estimators
-    ]
-    return ray.get(futures)
+    estimators = filtered_eval_inds.iloc[:, 10].tolist()
+   
+    futures = {
+        est: _ray_get_probas.remote(ray.put(est), X_ref, y_ref, seed) for est in estimators
+    }
+    
+    est_cv_probas = {est: ray.get(fut) for est, fut in futures.items()}
+
+    best_ensemble_acc = 0
+    best_ensemble = []
+    temp_ensemble = []
+    for i in range(len(filtered_eval_inds)):
+        best_candidate = None
+        best_candidate_acc = 0
+
+        # bagged selection (50% of candidates eligible each step)
+        subset = random.sample(estimators, k=len(estimators)//2)
+        for est in subset:
+
+            # test ensemble CV accuracy when each candidate is added
+            candidate_probas = [est_cv_probas[e] for e in best_ensemble + [est]]
+            temp_preds = combine_preds(candidate_probas)
+            temp_acc = accuracy_score(y_train, temp_preds)
+
+            if temp_acc > best_candidate_acc:
+                best_candidate = est
+                best_candidate_acc = temp_acc
+        
+        print(f"ensemble acc changes to {best_candidate_acc:.4f}")
+        temp_ensemble.append(best_candidate)
+        temp_ensemble_probas = [est_cv_probas[e] for e in temp_ensemble]
+        temp_ensemble_preds = combine_preds(temp_ensemble_probas)
+        temp_ensemble_acc = accuracy_score(y_train, temp_ensemble_preds)
+
+        if(temp_ensemble_acc > best_ensemble_acc):
+            best_ensemble_acc = temp_ensemble_acc
+            best_ensemble = temp_ensemble.copy()
+
+    print(f"FINAL best ensemble CV acc: {best_ensemble_acc:.4f}")
+    print(f"FINAL ensemble size: {len(best_ensemble)}")
+
+    best_ensemble = [est.fit(X_train, y_train) for est in best_ensemble]
+    return best_ensemble
+
+
 
 def vote_soft(estimators, X_test, weights=None):
     probas = np.stack([est.predict_proba(X_test) for est in estimators])
@@ -220,7 +259,9 @@ def main():
 
         constrained_search_space = get_pipeline_space(seed=run_num)
 
-        eval_inds_file = f'/common/hodesse/hpc_test/TPOT2_ensemble/short_40_25_eval_inds/short_complexity_evaluated_individuals_{task_id}_#{run_num}.pkl'
+        full_results = []
+
+        eval_inds_file = f'/common/hodesse/hpc_test/TPOT2_ensemble/short_40_25_eval_inds/complexity_evaluated_individuals_{task_id}_#{run_num}.pkl'
 
         print("task id:", task_id, "run num:", run_num)
 
@@ -241,16 +282,28 @@ def main():
             eval_inds = est.evaluated_individuals
             
             # save the evaluated individuals
-            with open((f'complexity_evaluated_individuals_{task_id}_#{run_num}.pkl'), "wb") as f:
+            with open((f'short_complexity_evaluated_individuals_{task_id}_#{run_num}.pkl'), "wb") as f:
                 pickle.dump(eval_inds, f)
 
         filtered_eval_inds = clean_eval_inds(eval_inds)
         tpot_test_accuracy = accuracy_score(y_test, est.predict(X_test)) if est is not None else None
         
-        cluster_df = clustering_pruning(filtered_eval_inds, X_train, y_train, run_num)
-        full_results = get_clustering_ensemble_results(cluster_df, X_train, y_train, X_test, y_test, 
-                                                       task_id, run_num, tpot_test_accuracy)
-        
+        # clustering step
+        # cluster_df = clustering_pruning(filtered_eval_inds, X_train, y_train, run_num)
+        # full_results = get_clustering_ensemble_results(cluster_df, X_train, y_train, X_test, y_test, 
+        #                                                task_id, run_num, tpot_test_accuracy)
+
+
+        best_ensemble = greedy_forward_search(filtered_eval_inds, X_train, y_train, run_num)
+        ensemble_test_results = vote_soft(estimators=best_ensemble, X_test=X_test)
+        ensemble_test_accuracy = accuracy_score(y_test, ensemble_test_results)
+
+        full_results.append({"task id": task_id,
+                            "run #": run_num,
+                            #"num clusters": k,
+                            "individual": tpot_test_accuracy,
+                            "ensemble": ensemble_test_accuracy
+                            })
 
         full_results_df = pd.DataFrame(full_results)
         full_results_df.to_csv(os.path.join(save_folder, (f'cluster_{task_id}_#{run_num}.csv')), index=False)
