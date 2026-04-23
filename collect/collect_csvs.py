@@ -16,4 +16,4 @@ for f in files[1:]:
     dfs.append(df)
 
 final_df = pd.concat(dfs, ignore_index=True)
-final_df.to_csv("fixed_greedy_ensembles.csv", index=False)
+final_df.to_csv("cluster_greedy_ensembles.csv", index=False)

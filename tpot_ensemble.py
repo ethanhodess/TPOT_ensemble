@@ -155,7 +155,7 @@ def get_clustering_ensemble_results(cluster_df, X_train, y_train, X_test, y_test
                                 })
     return full_results
 
-def greedy_forward_search(filtered_eval_inds, X_train, y_train, seed):
+def greedy_forward_search(filtered_eval_inds, X_train, y_train, cluster_df, seed):
     X_ref = ray.put(X_train)
     y_ref = ray.put(y_train)
 
@@ -167,17 +167,22 @@ def greedy_forward_search(filtered_eval_inds, X_train, y_train, seed):
     
     est_cv_probas = {est: ray.get(fut) for est, fut in futures.items()}
 
-    # initial_ensemble = cluster_df[5]
-    # best_ensemble = initial_ensemble.iloc[:, 10].tolist()
-    # best_ensemble_acc = accuracy_score(y_train, combine_preds([est_cv_probas[e] for e in best_ensemble]))
+    # remove bad estimators (pipeline failed during CV)
+    failed = [est for est, probas in est_cv_probas.items() if np.all(probas == 0)]
+    if failed:
+        print(f"dropping {len(failed)} estimators with failed CV probas")
+    est_cv_probas = {est: probas for est, probas in est_cv_probas.items() if not np.all(probas == 0)}
+    estimators = list(est_cv_probas.keys())
 
-    # temp_ensemble = best_ensemble.copy()
+    initial_ensemble = cluster_df[5]
+    best_ensemble = initial_ensemble.iloc[:, 10].tolist()
+    best_ensemble_acc = accuracy_score(y_train, combine_preds([est_cv_probas[e] for e in best_ensemble]))
 
-    best_ensemble_acc = 0
-    best_ensemble = []
-    temp_ensemble = []
+    # best_ensemble_acc = 0
+    # best_ensemble = []
+    # temp_ensemble = []
 
-    #print(f"initial ensemble CV acc: {best_ensemble_acc:.4f}")
+    print(f"initial ensemble CV acc: {best_ensemble_acc:.4f}")
 
     for i in range(len(filtered_eval_inds)):
         best_candidate = None
@@ -299,12 +304,12 @@ def main():
         tpot_test_accuracy = accuracy_score(y_test, est.predict(X_test)) if est is not None else None
         
         # clustering step
-        # cluster_df = clustering_pruning(filtered_eval_inds, X_train, y_train, run_num)
+        cluster_df = clustering_pruning(filtered_eval_inds, X_train, y_train, run_num)
         # full_results = get_clustering_ensemble_results(cluster_df, X_train, y_train, X_test, y_test, 
         #                                                task_id, run_num, tpot_test_accuracy)
 
 
-        best_ensemble = greedy_forward_search(filtered_eval_inds, X_train, y_train, run_num)
+        best_ensemble = greedy_forward_search(filtered_eval_inds, X_train, y_train, cluster_df, run_num)
         ensemble_test_results = vote_soft(estimators=best_ensemble, X_test=X_test)
         ensemble_test_accuracy = accuracy_score(y_test, ensemble_test_results)
 
@@ -316,7 +321,7 @@ def main():
                             })
 
         full_results_df = pd.DataFrame(full_results)
-        full_results_df.to_csv(os.path.join(save_folder, (f'cluster_{task_id}_#{run_num}.csv')), index=False)
+        full_results_df.to_csv(os.path.join(save_folder, (f'cluster_greedy_{task_id}_#{run_num}.csv')), index=False)
 
     except Exception as e:
         trace = traceback.format_exc()
