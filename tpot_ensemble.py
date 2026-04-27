@@ -14,6 +14,8 @@ import ray
 
 from sklearn.model_selection import StratifiedKFold
 from sklearn.cluster import KMeans
+from sklearn.cluster import HDBSCAN
+from sklearn.decomposition import PCA
 from sklearn.metrics import (roc_auc_score, accuracy_score)
 from sklearn.base import clone
 
@@ -97,9 +99,6 @@ def clean_eval_inds(eval_inds):
 #     return best_individual_est, best_individual_acc
 
 def clustering_pruning(filtered_eval_inds, X_train, y_train, seed):
-    # number of clusters
-    k_values = [5]
-    cluster_df = {}
 
     X_ref = ray.put(X_train)
     y_ref = ray.put(y_train)
@@ -111,23 +110,34 @@ def clustering_pruning(filtered_eval_inds, X_train, y_train, seed):
     
     results = ray.get(futures)
     preds_matrix = np.array(results)
+    del results
 
-    for k in k_values:
-        kmeans = KMeans(n_clusters=k, random_state=seed+210, n_init="auto")
-        labels = kmeans.fit_predict(preds_matrix)
+    # pca = PCA(n_components=min(50, preds_matrix.shape[0], preds_matrix.shape[1]), random_state=seed)
+    # reduced = pca.fit_transform(preds_matrix)
+    
+    clusterer = HDBSCAN(min_cluster_size=10)
+    labels = clusterer.fit_predict(preds_matrix)
+    n_clusters = len(set(labels)) - (1 if -1 in labels else 0)
+    del preds_matrix
 
-        # pick one per cluster
-        cluster_chosen = []
-        for c in range(k):
-            cluster_idx = np.where(labels == c)[0]
-            if len(cluster_idx) == 0:
-                continue
-            cluster_models = filtered_eval_inds.iloc[cluster_idx]
-            best_in_cluster = cluster_models.loc[cluster_models["roc_auc_score"].idxmax()]
-            cluster_chosen.append(best_in_cluster)
-        cluster_df[k] = pd.DataFrame(cluster_chosen)
+    # pick one per cluster
+    cluster_chosen = []
+    for c in range(n_clusters):
+        cluster_idx = np.where(labels == c)[0]
+        if len(cluster_idx) == 0:
+            continue
+        cluster_models = filtered_eval_inds.iloc[cluster_idx]
+        best_in_cluster = cluster_models.loc[cluster_models["roc_auc_score"].idxmax()]
+        cluster_chosen.append(best_in_cluster)
 
-    return cluster_df
+    # all noise points as additional initialization candidates
+    # noise_idx = np.where(labels == -1)[0]
+    # for i in noise_idx:
+    #     cluster_chosen.append(filtered_eval_inds.iloc[i])
+    print("length of clustered:", len(cluster_chosen))
+
+    return {-1: pd.DataFrame(cluster_chosen)}
+
 
 def get_clustering_ensemble_results(cluster_df, X_train, y_train, X_test, y_test, task_id, run_num, tpot_test_accuracy):
     full_results = []
@@ -174,7 +184,7 @@ def greedy_forward_search(filtered_eval_inds, X_train, y_train, cluster_df, seed
     est_cv_probas = {est: probas for est, probas in est_cv_probas.items() if not np.all(probas == 0)}
     estimators = list(est_cv_probas.keys())
 
-    initial_ensemble = cluster_df[5]
+    initial_ensemble = cluster_df[-1]
     best_ensemble = initial_ensemble.iloc[:, 10].tolist()
     best_ensemble_acc = accuracy_score(y_train, combine_preds([est_cv_probas[e] for e in best_ensemble]))
 
@@ -184,7 +194,7 @@ def greedy_forward_search(filtered_eval_inds, X_train, y_train, cluster_df, seed
 
     print(f"initial ensemble CV acc: {best_ensemble_acc:.4f}")
 
-    for i in range(len(filtered_eval_inds)):
+    for i in range(50):
         best_candidate = None
         best_candidate_acc = 0
         temp_ensemble = best_ensemble.copy()
@@ -276,7 +286,7 @@ def main():
 
         full_results = []
 
-        eval_inds_file = f'/common/hodesse/hpc_test/TPOT2_ensemble/short_40_25_eval_inds/complexity_evaluated_individuals_{task_id}_#{run_num}.pkl'
+        eval_inds_file = f'/common/hodesse/hpc_test/TPOT2_ensemble/DELETE/short_40_25_eval_inds/complexity_evaluated_individuals_{task_id}_#{run_num}.pkl'
 
         print("task id:", task_id, "run num:", run_num)
 
@@ -291,13 +301,13 @@ def main():
                 eval_inds = pickle.load(f)
             est = None
         else:
-            est = tpot.TPOTEstimator(search_space=constrained_search_space, generations=40, population_size=25, cv=5, n_jobs=n_jobs, max_time_mins=None,
+            est = tpot.TPOTEstimator(search_space=constrained_search_space, generations=20, population_size=25, cv=5, n_jobs=n_jobs, max_time_mins=None,
                                      random_state=run_num, verbose=2, classification=True, scorers=['roc_auc_ovr', tpot.objectives.complexity_scorer], scorers_weights=[1, -1])
             est.fit(X_train, y_train)
             eval_inds = est.evaluated_individuals
             
             # save the evaluated individuals
-            with open((f'short_complexity_evaluated_individuals_{task_id}_#{run_num}.pkl'), "wb") as f:
+            with open((f'500_evaluated_individuals_{task_id}_#{run_num}.pkl'), "wb") as f:
                 pickle.dump(eval_inds, f)
 
         filtered_eval_inds = clean_eval_inds(eval_inds)
