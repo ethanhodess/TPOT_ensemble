@@ -261,9 +261,9 @@ def main():
         y_test  = le.transform(y_test)
 
         
-        # tpot run (50x40) and ES on full 2000 and ES on top 100
+        # random run (0x2000) and ES on full 2000 and ES on top 100
 
-        est = tpot.TPOTEstimator(search_space=constrained_search_space, generations=50, population_size=40, cv=5, n_jobs=n_jobs, max_time_mins=None,
+        est = tpot.TPOTEstimator(search_space=constrained_search_space, generations=0, population_size=2000, cv=5, n_jobs=n_jobs, max_time_mins=None,
                                  random_state=run_num, verbose=2, classification=True, scorers=['roc_auc_ovr', tpot.objectives.complexity_scorer], scorers_weights=[1, -1])
         est.fit(X_train, y_train)
         eval_inds = est.evaluated_individuals
@@ -275,36 +275,36 @@ def main():
         top100 = filtered_eval_inds.nlargest(100, "roc_auc_score")
 
         # ensemble selection
-        ensemble_tpot_2000 = greedy_forward_search(filtered_eval_inds, X_train, y_train, run_num)
-        ensemble_tpot_100 = greedy_forward_search(top100, X_train, y_train, run_num)
+        ensemble_random_2000 = greedy_forward_search(filtered_eval_inds, X_train, y_train, run_num)
+        ensemble_random_100 = greedy_forward_search(top100, X_train, y_train, run_num)
 
         # get probas and convert to auroc score
-        ensemble_tpot_test_proba_2000 = vote_soft_proba(estimators=ensemble_tpot_2000, X_test=X_test)
+        ensemble_random_test_proba_2000 = vote_soft_proba(estimators=ensemble_random_2000, X_test=X_test)
 
         if len(np.unique(y_test)) == 2:
-            ensemble_tpot_test_auroc_2000 = roc_auc_score(
+            ensemble_random_test_auroc_2000 = roc_auc_score(
                 y_test,
-                ensemble_tpot_test_proba_2000[:, 1]
+                ensemble_random_test_proba_2000[:, 1]
             )
         else:
-            ensemble_tpot_test_auroc_2000 = roc_auc_score(
+            ensemble_random_test_auroc_2000 = roc_auc_score(
                 y_test,
-                ensemble_tpot_test_proba_2000,
+                ensemble_random_test_proba_2000,
                 multi_class="ovr",
                 average="macro"
             )
 
-        ensemble_tpot_test_proba_100 = vote_soft_proba(estimators=ensemble_tpot_100, X_test=X_test)
+        ensemble_random_test_proba_100 = vote_soft_proba(estimators=ensemble_random_100, X_test=X_test)
 
         if len(np.unique(y_test)) == 2:
-            ensemble_tpot_test_auroc_100 = roc_auc_score(
+            ensemble_random_test_auroc_100 = roc_auc_score(
                 y_test,
-                ensemble_tpot_test_proba_100[:, 1]
+                ensemble_random_test_proba_100[:, 1]
             )
         else:
-            ensemble_tpot_test_auroc_100 = roc_auc_score(
+            ensemble_random_test_auroc_100 = roc_auc_score(
                 y_test,
-                ensemble_tpot_test_proba_100,
+                ensemble_random_test_proba_100,
                 multi_class="ovr",
                 average="macro"
             )
@@ -314,8 +314,8 @@ def main():
         full_results.append({"task id": task_id,
                             "run #": run_num,
                             "individual_tpot": individual_score,
-                            "ensemble_tpot_2000": ensemble_tpot_test_auroc_2000,
-                            "ensemble_tpot_100": ensemble_tpot_test_auroc_100,
+                            "ensemble_random_2000": ensemble_random_test_auroc_2000,
+                            "ensemble_random_100": ensemble_random_test_auroc_100,
                             })
 
         full_results_df = pd.DataFrame(full_results)
