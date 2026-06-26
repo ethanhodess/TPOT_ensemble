@@ -115,7 +115,8 @@ def clustering_pruning(filtered_eval_inds, X_train, y_train, seed):
     # pca = PCA(n_components=min(50, preds_matrix.shape[0], preds_matrix.shape[1]), random_state=seed)
     # reduced = pca.fit_transform(preds_matrix)
     
-    clusterer = HDBSCAN(min_cluster_size=10)
+    #clusterer = HDBSCAN(min_cluster_size=10)
+    clusterer = HDBSCAN()
     labels = clusterer.fit_predict(preds_matrix)
     n_clusters = len(set(labels)) - (1 if -1 in labels else 0)
     del preds_matrix
@@ -131,9 +132,10 @@ def clustering_pruning(filtered_eval_inds, X_train, y_train, seed):
         cluster_chosen.append(best_in_cluster)
 
     # all noise points as additional initialization candidates
-    # noise_idx = np.where(labels == -1)[0]
-    # for i in noise_idx:
-    #     cluster_chosen.append(filtered_eval_inds.iloc[i])
+    noise_idx = np.where(labels == -1)[0]
+    for i in noise_idx:
+        cluster_chosen.append(filtered_eval_inds.iloc[i])
+
     print("length of clustered:", len(cluster_chosen))
 
     return {-1: pd.DataFrame(cluster_chosen)}
@@ -165,11 +167,11 @@ def get_clustering_ensemble_results(cluster_df, X_train, y_train, X_test, y_test
                                 })
     return full_results
 
-def greedy_forward_search(filtered_eval_inds, X_train, y_train, cluster_df, seed):
+def greedy_forward_search(filtered_eval_inds, X_train, y_train, seed):
     X_ref = ray.put(X_train)
     y_ref = ray.put(y_train)
 
-    estimators = filtered_eval_inds.iloc[:, 10].tolist()
+    estimators = filtered_eval_inds[-1].iloc[:, 10].tolist()
    
     futures = {
         est: _ray_get_probas.remote(ray.put(est), X_ref, y_ref, seed) for est in estimators
@@ -184,24 +186,24 @@ def greedy_forward_search(filtered_eval_inds, X_train, y_train, cluster_df, seed
     est_cv_probas = {est: probas for est, probas in est_cv_probas.items() if not np.all(probas == 0)}
     estimators = list(est_cv_probas.keys())
 
-    initial_ensemble = cluster_df[-1]
-    best_ensemble = initial_ensemble.iloc[:, 10].tolist()
-    best_ensemble_acc = accuracy_score(y_train, combine_preds([est_cv_probas[e] for e in best_ensemble]))
+    # initial_ensemble = cluster_df[-1]
+    # best_ensemble = initial_ensemble.iloc[:, 10].tolist()
+    # best_ensemble_acc = accuracy_score(y_train, combine_preds([est_cv_probas[e] for e in best_ensemble]))
 
-    # best_ensemble_acc = 0
-    # best_ensemble = []
-    # temp_ensemble = []
+    best_ensemble_acc = 0
+    best_ensemble = []
+    temp_ensemble = []
 
-    print(f"initial ensemble CV acc: {best_ensemble_acc:.4f}")
+    # print(f"initial ensemble CV acc: {best_ensemble_acc:.4f}")
 
-    for i in range(50):
+    for i in range(25):
         best_candidate = None
         best_candidate_acc = 0
         temp_ensemble = best_ensemble.copy()
 
         # bagged selection (50% of candidates eligible each step)
-        subset = random.sample(estimators, k=len(estimators)//2)
-        for est in subset:
+        # subset = random.sample(estimators, k=len(estimators)//2)
+        for est in estimators:
 
             # test ensemble CV accuracy when each candidate is added
             candidate_probas = [est_cv_probas[e] for e in best_ensemble + [est]]
@@ -301,31 +303,30 @@ def main():
                 eval_inds = pickle.load(f)
             est = None
         else:
-            est = tpot.TPOTEstimator(search_space=constrained_search_space, generations=20, population_size=25, cv=5, n_jobs=n_jobs, max_time_mins=None,
-                                     random_state=run_num, verbose=2, classification=True, scorers=['roc_auc_ovr', tpot.objectives.complexity_scorer], scorers_weights=[1, -1])
+            est = tpot.TPOTEstimator(search_space=constrained_search_space, generations=5, population_size=200, cv=5, n_jobs=n_jobs, max_time_mins=None,
+                                     random_state=run_num+150, verbose=2, classification=True, scorers=['roc_auc_ovr', tpot.objectives.complexity_scorer], scorers_weights=[1, -1])
             est.fit(X_train, y_train)
             eval_inds = est.evaluated_individuals
             
             # save the evaluated individuals
-            with open((f'500_evaluated_individuals_{task_id}_#{run_num}.pkl'), "wb") as f:
+            with open((f'5_200_evaluated_individuals_{task_id}_#{run_num}.pkl'), "wb") as f:
                 pickle.dump(eval_inds, f)
 
         filtered_eval_inds = clean_eval_inds(eval_inds)
         tpot_test_accuracy = accuracy_score(y_test, est.predict(X_test)) if est is not None else None
         
         # clustering step
-        cluster_df = clustering_pruning(filtered_eval_inds, X_train, y_train, run_num)
+        # cluster_df = clustering_pruning(filtered_eval_inds, X_train, y_train, run_num)
         # full_results = get_clustering_ensemble_results(cluster_df, X_train, y_train, X_test, y_test, 
         #                                                task_id, run_num, tpot_test_accuracy)
 
 
-        best_ensemble = greedy_forward_search(filtered_eval_inds, X_train, y_train, cluster_df, run_num)
+        best_ensemble = greedy_forward_search(filtered_eval_inds, X_train, y_train, run_num)
         ensemble_test_results = vote_soft(estimators=best_ensemble, X_test=X_test)
         ensemble_test_accuracy = accuracy_score(y_test, ensemble_test_results)
 
         full_results.append({"task id": task_id,
                             "run #": run_num,
-                            #"num clusters": k,
                             "individual": tpot_test_accuracy,
                             "ensemble": ensemble_test_accuracy
                             })

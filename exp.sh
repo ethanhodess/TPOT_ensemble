@@ -10,7 +10,7 @@
 #SBATCH --mail-type=FAIL,BEGIN,END
 #SBATCH --mail-user=Ethan.Hodess@cshs.org
 #SBATCH -o ./logs/outputs/output.%j_%a.out # STDOUT
-#SBATCH --array=0-104
+#SBATCH --array=0-119
 RUN=${SLURM_ARRAY_TASK_ID:-1}
 echo “Run: ${RUN}”
 module load git/2.33.1
@@ -22,7 +22,7 @@ conda activate tpot2env
 
 
 echo RunStart
-srun -u /home/hodesse/miniconda3/envs/tpot2env/bin/python tpot_ensemble.py \
+srun -u /home/hodesse/miniconda3/envs/tpot2env/bin/python imbalanced_runs.py \
 --n_jobs 24 \
 --savepath logs \
 --num_runs ${RUN} \
