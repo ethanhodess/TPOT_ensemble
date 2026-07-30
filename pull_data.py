@@ -12,17 +12,19 @@ import pandas as pd
 
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..'))
 
-task_ids = [2073, 3945, 7593, 10090, 146818, 146820, 167120, 168350, 
-            168757, 168784, 168868, 168909, 168910, 168911, 189354, 189355, 
-            189356, 189922, 190137, 190146, 190392, 190410, 190411, 190412, 
-            211979, 211986, 359953, 359954, 359955, 359956, 359957, 359958, 
-            359959, 359960, 359961, 359962, 359963, 359964, 359965, 359966, 
-            359967, 359968, 359969, 359970, 359971, 359972, 359973, 359974, 
-            359975, 359976, 359977, 359979, 359980, 359981, 359982, 359983, 
-            359984, 359985, 359986, 359987, 359988, 359989, 359990, 359991, 
-            359992, 359993, 359994, 360112, 360113, 360114, 360975]
+# task_ids = [2073, 3945, 7593, 10090, 146818, 146820, 167120, 168350, 
+#             168757, 168784, 168868, 168909, 168910, 168911, 189354, 189355, 
+#             189356, 189922, 190137, 190146, 190392, 190410, 190411, 190412, 
+#             211979, 211986, 359953, 359954, 359955, 359956, 359957, 359958, 
+#             359959, 359960, 359961, 359962, 359963, 359964, 359965, 359966, 
+#             359967, 359968, 359969, 359970, 359971, 359972, 359973, 359974, 
+#             359975, 359976, 359977, 359979, 359980, 359981, 359982, 359983, 
+#             359984, 359985, 359986, 359987, 359988, 359989, 359990, 359991, 
+#             359992, 359993, 359994, 360112, 360113, 360114, 360975]
 
-OUTPUT_DIR = "openml_271"
+task_ids = [146818, 359955, 190146, 168757, 359956]
+
+OUTPUT_DIR = "data"
  
  
 def load_task_dataset(task):
@@ -76,15 +78,11 @@ def process_task(task_id):
     print(f"  -> Rows: {n_rows}, Columns: {n_cols}, Minority: {minority_pct:.2f}%, Majority: {majority_pct:.2f}%")
  
  
-if __name__ == "__main__":
-    array_index = int(os.environ["SLURM_ARRAY_TASK_ID"])
-    task_id = task_ids[array_index]
- 
+if __name__ == "__main__": 
     os.makedirs(OUTPUT_DIR, exist_ok=True)
-    print(f"Output directory: {OUTPUT_DIR}")
-    print(f"Array index: {array_index}, Task ID: {task_id}\n")
- 
-    try:
-        process_task(task_id)
-    except Exception as e:
-        print(f"Error processing task {task_id}: {e}")
+    print(f"Output directory: {OUTPUT_DIR}") 
+    for task_id in task_ids:
+        try:
+            process_task(task_id)
+        except Exception as e:
+            print(f"Error processing task {task_id}: {e}")

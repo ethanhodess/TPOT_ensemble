@@ -18,8 +18,14 @@ from sklearn.preprocessing import OneHotEncoder
 from sklearn.preprocessing import LabelEncoder
 from sklearn.compose import ColumnTransformer
 
+from ConfigSpace import ConfigurationSpace, Float, Categorical, Integer
+from tpot.search_spaces.pipelines import SequentialPipeline, WrapperPipeline
+from row_sample import RowSampler
+
+
 import warnings
 warnings.filterwarnings('ignore')
+
 
 # defines a constrained search space with only three steps
 def get_pipeline_space(seed):
@@ -29,6 +35,30 @@ def get_pipeline_space(seed):
         tpot.config.get_search_space(
             ["transformers", "Passthrough"], random_state=seed, base_node=EstimatorNodeGradual),
         tpot.config.get_search_space("classifiers", random_state=seed, base_node=EstimatorNodeGradual)])
+
+# custom search space with row sampling
+def get_bagging_pipeline_space(seed):
+    inner_pipeline = SequentialPipeline([
+        tpot.config.get_search_space(
+            ["selectors_classification", "Passthrough"], random_state=seed, base_node=EstimatorNodeGradual),
+        tpot.config.get_search_space(
+            ["transformers", "Passthrough"], random_state=seed, base_node=EstimatorNodeGradual),
+        tpot.config.get_search_space(
+            "classifiers", random_state=seed, base_node=EstimatorNodeGradual),
+    ])
+
+    row_sampler_configspace = ConfigurationSpace(
+        space={
+            "random_state": Integer("random_state", bounds=(0, 10_000)),
+        }
+    )
+
+    return WrapperPipeline(
+        method=RowSampler,
+        space=row_sampler_configspace,
+        estimator_search_space=inner_pipeline,
+    )
+
 
 def get_cv_predictions(estimator, X_train, y_train, cv_splits, random_state):
     cv = StratifiedKFold(n_splits=cv_splits, shuffle=True, random_state=random_state)
@@ -60,7 +90,6 @@ def get_cv_probas(estimator, X_train, y_train, cv_splits, random_state):
         except Exception as E:
             print('pipeline failed')       
     return cv_probas
-
 
 
 def clean_eval_inds(eval_inds):
@@ -157,23 +186,8 @@ def combine_probas(proba_list, weights=None):
 
 
 def main():
-    parser = argparse.ArgumentParser()
-    # number of threads
-    parser.add_argument("-n", "--n_jobs", default=30,
-                        required=False, nargs='?')
-    # where to save the results/models
-    parser.add_argument("-s", "--savepath",
-                        default="results_tables", required=False, nargs='?')
-    # number of total runs for each experiment
-    parser.add_argument("-r", "--num_runs", default=1,
-                        required=False, nargs='?')
-    args = parser.parse_args()
-    n_jobs = int(args.n_jobs)
-    base_save_folder = args.savepath
-    num_runs = int(args.num_runs)
-
-    save_folder = base_save_folder
-
+    save_folder = "logs"
+    
     def compute_auroc(model, X_test, y_test):
         y_proba = model.predict_proba(X_test)
         n_classes = len(np.unique(y_test))
@@ -188,143 +202,110 @@ def main():
                 average="macro"
             )
 
-
     try:
 
-        task_ids = [
-            # binary
-            359975, 146820, 190137, 359958, 359966, 359968, 359962,
-            359955, 190411, 168350, 168757, 359956, 190412, 146818,
-            359967, 359965, 189922, 190392, 168911, 190410, 359972,
-            359973,
-            # multiclass
-            359960, 359974, 2073, 168784, 359969, 359964, 359970,
-            168910, 359959, 359953, 190146, 359961, 10090, 359963,
-            359957,
-        ]
+        task_ids = [146818, 359955, 190146, 168757, 359956]
         
-        num_runs = 21
+        num_runs = 3
 
-        jobs = [(tid, run) for tid in task_ids for run in range(num_runs)]
 
-        array_id = int(os.environ["SLURM_ARRAY_TASK_ID"])
-        task_id, run_num = jobs[array_id]
+        for task_id in task_ids:
+            for i in range(num_runs):
 
-        constrained_search_space = get_pipeline_space(seed=run_num)
-        
-        full_results = []
+                constrained_search_space = get_bagging_pipeline_space(seed=i)
 
-        print("task id:", task_id, "run num:", run_num)
+                full_results = []
 
-        # load the data
-        data = pd.read_csv(f'/common/hodesse/hpc_test/TPOTElites/openml_271/task_{task_id}.csv')
-        with open(f'/common/hodesse/hpc_test/TPOTElites/openml_271/task_{task_id}_categorical_indicator.pkl', "rb") as f:
-            cat_ind = pickle.load(f)
+                print("task id:", task_id, "run num:", i)
 
-        data.columns = data.columns.str.strip().str.lower()
+                # load the data
+                data = pd.read_csv(f'/Users/ethanhodess/Documents/Documents - Ethan’s MacBook Pro/Cedars/2025/TPOT_ensemble/data/task_{task_id}.csv')
+                with open(f'/Users/ethanhodess/Documents/Documents - Ethan’s MacBook Pro/Cedars/2025/TPOT_ensemble/data/task_{task_id}_categorical_indicator.pkl', "rb") as f:
+                    cat_ind = pickle.load(f)
 
-        y = data.iloc[:, -1]
-        X = data.iloc[:, :-1]   
+                data.columns = data.columns.str.strip().str.lower()
 
-        if len(cat_ind) == data.shape[1]:
-            cat_ind = cat_ind[:-1]
+                y = data.iloc[:, -1]
+                X = data.iloc[:, :-1]   
 
-        assert len(cat_ind) == X.shape[1]
+                if len(cat_ind) == data.shape[1]:
+                    cat_ind = cat_ind[:-1]
 
-        cat_cols = X.columns[cat_ind]
-        num_cols = X.columns.difference(cat_cols)
-        
-        X_train, X_test, y_train, y_test = train_test_split(
-            X, y, test_size=0.2,
-            random_state=run_num, stratify=y
-        )
+                assert len(cat_ind) == X.shape[1]
 
-        preprocessor = ColumnTransformer(
-            transformers=[
-                ("cat", OneHotEncoder(handle_unknown="ignore", sparse_output=False), cat_cols),
-                ("num", "passthrough", num_cols),
-            ]
-        )
+                cat_cols = X.columns[cat_ind]
+                num_cols = X.columns.difference(cat_cols)
+                
+                X_train, X_test, y_train, y_test = train_test_split(
+                    X, y, test_size=0.2,
+                    random_state=i, stratify=y
+                )
 
-        X_train = preprocessor.fit_transform(X_train)
-        X_test  = preprocessor.transform(X_test)
+                preprocessor = ColumnTransformer(
+                    transformers=[
+                        ("cat", OneHotEncoder(handle_unknown="ignore", sparse_output=False), cat_cols),
+                        ("num", "passthrough", num_cols),
+                    ]
+                )
 
-        y_train = y_train.to_numpy()
-        y_test  = y_test.to_numpy()
+                X_train = preprocessor.fit_transform(X_train)
+                X_test  = preprocessor.transform(X_test)
 
-        le = LabelEncoder()
-        y_train = le.fit_transform(y_train)
-        y_test  = le.transform(y_test)
+                y_train = y_train.to_numpy()
+                y_test  = y_test.to_numpy()
 
-        
-        # random run (0x2000) and ES on full 2000 and ES on top 100
+                le = LabelEncoder()
+                y_train = le.fit_transform(y_train)
+                y_test  = le.transform(y_test)
 
-        est = tpot.TPOTEstimator(search_space=constrained_search_space, generations=0, population_size=2000, cv=5, n_jobs=n_jobs, max_time_mins=None,
-                                 random_state=run_num, verbose=2, classification=True, scorers=['roc_auc_ovr', tpot.objectives.complexity_scorer], scorers_weights=[1, -1])
-        est.fit(X_train, y_train)
-        eval_inds = est.evaluated_individuals
+                
+                # tpot run and ES 
 
-        individual_score = compute_auroc(est, X_test, y_test)
-            
+                est = tpot.TPOTEstimator(search_space=constrained_search_space, generations=5, population_size=10, cv=5, max_time_mins=None,
+                                        random_state=i, verbose=2, classification=True, scorers=['roc_auc_ovr', tpot.objectives.complexity_scorer], scorers_weights=[1, -1])
+                est.fit(X_train, y_train)
+                eval_inds = est.evaluated_individuals
 
-        filtered_eval_inds = clean_eval_inds(eval_inds)
-        top100 = filtered_eval_inds.nlargest(100, "roc_auc_score")
+                individual_score = compute_auroc(est, X_test, y_test)
+                    
 
-        # ensemble selection
-        # ensemble_random_2000 = greedy_forward_search(filtered_eval_inds, X_train, y_train, run_num)
-        ensemble_random_100 = greedy_forward_search(top100, X_train, y_train, run_num)
+                filtered_eval_inds = clean_eval_inds(eval_inds)
+                top100 = filtered_eval_inds.nlargest(100, "roc_auc_score")
 
-        # get probas and convert to auroc score
-        # ensemble_random_test_proba_2000 = vote_soft_proba(estimators=ensemble_random_2000, X_test=X_test)
+                # ensemble selection
+                ensemble_tpot_100 = greedy_forward_search(top100, X_train, y_train, i)
 
-        # if len(np.unique(y_test)) == 2:
-        #     ensemble_random_test_auroc_2000 = roc_auc_score(
-        #         y_test,
-        #         ensemble_random_test_proba_2000[:, 1]
-        #     )
-        # else:
-        #     ensemble_random_test_auroc_2000 = roc_auc_score(
-        #         y_test,
-        #         ensemble_random_test_proba_2000,
-        #         multi_class="ovr",
-        #         average="macro"
-        #     )
+                ensemble_tpot_test_proba_100 = vote_soft_proba(estimators=ensemble_tpot_100, X_test=X_test)
 
-        ensemble_random_test_proba_100 = vote_soft_proba(estimators=ensemble_random_100, X_test=X_test)
+                if len(np.unique(y_test)) == 2:
+                    ensemble_tpot_test_auroc_100 = roc_auc_score(
+                        y_test,
+                        ensemble_tpot_test_proba_100[:, 1]
+                    )
+                else:
+                    ensemble_tpot_test_auroc_100 = roc_auc_score(
+                        y_test,
+                        ensemble_tpot_test_proba_100,
+                        multi_class="ovr",
+                        average="macro"
+                    )
 
-        if len(np.unique(y_test)) == 2:
-            ensemble_random_test_auroc_100 = roc_auc_score(
-                y_test,
-                ensemble_random_test_proba_100[:, 1]
-            )
-        else:
-            ensemble_random_test_auroc_100 = roc_auc_score(
-                y_test,
-                ensemble_random_test_proba_100,
-                multi_class="ovr",
-                average="macro"
-            )
+                full_results.append({"task id": task_id,
+                                    "run #": i,
+                                    "individual_tpot": individual_score,
+                                    "ensemble_tpot_100": ensemble_tpot_test_auroc_100,
+                                    })
 
-        
-        full_results.append({"task id": task_id,
-                            "run #": run_num,
-                            "individual_tpot": individual_score,
-                            # "ensemble_random_2000": ensemble_random_test_auroc_2000,
-                            "ensemble_random_100": ensemble_random_test_auroc_100,
-                            })
-
-        full_results_df = pd.DataFrame(full_results)
-        full_results_df.to_csv(os.path.join(save_folder, (f'random_run_{task_id}_#{run_num}.csv')), index=False)
+                full_results_df = pd.DataFrame(full_results)
+                full_results_df.to_csv(os.path.join(save_folder, (f'tpot_run_{task_id}_#{i}.csv')), index=False)
 
     except Exception as e:
         trace = traceback.format_exc()
-        pipeline_failure_dict = {"task_id": task_id,
-                                 "run": num_runs, "error": str(e), "trace": trace}
+        pipeline_failure_dict = {"task_id": task_id, "run": num_runs, "error": str(e), "trace": trace}
         print("failed on ")
         print(save_folder)
         print(e)
         print(trace)
-
 
 
 if __name__ == '__main__':

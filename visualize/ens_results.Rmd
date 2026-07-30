@@ -1,0 +1,340 @@
+---
+title: 'Analysis '
+author: "Anonymous"
+date: "`r Sys.Date()`"
+output:
+  pdf_document: default
+  bookdown::pdf_book: default
+geometry: margin=2cm
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE,
+  warning = FALSE,
+  message = FALSE,
+  fig.width = 10,
+  fig.height = 5,
+  fig.align = 'center'
+)
+```
+
+```{r load-libraries, include=FALSE}
+rm(list = ls())
+library(ggplot2)
+library(cowplot)
+library(dplyr)
+library(PupillometryR)
+library(ggpubr)
+library(knitr)
+library(ggforce)
+library(tidyr)
+library(rstatix)
+```
+
+```{r theme-setup, include=FALSE}
+# Define conditions and visual parameters
+CONDITIONS <- c('EA', 'TPEC', 'BO')
+SHAPE <- c(21, 21, 21)
+cb_palette <- c('#648FFF','#DC267F', '#FFB000')
+TSIZE <- 17
+
+# Theme for plots
+p_theme <- theme(
+  plot.title = element_text(face = "bold", hjust=0.5),
+  panel.border = element_blank(),
+  panel.grid.minor = element_blank(),
+  axis.title = element_text(size=17),
+  axis.text = element_text(size=11),
+  axis.text.y = element_text(angle = 90, hjust = 0.5),
+  legend.position = "none",
+  panel.background = element_rect(fill = "#f1f2f5",
+                                  colour = "white",
+                                  size = 0.5, linetype = "solid")
+)
+```
+
+```{r load-data, include=FALSE}
+data_dir = '/Users/ethanhodess/Documents/Documents - Ethan’s MacBook Pro/Cedars/2025/TPOT_ensemble/collect/'
+full_data <- read.csv(paste(data_dir, '500_imbalanced_balacc.csv', sep = "", collapse = NULL), header = TRUE, stringsAsFactors = FALSE)
+```
+
+TPOT best individual vs ensemble run with 500 pipeline evaluations. 
+
+Top 5 imbalanced datasets from PMLB.
+
+Ensemble initialized [] with greedy forward search across HDBSCAN cluster representatives and noise points.
+
+
+# Task allbp
+
+## Testing Balanced Accuracy
+```{r task-allbp-test-plot, out.width="100%"}
+plot_df <- full_data %>%
+  filter(task.id == "allbp") %>%
+  select(individual, ensemble) %>%
+  pivot_longer(
+    cols = c(individual, ensemble),
+    names_to = "type",
+    values_to = "accuracy"
+  ) 
+
+model_accuracy <- ggplot(
+  plot_df,
+  aes(x = type, y = accuracy, fill = type)
+) +
+  geom_flat_violin(
+    position = position_nudge(x = 0.1),
+    scale = "width",
+    alpha = 0.2,
+    width = 1.5
+  ) +
+  geom_boxplot(
+    color = "black",
+    width = 0.08,
+    outlier.shape = NA,
+    alpha = 0.0,
+    size = 0.8,
+    position = position_nudge(x = 0.15)
+  ) +
+  geom_point(
+    position = position_jitter(width = 0.015, height = 0.0001),
+    size = 1.0,
+    alpha = 1.0
+  ) +
+  p_theme +
+  labs(
+    title = "Individual vs Ensemble (Task allbp)",
+    x = "",
+    y = "Accuracy"
+  ) +
+  theme(
+    legend.position = "none",
+    plot.title = element_text(hjust = 0.5)
+  ) 
+
+model_accuracy
+```
+
+
+# Task allhyper
+
+## Testing Balanced Accuracy
+```{r task-allhyper-test-plot, out.width="100%"}
+plot_df <- full_data %>%
+  filter(task.id == "allhyper") %>%
+  select(individual, ensemble) %>%
+  pivot_longer(
+    cols = c(individual, ensemble),
+    names_to = "type",
+    values_to = "accuracy"
+  ) 
+
+model_accuracy <- ggplot(
+  plot_df,
+  aes(x = type, y = accuracy, fill = type)
+) +
+  geom_flat_violin(
+    position = position_nudge(x = 0.1),
+    scale = "width",
+    alpha = 0.2,
+    width = 1.5
+  ) +
+  geom_boxplot(
+    color = "black",
+    width = 0.08,
+    outlier.shape = NA,
+    alpha = 0.0,
+    size = 0.8,
+    position = position_nudge(x = 0.15)
+  ) +
+  geom_point(
+    position = position_jitter(width = 0.015, height = 0.0001),
+    size = 1.0,
+    alpha = 1.0
+  ) +
+  p_theme +
+  labs(
+    title = "Individual vs Ensemble (Task allhyper)",
+    x = "",
+    y = "Accuracy"
+  ) +
+  theme(
+    legend.position = "none",
+    plot.title = element_text(hjust = 0.5)
+  ) 
+
+model_accuracy
+```
+
+# Task allrep
+
+## Testing Balanced Accuracy
+```{r task-allrep-test-plot, out.width="100%"}
+plot_df <- full_data %>%
+  filter(task.id == "allrep") %>%
+  select(individual, ensemble) %>%
+  pivot_longer(
+    cols = c(individual, ensemble),
+    names_to = "type",
+    values_to = "accuracy"
+  ) 
+
+model_accuracy <- ggplot(
+  plot_df,
+  aes(x = type, y = accuracy, fill = type)
+) +
+  geom_flat_violin(
+    position = position_nudge(x = 0.1),
+    scale = "width",
+    alpha = 0.2,
+    width = 1.5
+  ) +
+  geom_boxplot(
+    color = "black",
+    width = 0.08,
+    outlier.shape = NA,
+    alpha = 0.0,
+    size = 0.8,
+    position = position_nudge(x = 0.15)
+  ) +
+  geom_point(
+    position = position_jitter(width = 0.015, height = 0.0001),
+    size = 1.0,
+    alpha = 1.0
+  ) +
+  p_theme +
+  labs(
+    title = "Individual vs Ensemble (Task allrep)",
+    x = "",
+    y = "Accuracy"
+  ) +
+  theme(
+    legend.position = "none",
+    plot.title = element_text(hjust = 0.5)
+  ) 
+
+model_accuracy
+```
+
+
+# Task dis
+
+## Testing Balanced Accuracy
+```{r task-dis-test-plot, out.width="100%"}
+plot_df <- full_data %>%
+  filter(task.id == "dis") %>%
+  select(individual, ensemble) %>%
+  pivot_longer(
+    cols = c(individual, ensemble),
+    names_to = "type",
+    values_to = "accuracy"
+  ) 
+
+model_accuracy <- ggplot(
+  plot_df,
+  aes(x = type, y = accuracy, fill = type)
+) +
+  geom_flat_violin(
+    position = position_nudge(x = 0.1),
+    scale = "width",
+    alpha = 0.2,
+    width = 1.5
+  ) +
+  geom_boxplot(
+    color = "black",
+    width = 0.08,
+    outlier.shape = NA,
+    alpha = 0.0,
+    size = 0.8,
+    position = position_nudge(x = 0.15)
+  ) +
+  geom_point(
+    position = position_jitter(width = 0.015, height = 0.0001),
+    size = 1.0,
+    alpha = 1.0
+  ) +
+  p_theme +
+  labs(
+    title = "Individual vs Ensemble (Task dis)",
+    x = "",
+    y = "Accuracy"
+  ) +
+  theme(
+    legend.position = "none",
+    plot.title = element_text(hjust = 0.5)
+  ) 
+
+model_accuracy
+```
+
+# Task hypothyroid
+
+## Testing Balanced Accuracy
+```{r task-hypothyroid-test-plot, out.width="100%"}
+plot_df <- full_data %>%
+  filter(task.id == "hypothyroid") %>%
+  select(individual, ensemble) %>%
+  pivot_longer(
+    cols = c(individual, ensemble),
+    names_to = "type",
+    values_to = "accuracy"
+  ) 
+
+model_accuracy <- ggplot(
+  plot_df,
+  aes(x = type, y = accuracy, fill = type)
+) +
+  geom_flat_violin(
+    position = position_nudge(x = 0.1),
+    scale = "width",
+    alpha = 0.2,
+    width = 1.5
+  ) +
+  geom_boxplot(
+    color = "black",
+    width = 0.08,
+    outlier.shape = NA,
+    alpha = 0.0,
+    size = 0.8,
+    position = position_nudge(x = 0.15)
+  ) +
+  geom_point(
+    position = position_jitter(width = 0.015, height = 0.0001),
+    size = 1.0,
+    alpha = 1.0
+  ) +
+  p_theme +
+  labs(
+    title = "Individual vs Ensemble (Task hypothyroid)",
+    x = "",
+    y = "Accuracy"
+  ) +
+  theme(
+    legend.position = "none",
+    plot.title = element_text(hjust = 0.5)
+  ) 
+
+model_accuracy
+```
+
+\newpage
+# Stats Testing
+```{r stats, out.width="100%"}
+# Wilcoxon rank-sum test
+results <- full_data %>%
+  pivot_longer(
+    cols = c(individual, ensemble),
+    names_to = "type",
+    values_to = "accuracy"
+  ) %>%
+  group_by(task.id) %>%
+  wilcox_test(accuracy ~ type, paired = TRUE) %>%
+  adjust_pvalue(method = "holm") %>%
+  add_significance()
+
+print(results)
+```
+
+
+
