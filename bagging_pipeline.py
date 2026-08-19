@@ -1,5 +1,5 @@
 import openml
-import tpot
+import tpot2
 import sklearn
 import traceback
 import dill as pickle
@@ -19,7 +19,7 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.compose import ColumnTransformer
 
 from ConfigSpace import ConfigurationSpace, Float, Categorical, Integer
-from tpot.search_spaces.pipelines import SequentialPipeline, WrapperPipeline
+from tpot2.search_spaces.pipelines import SequentialPipeline, WrapperPipeline
 from row_sample import RowSampler
 
 
@@ -29,21 +29,21 @@ warnings.filterwarnings('ignore')
 
 # defines a constrained search space with only three steps
 def get_pipeline_space(seed):
-    return tpot.search_spaces.pipelines.SequentialPipeline([
-        tpot.config.get_search_space(
+    return tpot2.search_spaces.pipelines.SequentialPipeline([
+        tpot2.config.get_search_space(
             ["selectors_classification", "Passthrough"], random_state=seed, base_node=EstimatorNodeGradual),
-        tpot.config.get_search_space(
+        tpot2.config.get_search_space(
             ["transformers", "Passthrough"], random_state=seed, base_node=EstimatorNodeGradual),
-        tpot.config.get_search_space("classifiers", random_state=seed, base_node=EstimatorNodeGradual)])
+        tpot2.config.get_search_space("classifiers", random_state=seed, base_node=EstimatorNodeGradual)])
 
 # custom search space with row sampling
 def get_bagging_pipeline_space(seed):
     inner_pipeline = SequentialPipeline([
-        tpot.config.get_search_space(
+        tpot2.config.get_search_space(
             ["selectors_classification", "Passthrough"], random_state=seed, base_node=EstimatorNodeGradual),
-        tpot.config.get_search_space(
+        tpot2.config.get_search_space(
             ["transformers", "Passthrough"], random_state=seed, base_node=EstimatorNodeGradual),
-        tpot.config.get_search_space(
+        tpot2.config.get_search_space(
             "classifiers", random_state=seed, base_node=EstimatorNodeGradual),
     ])
 
@@ -65,7 +65,7 @@ def get_cv_predictions(estimator, X_train, y_train, cv_splits, random_state):
     cv_preds = np.empty(len(y_train), dtype=int)
 
     for train_idx, valid_idx in cv.split(X_train, y_train):
-        est_clone = clone(estimator) 
+        est_clone = clone(estimator)
 
         try:
             est_clone.fit(X_train[train_idx], y_train[train_idx])
@@ -83,12 +83,12 @@ def get_cv_probas(estimator, X_train, y_train, cv_splits, random_state):
 
     for train_idx, valid_idx in cv.split(X_train, y_train):
         est_clone = clone(estimator)
-        
+
         try:
             est_clone.fit(X_train[train_idx], y_train[train_idx])
             cv_probas[valid_idx] = est_clone.predict_proba(X_train[valid_idx])
         except Exception as E:
-            print('pipeline failed')       
+            print('pipeline failed')
     return cv_probas
 
 
@@ -103,7 +103,7 @@ def greedy_forward_search(filtered_eval_inds, X_train, y_train, seed):
     n_classes = len(np.unique(y_train))
 
     estimators = filtered_eval_inds.iloc[:, 10].tolist()
-    
+
     est_cv_probas = {est: get_cv_probas(est, X_train, y_train, cv_splits=5, random_state=seed) for est in estimators}
 
     # remove bad estimators (pipeline failed during CV)
@@ -125,17 +125,17 @@ def greedy_forward_search(filtered_eval_inds, X_train, y_train, seed):
             # test ensemble CV accuracy when each candidate is added
             candidate_probas = [est_cv_probas[e] for e in temp_ensemble + [est]]
             temp_probas = combine_probas(candidate_probas)
-            
+
             if n_classes == 2:
                 temp_auroc = roc_auc_score(y_train, temp_probas[:, 1])
             else:
                 temp_auroc = roc_auc_score(y_train, temp_probas, multi_class="ovr", average="macro")
-            
+
 
             if temp_auroc > best_candidate_auroc:
                 best_candidate = est
                 best_candidate_auroc = temp_auroc
-        
+
         print(f"ensemble acc changes to {best_candidate_auroc:.4f}")
         temp_ensemble.append(best_candidate)
 
@@ -152,7 +152,7 @@ def vote_soft(estimators, X_test, weights=None):
     if weights is not None:
         weights = np.asarray(weights).reshape(-1, 1, 1)
         probas *= weights
-    
+
     return np.argmax(probas.sum(axis=0), axis=1)
 
 def vote_soft_proba(estimators, X_test, weights=None):
@@ -187,7 +187,7 @@ def combine_probas(proba_list, weights=None):
 
 def main():
     save_folder = "logs"
-    
+
     def compute_auroc(model, X_test, y_test):
         y_proba = model.predict_proba(X_test)
         n_classes = len(np.unique(y_test))
@@ -205,7 +205,7 @@ def main():
     try:
 
         task_ids = [146818, 359955, 190146, 168757, 359956]
-        
+
         num_runs = 3
 
 
@@ -226,7 +226,7 @@ def main():
                 data.columns = data.columns.str.strip().str.lower()
 
                 y = data.iloc[:, -1]
-                X = data.iloc[:, :-1]   
+                X = data.iloc[:, :-1]
 
                 if len(cat_ind) == data.shape[1]:
                     cat_ind = cat_ind[:-1]
@@ -235,7 +235,7 @@ def main():
 
                 cat_cols = X.columns[cat_ind]
                 num_cols = X.columns.difference(cat_cols)
-                
+
                 X_train, X_test, y_train, y_test = train_test_split(
                     X, y, test_size=0.2,
                     random_state=i, stratify=y
@@ -258,16 +258,16 @@ def main():
                 y_train = le.fit_transform(y_train)
                 y_test  = le.transform(y_test)
 
-                
-                # tpot run and ES 
 
-                est = tpot.TPOTEstimator(search_space=constrained_search_space, generations=5, population_size=10, cv=5, max_time_mins=None,
-                                        random_state=i, verbose=2, classification=True, scorers=['roc_auc_ovr', tpot.objectives.complexity_scorer], scorers_weights=[1, -1])
+                # tpot2 run and ES
+
+                est = tpot2.TPOTEstimator(search_space=constrained_search_space, generations=5, population_size=10, cv=5, max_time_mins=None,
+                                        random_state=i, verbose=2, classification=True, scorers=['roc_auc_ovr', tpot2.objectives.complexity_scorer], scorers_weights=[1, -1])
                 est.fit(X_train, y_train)
                 eval_inds = est.evaluated_individuals
 
                 individual_score = compute_auroc(est, X_test, y_test)
-                    
+
 
                 filtered_eval_inds = clean_eval_inds(eval_inds)
                 top100 = filtered_eval_inds.nlargest(100, "roc_auc_score")

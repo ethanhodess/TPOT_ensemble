@@ -1,4 +1,4 @@
-import tpot
+import tpot2
 import traceback
 import dill as pickle
 import os
@@ -16,7 +16,7 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.compose import ColumnTransformer
 
 from ConfigSpace import ConfigurationSpace, Integer
-from tpot.search_spaces.pipelines import SequentialPipeline, WrapperPipeline
+from tpot2.search_spaces.pipelines import SequentialPipeline, WrapperPipeline
 from row_sample import RowSampler
 
 import warnings
@@ -24,22 +24,22 @@ warnings.filterwarnings('ignore')
 
 # defines a constrained search space with only three steps
 def get_pipeline_space(seed):
-    return tpot.search_spaces.pipelines.SequentialPipeline([
-        tpot.config.get_search_space(
+    return tpot2.search_spaces.pipelines.SequentialPipeline([
+        tpot2.config.get_search_space(
             ["selectors_classification", "Passthrough"], random_state=seed, base_node=EstimatorNodeGradual),
-        tpot.config.get_search_space(
+        tpot2.config.get_search_space(
             ["transformers", "Passthrough"], random_state=seed, base_node=EstimatorNodeGradual),
-        tpot.config.get_search_space("classifiers", random_state=seed, base_node=EstimatorNodeGradual)])
+        tpot2.config.get_search_space("classifiers", random_state=seed, base_node=EstimatorNodeGradual)])
 
 
 # custom search space with row sampling
 def get_bagging_pipeline_space(seed):
     inner_pipeline = SequentialPipeline([
-        tpot.config.get_search_space(
+        tpot2.config.get_search_space(
             ["selectors_classification", "Passthrough"], random_state=seed, base_node=EstimatorNodeGradual),
-        tpot.config.get_search_space(
+        tpot2.config.get_search_space(
             ["transformers", "Passthrough"], random_state=seed, base_node=EstimatorNodeGradual),
-        tpot.config.get_search_space(
+        tpot2.config.get_search_space(
             "classifiers", random_state=seed, base_node=EstimatorNodeGradual),
     ])
 
@@ -286,9 +286,9 @@ def main():
         y_test  = le.transform(y_test)
 
 
-        # tpot run (50x40) and ES
+        # tpot2 run (50x40) and ES
 
-        est = tpot.TPOTEstimator(search_space=bagging_search_space, generations=50, population_size=40, cv=5, n_jobs=n_jobs, max_time_mins=None,
+        est = tpot2.TPOTEstimator(search_space=bagging_search_space, generations=50, population_size=40, cv=5, n_jobs=n_jobs, max_time_mins=None,
                                  random_state=run_num, verbose=2, classification=True, scorers=['roc_auc_ovr', tpot.objectives.complexity_scorer], scorers_weights=[1, -1])
         est.fit(X_train, y_train)
         eval_inds = est.evaluated_individuals
