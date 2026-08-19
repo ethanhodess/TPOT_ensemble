@@ -22,4 +22,4 @@ srun -u python bagging_pipeline_hpc.py \
 --n_jobs 12 \
 --savepath logs_bagging \
 --num_runs ${RUN} \
---data_dir /common/hodesse/hpc_test/TPOTElites/openml_271
+--data_dir /home/hernandezj45/Repos/TPOT_ensemble/Raw_OpenML_Suite_271_Classification
