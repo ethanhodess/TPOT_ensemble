@@ -5,7 +5,7 @@
 #SBATCH -t 1:00:00
 #SBATCH --mem=64GB
 #SBATCH --job-name=tpot-ensemble
-#SBATCH -p moore, defq
+#SBATCH -p moore,defq
 #SBATCH --exclude=esplhpc-cp040
 #SBATCH -o ./logs/outputs/output.%j_%a.out # STDOUT
 #SBATCH --array=0-545
