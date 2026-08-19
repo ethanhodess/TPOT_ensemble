@@ -1,10 +1,7 @@
-import openml
 import tpot
-import sklearn
 import traceback
 import dill as pickle
 import os
-import random
 import numpy as np
 from estimator_node_gradual import EstimatorNodeGradual
 import pandas as pd
@@ -12,13 +9,13 @@ import argparse
 
 from sklearn.model_selection import train_test_split
 from sklearn.model_selection import StratifiedKFold
-from sklearn.metrics import (roc_auc_score, accuracy_score)
+from sklearn.metrics import roc_auc_score
 from sklearn.base import clone
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.preprocessing import LabelEncoder
 from sklearn.compose import ColumnTransformer
 
-from ConfigSpace import ConfigurationSpace, Float, Categorical, Integer
+from ConfigSpace import ConfigurationSpace, Integer
 from tpot.search_spaces.pipelines import SequentialPipeline, WrapperPipeline
 from row_sample import RowSampler
 
@@ -65,12 +62,12 @@ def get_cv_predictions(estimator, X_train, y_train, cv_splits, random_state):
     cv_preds = np.empty(len(y_train), dtype=int)
 
     for train_idx, valid_idx in cv.split(X_train, y_train):
-        est_clone = clone(estimator) 
+        est_clone = clone(estimator)
 
         try:
             est_clone.fit(X_train[train_idx], y_train[train_idx])
             cv_preds[valid_idx] = est_clone.predict(X_train[valid_idx])
-        except Exception as E:
+        except Exception:
             print('pipeline failed')
 
     return cv_preds
@@ -83,12 +80,12 @@ def get_cv_probas(estimator, X_train, y_train, cv_splits, random_state):
 
     for train_idx, valid_idx in cv.split(X_train, y_train):
         est_clone = clone(estimator)
-        
+
         try:
             est_clone.fit(X_train[train_idx], y_train[train_idx])
             cv_probas[valid_idx] = est_clone.predict_proba(X_train[valid_idx])
-        except Exception as E:
-            print('pipeline failed')       
+        except Exception:
+            print('pipeline failed')
     return cv_probas
 
 
@@ -104,7 +101,7 @@ def greedy_forward_search(filtered_eval_inds, X_train, y_train, seed):
     n_classes = len(np.unique(y_train))
 
     estimators = filtered_eval_inds.iloc[:, 10].tolist()
-    
+
     est_cv_probas = {est: get_cv_probas(est, X_train, y_train, cv_splits=5, random_state=seed) for est in estimators}
 
     # remove bad estimators (pipeline failed during CV)
@@ -116,7 +113,7 @@ def greedy_forward_search(filtered_eval_inds, X_train, y_train, seed):
 
     temp_ensemble = []
 
-    for i in range(50):
+    for _ in range(50):
         best_candidate = None
         best_candidate_auroc = 0
 
@@ -126,17 +123,17 @@ def greedy_forward_search(filtered_eval_inds, X_train, y_train, seed):
             # test ensemble CV accuracy when each candidate is added
             candidate_probas = [est_cv_probas[e] for e in temp_ensemble + [est]]
             temp_probas = combine_probas(candidate_probas)
-            
+
             if n_classes == 2:
                 temp_auroc = roc_auc_score(y_train, temp_probas[:, 1])
             else:
                 temp_auroc = roc_auc_score(y_train, temp_probas, multi_class="ovr", average="macro")
-            
+
 
             if temp_auroc > best_candidate_auroc:
                 best_candidate = est
                 best_candidate_auroc = temp_auroc
-        
+
         print(f"ensemble acc changes to {best_candidate_auroc:.4f}")
         temp_ensemble.append(best_candidate)
 
@@ -153,7 +150,7 @@ def vote_soft(estimators, X_test, weights=None):
     if weights is not None:
         weights = np.asarray(weights).reshape(-1, 1, 1)
         probas *= weights
-    
+
     return np.argmax(probas.sum(axis=0), axis=1)
 
 def vote_soft_proba(estimators, X_test, weights=None):
@@ -197,10 +194,14 @@ def main():
     # number of total runs for each experiment
     parser.add_argument("-r", "--num_runs", default=1,
                         required=False, nargs='?')
+    # directory containing the task_{id}.csv and task_{id}_categorical_indicator.pkl files
+    parser.add_argument("-d", "--data_dir",
+                        required=False, nargs='?')
     args = parser.parse_args()
     n_jobs = int(args.n_jobs)
     base_save_folder = args.savepath
     num_runs = int(args.num_runs)
+    data_dir = args.data_dir
 
     save_folder = base_save_folder
 
@@ -223,16 +224,14 @@ def main():
 
         task_ids = [
             # binary
-            359975, 146820, 190137, 359958, 359966, 359968, 359962,
-            359955, 190411, 168350, 168757, 359956, 190412, 146818,
-            359967, 359965, 189922, 190392, 168911, 190410, 359972,
-            359973,
+            146818, 359955, 168757, 359956, 359958, 359962, 190137,
+            168911, 359965, 190411, 146820, 359968, 359975, 359972,
+            168350, 359971,
             # multiclass
-            359960, 359974, 2073, 168784, 359969, 359964, 359970,
-            168910, 359959, 359953, 190146, 359961, 10090, 359963,
-            359957,
+            190146, 359959, 2073, 359960, 168784, 359963, 359964,
+            359974, 359969, 359970,
         ]
-        
+
         num_runs = 21
 
         jobs = [(tid, run) for tid in task_ids for run in range(num_runs)]
@@ -241,20 +240,20 @@ def main():
         task_id, run_num = jobs[array_id]
 
         bagging_search_space = get_bagging_pipeline_space(seed=run_num)
-        
+
         full_results = []
 
         print("task id:", task_id, "run num:", run_num)
 
         # load the data
-        data = pd.read_csv(f'/common/hodesse/hpc_test/TPOTElites/openml_271/task_{task_id}.csv')
-        with open(f'/common/hodesse/hpc_test/TPOTElites/openml_271/task_{task_id}_categorical_indicator.pkl', "rb") as f:
+        data = pd.read_csv(os.path.join(data_dir, f'task_{task_id}.csv'))
+        with open(os.path.join(data_dir, f'task_{task_id}_categorical_indicator.pkl'), "rb") as f:
             cat_ind = pickle.load(f)
 
         data.columns = data.columns.str.strip().str.lower()
 
         y = data.iloc[:, -1]
-        X = data.iloc[:, :-1]   
+        X = data.iloc[:, :-1]
 
         if len(cat_ind) == data.shape[1]:
             cat_ind = cat_ind[:-1]
@@ -263,7 +262,7 @@ def main():
 
         cat_cols = X.columns[cat_ind]
         num_cols = X.columns.difference(cat_cols)
-        
+
         X_train, X_test, y_train, y_test = train_test_split(
             X, y, test_size=0.2,
             random_state=run_num, stratify=y
@@ -286,7 +285,7 @@ def main():
         y_train = le.fit_transform(y_train)
         y_test  = le.transform(y_test)
 
-        
+
         # tpot run (50x40) and ES
 
         est = tpot.TPOTEstimator(search_space=bagging_search_space, generations=50, population_size=40, cv=5, n_jobs=n_jobs, max_time_mins=None,
@@ -295,7 +294,7 @@ def main():
         eval_inds = est.evaluated_individuals
 
         individual_score = compute_auroc(est, X_test, y_test)
-            
+
 
         filtered_eval_inds = clean_eval_inds(eval_inds)
         top100 = filtered_eval_inds.nlargest(100, "roc_auc_score")
@@ -335,7 +334,7 @@ def main():
                 average="macro"
             )
 
-        
+
         full_results.append({"task id": task_id,
                             "run #": run_num,
                             "individual_tpot": individual_score,
