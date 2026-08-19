@@ -2,7 +2,7 @@
 # try https://automl.github.io/ConfigSpace/main/api/hyperparameters.html
 
 import numpy as np
-from tpot.search_spaces.base import SklearnIndividual, SearchSpace
+from tpot2.search_spaces.base import SklearnIndividual, SearchSpace
 from ConfigSpace import ConfigurationSpace
 from typing import final
 import ConfigSpace
