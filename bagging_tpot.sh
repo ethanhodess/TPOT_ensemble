@@ -15,10 +15,10 @@ echo “Run: ${RUN}”
 module load git/2.33.1
 
 source ~/anaconda3/etc/profile.d/conda.sh
-conda activate tpe-ea
+conda activate ethan
 
 echo RunStart
-srun -u /home/hodesse/miniconda3/envs/tpot2env/bin/python bagging_pipeline_hpc.py \
+srun -u python bagging_pipeline_hpc.py \
 --n_jobs 12 \
 --savepath logs_bagging \
 --num_runs ${RUN} \
