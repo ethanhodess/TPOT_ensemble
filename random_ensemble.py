@@ -1,10 +1,7 @@
-import openml
-import tpot
-import sklearn
+import tpot2
 import traceback
-import dill as pickle
+import json
 import os
-import random
 import numpy as np
 from estimator_node_gradual import EstimatorNodeGradual
 import pandas as pd
@@ -23,12 +20,12 @@ warnings.filterwarnings('ignore')
 
 # defines a constrained search space with only three steps
 def get_pipeline_space(seed):
-    return tpot.search_spaces.pipelines.SequentialPipeline([
-        tpot.config.get_search_space(
+    return tpot2.search_spaces.pipelines.SequentialPipeline([
+        tpot2.config.get_search_space(
             ["selectors_classification", "Passthrough"], random_state=seed, base_node=EstimatorNodeGradual),
-        tpot.config.get_search_space(
+        tpot2.config.get_search_space(
             ["transformers", "Passthrough"], random_state=seed, base_node=EstimatorNodeGradual),
-        tpot.config.get_search_space("classifiers", random_state=seed, base_node=EstimatorNodeGradual)])
+        tpot2.config.get_search_space("classifiers", random_state=seed, base_node=EstimatorNodeGradual)])
 
 def get_cv_predictions(estimator, X_train, y_train, cv_splits, random_state):
     cv = StratifiedKFold(n_splits=cv_splits, shuffle=True, random_state=random_state)
@@ -193,14 +190,12 @@ def main():
 
         task_ids = [
             # binary
-            359975, 146820, 190137, 359958, 359966, 359968, 359962,
-            359955, 190411, 168350, 168757, 359956, 190412, 146818,
-            359967, 359965, 189922, 190392, 168911, 190410, 359972,
-            359973,
+            146818, 359955, 168757, 359956, 359958, 359962, 190137,
+            168911, 359965, 190411, 146820, 359968, 359975, 359972,
+            168350, 359971,
             # multiclass
-            359960, 359974, 2073, 168784, 359969, 359964, 359970,
-            168910, 359959, 359953, 190146, 359961, 10090, 359963,
-            359957,
+            190146, 359959, 2073, 359960, 168784, 359963, 359964,
+            359974, 359969, 359970,
         ]
         
         num_runs = 21
@@ -218,8 +213,8 @@ def main():
 
         # load the data
         data = pd.read_csv(f'/common/hodesse/hpc_test/TPOTElites/openml_271/task_{task_id}.csv')
-        with open(f'/common/hodesse/hpc_test/TPOTElites/openml_271/task_{task_id}_categorical_indicator.pkl', "rb") as f:
-            cat_ind = pickle.load(f)
+        with open(f'/common/hodesse/hpc_test/TPOTElites/openml_271/task_{task_id}_categorical_indicator.json', "r") as f:
+            cat_ind = json.load(f)
 
         data.columns = data.columns.str.strip().str.lower()
 
@@ -259,8 +254,8 @@ def main():
         
         # random run (0x2000) and ES on full 2000 and ES on top 100
 
-        est = tpot.TPOTEstimator(search_space=constrained_search_space, generations=0, population_size=2000, cv=5, n_jobs=n_jobs, max_time_mins=None,
-                                 random_state=run_num, verbose=2, classification=True, scorers=['roc_auc_ovr', tpot.objectives.complexity_scorer], scorers_weights=[1, -1])
+        est = tpot2.TPOTEstimator(search_space=constrained_search_space, generations=0, population_size=2000, cv=5, n_jobs=n_jobs, max_time_mins=None,
+                                 random_state=run_num, verbose=2, classification=True, scorers=['roc_auc_ovr', tpot2.objectives.complexity_scorer], scorers_weights=[1, -1])
         est.fit(X_train, y_train)
         eval_inds = est.evaluated_individuals
 
