@@ -1,6 +1,6 @@
 import tpot2
 import traceback
-import dill as pickle
+import json
 import os
 import numpy as np
 from estimator_node_gradual import EstimatorNodeGradual
@@ -247,8 +247,8 @@ def main():
 
         # load the data
         data = pd.read_csv(os.path.join(data_dir, f'task_{task_id}.csv'))
-        with open(os.path.join(data_dir, f'task_{task_id}_categorical_indicator.pkl'), "rb") as f:
-            cat_ind = pickle.load(f)
+        with open(os.path.join(data_dir, f'task_{task_id}_categorical_indicator.json'), "r") as f:
+            cat_ind = json.load(f)
 
         data.columns = data.columns.str.strip().str.lower()
 
