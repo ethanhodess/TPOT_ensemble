@@ -289,7 +289,7 @@ def main():
         # tpot2 run (50x40) and ES
 
         est = tpot2.TPOTEstimator(search_space=bagging_search_space, generations=50, population_size=40, cv=5, n_jobs=n_jobs, max_time_mins=None,
-                                 random_state=run_num, verbose=2, classification=True, scorers=['roc_auc_ovr', tpot.objectives.complexity_scorer], scorers_weights=[1, -1])
+                                 random_state=run_num, verbose=2, classification=True, scorers=['roc_auc_ovr', tpot2.objectives.complexity_scorer], scorers_weights=[1, -1])
         est.fit(X_train, y_train)
         eval_inds = est.evaluated_individuals
 
