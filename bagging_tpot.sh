@@ -12,7 +12,6 @@
 
 RUN=${SLURM_ARRAY_TASK_ID:-1}
 echo “Run: ${RUN}”
-module load git/2.33.1
 
 source ~/anaconda3/etc/profile.d/conda.sh
 conda activate ethan

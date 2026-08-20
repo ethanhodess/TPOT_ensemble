@@ -5,22 +5,20 @@
 #SBATCH -t 1:00:00
 #SBATCH --mem=64GB
 #SBATCH --job-name=tpot-ensemble
-#SBATCH -p moore, defq
+#SBATCH -p moore,defq
 #SBATCH --exclude=esplhpc-cp040
 #SBATCH -o ./logs/outputs/output.%j_%a.out # STDOUT
-#SBATCH --array=0-776
+#SBATCH --array=0-545
+
 RUN=${SLURM_ARRAY_TASK_ID:-1}
 echo “Run: ${RUN}”
-module load git/2.33.1
 
-source /home/hodesse/miniconda3/etc/profile.d/conda.sh
-#conda create --name tpot_ens_env -c conda-forge python=3.10
-conda activate tpot_ens_env
-#pip install -r requirements.txt
-
+source ~/anaconda3/etc/profile.d/conda.sh
+conda activate ethan
 
 echo RunStart
-srun -u /home/hodesse/miniconda3/envs/tpot2env/bin/python random_ensemble.py \
+srun -u python random_ensemble.py \
 --n_jobs 12 \
 --savepath logs_random \
 --num_runs ${RUN} \
+--data_dir /home/hernandezj45/Repos/TPOT_ensemble/Raw_OpenML_Suite_271_Classification

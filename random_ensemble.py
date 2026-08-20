@@ -164,10 +164,14 @@ def main():
     # number of total runs for each experiment
     parser.add_argument("-r", "--num_runs", default=1,
                         required=False, nargs='?')
+    # directory containing the task_{id}.csv and task_{id}_categorical_indicator.json files
+    parser.add_argument("-d", "--data_dir",
+                        required=False, nargs='?')
     args = parser.parse_args()
     n_jobs = int(args.n_jobs)
     base_save_folder = args.savepath
     num_runs = int(args.num_runs)
+    data_dir = args.data_dir
 
     save_folder = base_save_folder
 
@@ -212,8 +216,8 @@ def main():
         print("task id:", task_id, "run num:", run_num)
 
         # load the data
-        data = pd.read_csv(f'/common/hodesse/hpc_test/TPOTElites/openml_271/task_{task_id}.csv')
-        with open(f'/common/hodesse/hpc_test/TPOTElites/openml_271/task_{task_id}_categorical_indicator.json', "r") as f:
+        data = pd.read_csv(os.path.join(data_dir, f'task_{task_id}.csv'))
+        with open(os.path.join(data_dir, f'task_{task_id}_categorical_indicator.json'), "r") as f:
             cat_ind = json.load(f)
 
         data.columns = data.columns.str.strip().str.lower()
