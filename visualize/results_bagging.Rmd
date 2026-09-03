@@ -1,0 +1,98 @@
+---
+title: 'Analysis '
+author: "Anonymous"
+date: "`r Sys.Date()`"
+output:
+  pdf_document: default
+  bookdown::pdf_book: default
+geometry: margin=2cm
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE,
+  warning = FALSE,
+  message = FALSE,
+  fig.width = 10,
+  fig.height = 5,
+  fig.align = 'center'
+)
+```
+
+```{r load-libraries, include=FALSE}
+rm(list = ls())
+library(ggplot2)
+library(cowplot)
+library(dplyr)
+library(PupillometryR)
+library(ggpubr)
+library(knitr)
+library(ggforce)
+library(tidyr)
+library(rstatix)
+```
+
+```{r theme-setup, include=FALSE}
+# Define conditions and visual parameters
+CONDITIONS <- c('EA', 'TPEC', 'BO')
+SHAPE <- c(21, 21, 21)
+cb_palette <- c('#648FFF','#DC267F', '#FFB000')
+TSIZE <- 17
+
+# Theme for plots
+p_theme <- theme(
+  plot.title = element_text(face = "bold", hjust=0.5),
+  panel.border = element_blank(),
+  panel.grid.minor = element_blank(),
+  axis.title = element_text(size=17),
+  axis.text = element_text(size=11),
+  axis.text.y = element_text(angle = 90, hjust = 0.5),
+  legend.position = "none",
+  panel.background = element_rect(fill = "#f1f2f5",
+                                  colour = "white",
+                                  size = 0.5, linetype = "solid")
+)
+```
+
+```{r load-data, include=FALSE}
+data_dir = '/Users/ethanhodess/Documents/Documents - Ethan’s MacBook Pro/Cedars/2025/TPOT_Ensemble/'
+full_data <- read.csv(paste(data_dir, 'bagging_res_1.csv', sep = "", collapse = NULL), header = TRUE, stringsAsFactors = FALSE)
+```
+
+TPOT with bagged individuals  
+
+Version 1
+
+
+
+\newpage
+# Stats Testing
+```{r stats, out.width="100%"}
+# Wilcoxon rank-sum test
+results <- full_data %>%
+  pivot_longer(
+    cols = c(individual_tpot, ensemble_random_100),
+    names_to = "type",
+    values_to = "auroc"
+  ) %>%
+  group_by(task_id) %>%
+  wilcox_test(auroc ~ type, paired = TRUE) %>%
+  #adjust_pvalue(method = "holm") %>%
+  add_significance()
+
+print(results, n=Inf)
+```
+
+
+# Medians
+```{r medians, out.width="100%"}
+medians <- full_data %>%
+  group_by(task_id) %>%
+  summarise(
+    individual_tpot = median(individual_tpot, na.rm = TRUE),
+    ensemble_random_100  = median(ensemble_random_100, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+print(medians, n=Inf)
+```
