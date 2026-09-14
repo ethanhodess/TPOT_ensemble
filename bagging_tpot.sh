@@ -7,7 +7,7 @@
 #SBATCH --job-name=tpot-ensemble
 #SBATCH -p defq,moore,preemptable
 #SBATCH -o ./logs_missing/outputs/output.%j_%a.out # STDOUT
-#SBATCH --array=6,63,65,68,323,326,328,329,333,480,521,523,526,527,528,530,531,534,539,540,544
+#SBATCH --array=0-545
 
 RUN=${SLURM_ARRAY_TASK_ID:-1}
 echo “Run: ${RUN}”
