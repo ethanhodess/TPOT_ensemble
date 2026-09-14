@@ -6,7 +6,6 @@
 #SBATCH --mem=64GB
 #SBATCH --job-name=tpot-ensemble
 #SBATCH -p defq,moore,preemptable
-#SBATCH --exclude=esplhpc-cp040
 #SBATCH -o ./logs_missing/outputs/output.%j_%a.out # STDOUT
 #SBATCH --array=6,63,65,68,323,326,328,329,333,480,521,523,526,527,528,530,531,534,539,540,544
 
