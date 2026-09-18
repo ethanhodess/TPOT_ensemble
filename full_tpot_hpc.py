@@ -208,8 +208,8 @@ def main():
     base_save_folder = args.savepath
     num_runs = int(args.num_runs)
     data_dir = args.data_dir
-    gens = args.gens
-    pop_size = args.pop_size
+    gens = int(args.gens)
+    pop_size = int(args.pop_size)
 
     save_folder = base_save_folder
 
