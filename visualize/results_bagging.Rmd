@@ -59,7 +59,7 @@ data_dir = '/Users/ethanhodess/Documents/Documents - Ethan’s MacBook Pro/Cedar
 full_data <- read.csv(paste(data_dir, 'bagging_res_1.csv', sep = "", collapse = NULL), header = TRUE, stringsAsFactors = FALSE)
 ```
 
-TPOT with bagged individuals  
+TPOT with bagged individuals 
 
 Version 1
 
