@@ -343,7 +343,7 @@ def main():
             )
 
 
-        full_results.append({"task id": task_id,
+        full_results.append({"task_id": task_id,
                             "run #": run_num,
                             "individual_tpot": individual_score,
                             # "ensemble_random_2000": ensemble_random_test_auroc_2000,

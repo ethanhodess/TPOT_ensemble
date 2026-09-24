@@ -5,6 +5,7 @@ date: "`r Sys.Date()`"
 output:
   pdf_document: default
   bookdown::pdf_book: default
+  word_document: default
 geometry: margin=2cm
 ---
 
@@ -56,10 +57,12 @@ p_theme <- theme(
 
 ```{r load-data, include=FALSE}
 data_dir = '/Users/ethanhodess/Documents/Documents - Ethan’s MacBook Pro/Cedars/2025/TPOT_Ensemble/'
-full_data <- read.csv(paste(data_dir, 'bagging_res_1.csv', sep = "", collapse = NULL), header = TRUE, stringsAsFactors = FALSE)
+full_data <- read.csv(paste(data_dir, 'full_tpot_2000_results.csv', sep = "", collapse = NULL), header = TRUE, stringsAsFactors = FALSE)
 ```
 
-TPOT with bagged individuals 
+TPOT with full graph search space versus ensemble
+
+2000 total evals
 
 Version 1
 
