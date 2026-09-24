@@ -6,7 +6,7 @@
 #SBATCH --mem=64GB
 #SBATCH --job-name=full-tpot-500
 #SBATCH -p defq,moore,preemptable
-#SBATCH -o ./logs_missing/outputs/output.%j_%a.out # STDOUT
+#SBATCH -o ./logs_full_tpot_500/outputs/output.%j_%a.out # STDOUT
 #SBATCH --array=0-545
 
 RUN=${SLURM_ARRAY_TASK_ID:-1}
