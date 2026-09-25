@@ -17,43 +17,43 @@ from sklearn.compose import ColumnTransformer
 
 from ConfigSpace import ConfigurationSpace, Integer
 from tpot2.search_spaces.pipelines import SequentialPipeline, WrapperPipeline
-from row_sample import RowSampler
+from bagging_pipeline.row_sample import RowSampler
 
 import warnings
 warnings.filterwarnings('ignore')
 
 # defines a constrained search space with only three steps
-# def get_pipeline_space(seed):
-#     return tpot2.search_spaces.pipelines.SequentialPipeline([
-#         tpot2.config.get_search_space(
-#             ["selectors_classification", "Passthrough"], random_state=seed, base_node=EstimatorNodeGradual),
-#         tpot2.config.get_search_space(
-#             ["transformers", "Passthrough"], random_state=seed, base_node=EstimatorNodeGradual),
-#         tpot2.config.get_search_space("classifiers", random_state=seed, base_node=EstimatorNodeGradual)])
+def get_pipeline_space(seed):
+    return tpot2.search_spaces.pipelines.SequentialPipeline([
+        tpot2.config.get_search_space(
+            ["selectors_classification", "Passthrough"], random_state=seed, base_node=EstimatorNodeGradual),
+        tpot2.config.get_search_space(
+            ["transformers", "Passthrough"], random_state=seed, base_node=EstimatorNodeGradual),
+        tpot2.config.get_search_space("classifiers", random_state=seed, base_node=EstimatorNodeGradual)])
 
 
 # custom search space with row sampling
-# def get_bagging_pipeline_space(seed):
-#     inner_pipeline = SequentialPipeline([
-#         tpot2.config.get_search_space(
-#             ["selectors_classification", "Passthrough"], random_state=seed, base_node=EstimatorNodeGradual),
-#         tpot2.config.get_search_space(
-#             ["transformers", "Passthrough"], random_state=seed, base_node=EstimatorNodeGradual),
-#         tpot2.config.get_search_space(
-#             "classifiers", random_state=seed, base_node=EstimatorNodeGradual),
-#     ])
+def get_bagging_pipeline_space(seed):
+    inner_pipeline = SequentialPipeline([
+        tpot2.config.get_search_space(
+            ["selectors_classification", "Passthrough"], random_state=seed, base_node=EstimatorNodeGradual),
+        tpot2.config.get_search_space(
+            ["transformers", "Passthrough"], random_state=seed, base_node=EstimatorNodeGradual),
+        tpot2.config.get_search_space(
+            "classifiers", random_state=seed, base_node=EstimatorNodeGradual),
+    ])
 
-#     row_sampler_configspace = ConfigurationSpace(
-#         space={
-#             "random_state": Integer("random_state", bounds=(0, 10_000)),
-#         }
-#     )
+    row_sampler_configspace = ConfigurationSpace(
+        space={
+            "random_state": Integer("random_state", bounds=(0, 10_000)),
+        }
+    )
 
-#     return WrapperPipeline(
-#         method=RowSampler,
-#         space=row_sampler_configspace,
-#         estimator_search_space=inner_pipeline,
-#     )
+    return WrapperPipeline(
+        method=RowSampler,
+        space=row_sampler_configspace,
+        estimator_search_space=inner_pipeline,
+    )
 
 
 
@@ -197,19 +197,11 @@ def main():
     # directory containing the task_{id}.csv and task_{id}_categorical_indicator.pkl files
     parser.add_argument("-d", "--data_dir",
                         required=False, nargs='?')
-    # number of generations
-    parser.add_argument("-g", "--gens",
-                        required=False, nargs='?')
-    # population size per gen
-    parser.add_argument("-p", "--pop_size",
-                        required=False, nargs='?')
     args = parser.parse_args()
     n_jobs = int(args.n_jobs)
     base_save_folder = args.savepath
     num_runs = int(args.num_runs)
     data_dir = args.data_dir
-    gens = int(args.gens)
-    pop_size = int(args.pop_size)
 
     save_folder = base_save_folder
 
@@ -247,8 +239,8 @@ def main():
         array_id = int(os.environ["SLURM_ARRAY_TASK_ID"])
         task_id, run_num = jobs[array_id]
 
-        # bagging_search_space = get_bagging_pipeline_space(seed=run_num)
-        # constrained_search_space = get_pipeline_space(seed=run_num)
+        bagging_search_space = get_bagging_pipeline_space(seed=run_num)
+        constrained_search_space = get_pipeline_space(seed=run_num)
 
         full_results = []
 
@@ -296,13 +288,23 @@ def main():
 
 
         # Base tpot run
-        est = tpot2.TPOTEstimator(search_space="graph", generations=gens, population_size=pop_size, cv=5, n_jobs=n_jobs, max_time_mins=None,
+        est_base = tpot2.TPOTEstimator(search_space=constrained_search_space, generations=50, population_size=40, cv=5, n_jobs=n_jobs, max_time_mins=None,
+                                 random_state=run_num, verbose=2, classification=True, scorers=['roc_auc_ovr', tpot2.objectives.complexity_scorer], scorers_weights=[1, -1])
+        est_base.fit(X_train, y_train)
+
+        individual_score = compute_auroc(est_base, X_test, y_test)
+
+
+
+        # Bagging tpot run (50x40) and ES
+
+        est = tpot2.TPOTEstimator(search_space=bagging_search_space, generations=50, population_size=40, cv=5, n_jobs=n_jobs, max_time_mins=None,
                                  random_state=run_num, verbose=2, classification=True, scorers=['roc_auc_ovr', tpot2.objectives.complexity_scorer], scorers_weights=[1, -1])
         est.fit(X_train, y_train)
-
-        individual_score = compute_auroc(est, X_test, y_test)
-
         eval_inds = est.evaluated_individuals
+
+        #individual_score = compute_auroc(est, X_test, y_test)
+
 
         filtered_eval_inds = clean_eval_inds(eval_inds)
         top100 = filtered_eval_inds.nlargest(100, "roc_auc_score")
@@ -343,7 +345,7 @@ def main():
             )
 
 
-        full_results.append({"task_id": task_id,
+        full_results.append({"task id": task_id,
                             "run #": run_num,
                             "individual_tpot": individual_score,
                             # "ensemble_random_2000": ensemble_random_test_auroc_2000,

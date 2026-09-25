@@ -20,7 +20,7 @@ from sklearn.compose import ColumnTransformer
 
 from ConfigSpace import ConfigurationSpace, Float, Categorical, Integer
 from tpot.search_spaces.pipelines import SequentialPipeline, WrapperPipeline
-from row_sample import RowSampler
+from bagging_pipeline.row_sample import RowSampler
 
 
 import warnings

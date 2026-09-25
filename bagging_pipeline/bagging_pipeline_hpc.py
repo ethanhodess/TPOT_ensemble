@@ -1,10 +1,7 @@
-import openml
 import tpot2
-import sklearn
 import traceback
-import dill as pickle
+import json
 import os
-import random
 import numpy as np
 from estimator_node_gradual import EstimatorNodeGradual
 import pandas as pd
@@ -12,20 +9,18 @@ import argparse
 
 from sklearn.model_selection import train_test_split
 from sklearn.model_selection import StratifiedKFold
-from sklearn.metrics import (roc_auc_score, accuracy_score)
+from sklearn.metrics import roc_auc_score
 from sklearn.base import clone
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.preprocessing import LabelEncoder
 from sklearn.compose import ColumnTransformer
 
-from ConfigSpace import ConfigurationSpace, Float, Categorical, Integer
+from ConfigSpace import ConfigurationSpace, Integer
 from tpot2.search_spaces.pipelines import SequentialPipeline, WrapperPipeline
-from row_sample import RowSampler
-
+from bagging_pipeline.row_sample import RowSampler
 
 import warnings
 warnings.filterwarnings('ignore')
-
 
 # defines a constrained search space with only three steps
 def get_pipeline_space(seed):
@@ -35,6 +30,7 @@ def get_pipeline_space(seed):
         tpot2.config.get_search_space(
             ["transformers", "Passthrough"], random_state=seed, base_node=EstimatorNodeGradual),
         tpot2.config.get_search_space("classifiers", random_state=seed, base_node=EstimatorNodeGradual)])
+
 
 # custom search space with row sampling
 def get_bagging_pipeline_space(seed):
@@ -60,6 +56,7 @@ def get_bagging_pipeline_space(seed):
     )
 
 
+
 def get_cv_predictions(estimator, X_train, y_train, cv_splits, random_state):
     cv = StratifiedKFold(n_splits=cv_splits, shuffle=True, random_state=random_state)
     cv_preds = np.empty(len(y_train), dtype=int)
@@ -70,7 +67,7 @@ def get_cv_predictions(estimator, X_train, y_train, cv_splits, random_state):
         try:
             est_clone.fit(X_train[train_idx], y_train[train_idx])
             cv_preds[valid_idx] = est_clone.predict(X_train[valid_idx])
-        except Exception as E:
+        except Exception:
             print('pipeline failed')
 
     return cv_preds
@@ -87,9 +84,10 @@ def get_cv_probas(estimator, X_train, y_train, cv_splits, random_state):
         try:
             est_clone.fit(X_train[train_idx], y_train[train_idx])
             cv_probas[valid_idx] = est_clone.predict_proba(X_train[valid_idx])
-        except Exception as E:
+        except Exception:
             print('pipeline failed')
     return cv_probas
+
 
 
 def clean_eval_inds(eval_inds):
@@ -115,7 +113,7 @@ def greedy_forward_search(filtered_eval_inds, X_train, y_train, seed):
 
     temp_ensemble = []
 
-    for i in range(50):
+    for _ in range(50):
         best_candidate = None
         best_candidate_auroc = 0
 
@@ -186,7 +184,26 @@ def combine_probas(proba_list, weights=None):
 
 
 def main():
-    save_folder = "logs"
+    parser = argparse.ArgumentParser()
+    # number of threads
+    parser.add_argument("-n", "--n_jobs", default=30,
+                        required=False, nargs='?')
+    # where to save the results/models
+    parser.add_argument("-s", "--savepath",
+                        default="results_tables", required=False, nargs='?')
+    # number of total runs for each experiment
+    parser.add_argument("-r", "--num_runs", default=1,
+                        required=False, nargs='?')
+    # directory containing the task_{id}.csv and task_{id}_categorical_indicator.pkl files
+    parser.add_argument("-d", "--data_dir",
+                        required=False, nargs='?')
+    args = parser.parse_args()
+    n_jobs = int(args.n_jobs)
+    base_save_folder = args.savepath
+    num_runs = int(args.num_runs)
+    data_dir = args.data_dir
+
+    save_folder = base_save_folder
 
     def compute_auroc(model, X_test, y_test):
         y_proba = model.predict_proba(X_test)
@@ -202,110 +219,141 @@ def main():
                 average="macro"
             )
 
+
     try:
 
-        task_ids = [146818, 359955, 190146, 168757, 359956]
+        task_ids = [
+            # binary
+            146818, 359955, 168757, 359956, 359958, 359962, 190137,
+            168911, 359965, 190411, 146820, 359968, 359975, 359972,
+            168350, 359971,
+            # multiclass
+            190146, 359959, 2073, 359960, 168784, 359963, 359964,
+            359974, 359969, 359970,
+        ]
 
-        num_runs = 3
+        num_runs = 21
+
+        jobs = [(tid, run) for tid in task_ids for run in range(num_runs)]
+
+        array_id = int(os.environ["SLURM_ARRAY_TASK_ID"])
+        task_id, run_num = jobs[array_id]
+
+        bagging_search_space = get_bagging_pipeline_space(seed=run_num)
+
+        full_results = []
+
+        print("task id:", task_id, "run num:", run_num)
+
+        # load the data
+        data = pd.read_csv(os.path.join(data_dir, f'task_{task_id}.csv'))
+        with open(os.path.join(data_dir, f'task_{task_id}_categorical_indicator.json'), "r") as f:
+            cat_ind = json.load(f)
+
+        data.columns = data.columns.str.strip().str.lower()
+
+        y = data.iloc[:, -1]
+        X = data.iloc[:, :-1]
+
+        if len(cat_ind) == data.shape[1]:
+            cat_ind = cat_ind[:-1]
+
+        assert len(cat_ind) == X.shape[1]
+
+        cat_cols = X.columns[cat_ind]
+        num_cols = X.columns.difference(cat_cols)
+
+        X_train, X_test, y_train, y_test = train_test_split(
+            X, y, test_size=0.2,
+            random_state=run_num, stratify=y
+        )
+
+        preprocessor = ColumnTransformer(
+            transformers=[
+                ("cat", OneHotEncoder(handle_unknown="ignore", sparse_output=False), cat_cols),
+                ("num", "passthrough", num_cols),
+            ]
+        )
+
+        X_train = preprocessor.fit_transform(X_train)
+        X_test  = preprocessor.transform(X_test)
+
+        y_train = y_train.to_numpy()
+        y_test  = y_test.to_numpy()
+
+        le = LabelEncoder()
+        y_train = le.fit_transform(y_train)
+        y_test  = le.transform(y_test)
 
 
-        for task_id in task_ids:
-            for i in range(num_runs):
+        # tpot2 run (50x40) and ES
 
-                constrained_search_space = get_bagging_pipeline_space(seed=i)
+        est = tpot2.TPOTEstimator(search_space=bagging_search_space, generations=50, population_size=40, cv=5, n_jobs=n_jobs, max_time_mins=None,
+                                 random_state=run_num, verbose=2, classification=True, scorers=['roc_auc_ovr', tpot2.objectives.complexity_scorer], scorers_weights=[1, -1])
+        est.fit(X_train, y_train)
+        eval_inds = est.evaluated_individuals
 
-                full_results = []
-
-                print("task id:", task_id, "run num:", i)
-
-                # load the data
-                data = pd.read_csv(f'/Users/ethanhodess/Documents/Documents - Ethan’s MacBook Pro/Cedars/2025/TPOT_ensemble/data/task_{task_id}.csv')
-                with open(f'/Users/ethanhodess/Documents/Documents - Ethan’s MacBook Pro/Cedars/2025/TPOT_ensemble/data/task_{task_id}_categorical_indicator.pkl', "rb") as f:
-                    cat_ind = pickle.load(f)
-
-                data.columns = data.columns.str.strip().str.lower()
-
-                y = data.iloc[:, -1]
-                X = data.iloc[:, :-1]
-
-                if len(cat_ind) == data.shape[1]:
-                    cat_ind = cat_ind[:-1]
-
-                assert len(cat_ind) == X.shape[1]
-
-                cat_cols = X.columns[cat_ind]
-                num_cols = X.columns.difference(cat_cols)
-
-                X_train, X_test, y_train, y_test = train_test_split(
-                    X, y, test_size=0.2,
-                    random_state=i, stratify=y
-                )
-
-                preprocessor = ColumnTransformer(
-                    transformers=[
-                        ("cat", OneHotEncoder(handle_unknown="ignore", sparse_output=False), cat_cols),
-                        ("num", "passthrough", num_cols),
-                    ]
-                )
-
-                X_train = preprocessor.fit_transform(X_train)
-                X_test  = preprocessor.transform(X_test)
-
-                y_train = y_train.to_numpy()
-                y_test  = y_test.to_numpy()
-
-                le = LabelEncoder()
-                y_train = le.fit_transform(y_train)
-                y_test  = le.transform(y_test)
+        individual_score = compute_auroc(est, X_test, y_test)
 
 
-                # tpot2 run and ES
+        filtered_eval_inds = clean_eval_inds(eval_inds)
+        top100 = filtered_eval_inds.nlargest(100, "roc_auc_score")
 
-                est = tpot2.TPOTEstimator(search_space=constrained_search_space, generations=5, population_size=10, cv=5, max_time_mins=None,
-                                        random_state=i, verbose=2, classification=True, scorers=['roc_auc_ovr', tpot2.objectives.complexity_scorer], scorers_weights=[1, -1])
-                est.fit(X_train, y_train)
-                eval_inds = est.evaluated_individuals
+        # ensemble selection
+        # ensemble_random_2000 = greedy_forward_search(filtered_eval_inds, X_train, y_train, run_num)
+        ensemble_random_100 = greedy_forward_search(top100, X_train, y_train, run_num)
 
-                individual_score = compute_auroc(est, X_test, y_test)
+        # get probas and convert to auroc score
+        # ensemble_random_test_proba_2000 = vote_soft_proba(estimators=ensemble_random_2000, X_test=X_test)
+
+        # if len(np.unique(y_test)) == 2:
+        #     ensemble_random_test_auroc_2000 = roc_auc_score(
+        #         y_test,
+        #         ensemble_random_test_proba_2000[:, 1]
+        #     )
+        # else:
+        #     ensemble_random_test_auroc_2000 = roc_auc_score(
+        #         y_test,
+        #         ensemble_random_test_proba_2000,
+        #         multi_class="ovr",
+        #         average="macro"
+        #     )
+
+        ensemble_random_test_proba_100 = vote_soft_proba(estimators=ensemble_random_100, X_test=X_test)
+
+        if len(np.unique(y_test)) == 2:
+            ensemble_random_test_auroc_100 = roc_auc_score(
+                y_test,
+                ensemble_random_test_proba_100[:, 1]
+            )
+        else:
+            ensemble_random_test_auroc_100 = roc_auc_score(
+                y_test,
+                ensemble_random_test_proba_100,
+                multi_class="ovr",
+                average="macro"
+            )
 
 
-                filtered_eval_inds = clean_eval_inds(eval_inds)
-                top100 = filtered_eval_inds.nlargest(100, "roc_auc_score")
+        full_results.append({"task id": task_id,
+                            "run #": run_num,
+                            "individual_tpot": individual_score,
+                            # "ensemble_random_2000": ensemble_random_test_auroc_2000,
+                            "ensemble_random_100": ensemble_random_test_auroc_100,
+                            })
 
-                # ensemble selection
-                ensemble_tpot_100 = greedy_forward_search(top100, X_train, y_train, i)
-
-                ensemble_tpot_test_proba_100 = vote_soft_proba(estimators=ensemble_tpot_100, X_test=X_test)
-
-                if len(np.unique(y_test)) == 2:
-                    ensemble_tpot_test_auroc_100 = roc_auc_score(
-                        y_test,
-                        ensemble_tpot_test_proba_100[:, 1]
-                    )
-                else:
-                    ensemble_tpot_test_auroc_100 = roc_auc_score(
-                        y_test,
-                        ensemble_tpot_test_proba_100,
-                        multi_class="ovr",
-                        average="macro"
-                    )
-
-                full_results.append({"task id": task_id,
-                                    "run #": i,
-                                    "individual_tpot": individual_score,
-                                    "ensemble_tpot_100": ensemble_tpot_test_auroc_100,
-                                    })
-
-                full_results_df = pd.DataFrame(full_results)
-                full_results_df.to_csv(os.path.join(save_folder, (f'tpot_run_{task_id}_#{i}.csv')), index=False)
+        full_results_df = pd.DataFrame(full_results)
+        full_results_df.to_csv(os.path.join(save_folder, (f'bagging_run_{task_id}_#{run_num}.csv')), index=False)
 
     except Exception as e:
         trace = traceback.format_exc()
-        pipeline_failure_dict = {"task_id": task_id, "run": num_runs, "error": str(e), "trace": trace}
+        pipeline_failure_dict = {"task_id": task_id,
+                                 "run": num_runs, "error": str(e), "trace": trace}
         print("failed on ")
         print(save_folder)
         print(e)
         print(trace)
+
 
 
 if __name__ == '__main__':
