@@ -23,4 +23,4 @@ srun -u python pipeline_spaces_hpc.py \
 --data_dir /home/hernandezj45/Repos/TPOT_ensemble/Raw_OpenML_Suite_271_Classification \
 --gens 20 \
 --pop_size 25 \
---pipeline_space "linear-lite"
+--pipeline_space "linear-light"
