@@ -3,7 +3,7 @@ import glob
 
 # folder passed as argument
 #path = "/common/hodesse/hpc_test/TPOT2_ensemble/logs/*.csv"
-path = "/Users/ethanhodess/Documents/Documents - Ethan’s MacBook Pro/Cedars/2025/TPOT_ensemble/full_tpot_2000/*.csv"
+path = "/Users/ethanhodess/Documents/Documents - Ethan’s MacBook Pro/Cedars/2025/TPOT_ensemble/SS_Results/tpot_graph-lite/*.csv"
 files = glob.glob(path)
 
 dfs = []
@@ -16,4 +16,4 @@ for f in files[1:]:
     dfs.append(df)
 
 final_df = pd.concat(dfs, ignore_index=True)
-final_df.to_csv("full_tpot_2000_results.csv", index=False)
+final_df.to_csv("tpot_graph-lite_results.csv", index=False)
