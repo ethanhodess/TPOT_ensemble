@@ -7,7 +7,7 @@
 #SBATCH --job-name=tpot_constrained
 #SBATCH -p defq,moore,preemptable
 #SBATCH -o ./logs_pipeline_constrained/outputs/output.%j_%a.out # STDOUT
-#SBATCH --array=154,182,476
+#SBATCH --array=182,476
 
 RUN=${SLURM_ARRAY_TASK_ID:-1}
 echo “Run: ${RUN}”
