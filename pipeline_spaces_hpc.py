@@ -63,6 +63,12 @@ def get_cv_probas(estimator, X_train, y_train, cv_splits, random_state):
         except Exception:
             print('pipeline failed')
             return None
+
+    # check for invalid probas
+    if not np.allclose(cv_probas.sum(axis=1), 1.0):
+        print("invalid probas")
+        return None
+
     return cv_probas
 
 
