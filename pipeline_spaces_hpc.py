@@ -62,6 +62,7 @@ def get_cv_probas(estimator, X_train, y_train, cv_splits, random_state):
             cv_probas[valid_idx] = est_clone.predict_proba(X_train[valid_idx])
         except Exception:
             print('pipeline failed')
+            return None
     return cv_probas
 
 
@@ -81,10 +82,10 @@ def greedy_forward_search(filtered_eval_inds, X_train, y_train, seed):
     est_cv_probas = {est: get_cv_probas(est, X_train, y_train, cv_splits=5, random_state=seed) for est in estimators}
 
     # remove bad estimators (pipeline failed during CV)
-    failed = [est for est, probas in est_cv_probas.items() if np.all(probas == 0)]
+    failed = [est for est, probas in est_cv_probas.items() if probas is None]
     if failed:
         print(f"dropping {len(failed)} estimators with failed CV probas")
-    est_cv_probas = {est: probas for est, probas in est_cv_probas.items() if not np.all(probas == 0)}
+    est_cv_probas = {est: probas for est, probas in est_cv_probas.items() if probas is not None}
     estimators = list(est_cv_probas.keys())
 
     temp_ensemble = []
@@ -116,7 +117,7 @@ def greedy_forward_search(filtered_eval_inds, X_train, y_train, seed):
 
     print(f"FINAL ensemble size: {len(temp_ensemble)}")
 
-    final_ensemble = [est.fit(X_train, y_train) for est in temp_ensemble]
+    final_ensemble = [clone(est).fit(X_train, y_train) for est in temp_ensemble]
     return final_ensemble
 
 
