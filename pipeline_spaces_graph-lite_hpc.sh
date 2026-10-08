@@ -7,7 +7,7 @@
 #SBATCH --job-name=tpot_graph-lite
 #SBATCH -p defq,moore,preemptable
 #SBATCH -o ./logs_pipeline_graph-lite/outputs/output.%j_%a.out # STDOUT
-#SBATCH --array=74,380,398
+#SBATCH --array=74
 
 RUN=${SLURM_ARRAY_TASK_ID:-1}
 echo “Run: ${RUN}”

@@ -123,7 +123,13 @@ def greedy_forward_search(filtered_eval_inds, X_train, y_train, seed):
 
     print(f"FINAL ensemble size: {len(temp_ensemble)}")
 
-    final_ensemble = [clone(est).fit(X_train, y_train) for est in temp_ensemble]
+    final_ensemble = []
+    for est in temp_ensemble:
+        try:
+            final_ensemble.append(clone(est).fit(X_train, y_train))
+        except Exception:
+            print('failed refit')
+
     return final_ensemble
 
 
