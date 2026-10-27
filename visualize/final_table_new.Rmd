@@ -1,0 +1,152 @@
+---
+title: 'Analysis '
+author: "Anonymous"
+date: "`r Sys.Date()`"
+output:
+  pdf_document: default
+  bookdown::pdf_book: default
+  word_document: default
+geometry: margin=2cm
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE,
+  warning = FALSE,
+  message = FALSE,
+  fig.width = 10,
+  fig.height = 5,
+  fig.align = 'center'
+)
+```
+
+```{r load-libraries, include=FALSE}
+rm(list = ls())
+library(ggplot2)
+library(cowplot)
+library(dplyr)
+library(PupillometryR)
+library(ggpubr)
+library(knitr)
+library(ggforce)
+library(tidyr)
+library(rstatix)
+library(purrr)
+library(kableExtra)
+```
+
+```{r theme-setup, include=FALSE}
+# Define conditions and visual parameters
+CONDITIONS <- c('EA', 'TPEC', 'BO')
+SHAPE <- c(21, 21, 21)
+cb_palette <- c('#648FFF','#DC267F', '#FFB000')
+TSIZE <- 17
+
+# Theme for plots
+p_theme <- theme(
+  plot.title = element_text(face = "bold", hjust=0.5),
+  panel.border = element_blank(),
+  panel.grid.minor = element_blank(),
+  axis.title = element_text(size=17),
+  axis.text = element_text(size=11),
+  axis.text.y = element_text(angle = 90, hjust = 0.5),
+  legend.position = "none",
+  panel.background = element_rect(fill = "#f1f2f5",
+                                  colour = "white",
+                                  size = 0.5, linetype = "solid")
+)
+```
+
+```{r load-data, include=FALSE}
+data_dir = '/Users/ethanhodess/Documents/Documents - Ethan’s MacBook Pro 2/Cedars/2025/TPOT_Ensemble/'
+#constrained <- read.csv(paste(data_dir, 'tpot_constrained_results.csv', sep = "", collapse = NULL), header = TRUE, stringsAsFactors = FALSE)
+graph <- read.csv(paste(data_dir, 'tpot_graph_results.csv', sep = "", collapse = NULL), header = TRUE, stringsAsFactors = FALSE)
+graph_light <- read.csv(paste(data_dir, 'tpot_graph_light_results.csv', sep = "", collapse = NULL), header = TRUE, stringsAsFactors = FALSE)
+linear <- read.csv(paste(data_dir, 'tpot_linear_results.csv', sep = "", collapse = NULL), header = TRUE, stringsAsFactors = FALSE)
+linear_light <- read.csv(paste(data_dir, 'tpot_linear_light_results.csv', sep = "", collapse = NULL), header = TRUE, stringsAsFactors = FALSE)
+```
+
+Final Table Prototype (still missing 1 id in graph light)
+
+Version 1
+
+
+
+\newpage
+
+# Table
+```{r table, out.width="100%"}
+dfs <- list(
+  "graph" = graph,
+  "graph-light" = graph_light,
+  "linear" = linear,
+  "linear-light" = linear_light,
+  #"constrained" = constrained
+)
+
+scores <- c("Individual", "Ensemble")
+
+# "median (q1, q3)"
+fmt_mqq <- function(m, q1, q3, digits) {
+  sprintf(paste0("%.", digits, "f (%.", digits, "f, %.", digits, "f)"), m, q1, q3)
+}
+
+# One data frame -> one row per task_id, with Individual and Ensemble columns
+make_cols <- function(df, col_name, digits = 3) {
+  q <- function(x, p) quantile(x, p, na.rm = TRUE, names = FALSE)
+
+  df %>%
+    group_by(task_id) %>%
+    summarise(
+      ind_med = median(individual_tpot, na.rm = TRUE),
+      ind_q1  = q(individual_tpot, 0.25),
+      ind_q3  = q(individual_tpot, 0.75),
+      ens_med = median(ensemble_random_100, na.rm = TRUE),
+      ens_q1  = q(ensemble_random_100, 0.25),
+      ens_q3  = q(ensemble_random_100, 0.75),
+      .groups = "drop"
+    ) %>%
+    mutate(
+      !!paste0(col_name, "|Individual") := fmt_mqq(ind_med, ind_q1, ind_q3, digits),
+      !!paste0(col_name, "|Ensemble")   := fmt_mqq(ens_med, ens_q1, ens_q3, digits)
+    ) %>%
+    select(task_id, all_of(paste0(col_name, "|", scores)))
+}
+
+cols     <- imap(dfs, ~ make_cols(.x, .y))
+combined <- reduce(cols, full_join, by = "task_id")
+
+combined_df <- as.data.frame(combined, check.names = FALSE)
+
+print(combined_df)
+```
+
+```{r export, out.width="100%"}
+n_methods <- length(dfs)
+
+# "c|cc|cc|cc|cc|cc": a line after id and after each method's Individual/Ensemble pair
+align_str <- paste0("c|", paste(rep("cc", n_methods), collapse = "|"))
+
+tex <- kable(combined_df,
+             format = "latex",
+             booktabs = TRUE,
+             align = align_str,
+             col.names = c("id", rep(scores, n_methods)),
+             row.names = FALSE,
+             linesep = "",
+             caption = "Median (Q1, Q3) of individual and ensemble score per task.",
+             label = "tpot-results",
+             table.envir = "table",
+             position = "H",
+             escape = TRUE) %>%
+  add_header_above(setNames(c(1, rep(length(scores), n_methods)),
+                            c(" ", names(dfs))))
+
+tex <- gsub("\\begin{tabular}", "\\resizebox{\\linewidth}{!}{\\begin{tabular}", tex, fixed = TRUE)
+tex <- gsub("\\end{tabular}",   "\\end{tabular}}",                             tex, fixed = TRUE)
+tex <- gsub("\\centering",
+            "\\centering\\renewcommand{\\arraystretch}{1.25}\\setlength{\\tabcolsep}{4pt}",
+            tex, fixed = TRUE)
+
+writeLines(tex, "results_table.tex")
+```

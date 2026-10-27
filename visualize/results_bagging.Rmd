@@ -56,11 +56,11 @@ p_theme <- theme(
 ```
 
 ```{r load-data, include=FALSE}
-data_dir = '/Users/ethanhodess/Documents/Documents - Ethan’s MacBook Pro/Cedars/2025/TPOT_Ensemble/'
-full_data <- read.csv(paste(data_dir, 'tpot_graph-lite_results.csv', sep = "", collapse = NULL), header = TRUE, stringsAsFactors = FALSE)
+data_dir = '/Users/ethanhodess/Documents/Documents - Ethan’s MacBook Pro 2/Cedars/2025/TPOT_Ensemble/'
+full_data <- read.csv(paste(data_dir, 'tpot_constrained_results.csv', sep = "", collapse = NULL), header = TRUE, stringsAsFactors = FALSE)
 ```
 
-TPOT with graph-light search space versus ensemble
+TPOT with constrained search space versus ensemble
 
 2000 total evals
 
