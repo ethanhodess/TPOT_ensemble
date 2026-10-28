@@ -7,7 +7,7 @@
 #SBATCH --job-name=tpot_linear
 #SBATCH -p defq,moore,preemptable
 #SBATCH -o ./logs_pipeline_linear/outputs/output.%j_%a.out # STDOUT
-#SBATCH --array=80,83,157,381,392,420,474,480,482,489
+#SBATCH --array=0-545
 
 RUN=${SLURM_ARRAY_TASK_ID:-1}
 echo “Run: ${RUN}”
