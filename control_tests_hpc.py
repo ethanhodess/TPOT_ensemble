@@ -1,3 +1,4 @@
+from collections import Counter
 import tpot2
 import traceback
 import json
@@ -90,14 +91,16 @@ def greedy_forward_search(filtered_eval_inds, X_train, y_train, seed):
 
     print(f"FINAL ensemble size: {len(temp_ensemble)}")
 
-    final_ensemble = []
-    for est in temp_ensemble:
+    counts = Counter(temp_ensemble)
+    final_ensemble, final_counts = [], []
+    for est, c in counts.items():
         try:
             final_ensemble.append(clone(est).fit(X_train, y_train))
+            final_counts.append(c)
         except Exception:
             print('failed refit')
 
-    return final_ensemble
+    return final_ensemble, final_counts
 
 
 
@@ -185,6 +188,13 @@ def combine_probas(proba_list, weights=None):
         weights = np.asarray(weights).reshape(-1, 1, 1)
         probas = probas * weights
     return probas.sum(axis=0) / (weights.sum() if weights is not None else len(proba_list))
+
+# helper for tracking final ensemble weights
+def model_weight_rows(counts, task_id, run_num):
+    n = sum(counts)
+    return [{"task_id": task_id, "run #": run_num,
+             "count": c, "weight": c / n}
+            for c in sorted(counts, reverse=True)]
 
 
 def main():
@@ -373,9 +383,12 @@ def main():
             )
 
         # greedy ensemble selection
-        ensemble_greedy = greedy_forward_search(top100, X_train, y_train, run_num)
+        ensemble_greedy, final_counts = greedy_forward_search(top100, X_train, y_train, run_num)
 
-        ensemble_greedy_proba = vote_soft_proba(estimators=ensemble_greedy, X_test=X_test)
+        ensemble_greedy_proba = vote_soft_proba(estimators=ensemble_greedy, X_test=X_test, weights=final_counts)
+
+        # ensemble tracking 
+        pd.DataFrame(model_weight_rows(final_counts, task_id, run_num)).to_csv(os.path.join(save_folder, f'weights_{task_id}_#{run_num}.csv'), index=False)
 
         if len(np.unique(y_test)) == 2:
             ensemble_greedy_auroc = roc_auc_score(

@@ -16,7 +16,7 @@ source ~/anaconda3/etc/profile.d/conda.sh
 conda activate ethan
 
 echo RunStart
-srun -u python pipeline_spaces_hpc.py \
+srun -u python control_tests_hpc.py \
 --n_jobs 12 \
 --savepath tpot_graph \
 --num_runs ${RUN} \
