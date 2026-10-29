@@ -346,6 +346,24 @@ def main():
                 average="macro"
             )
 
+        # random selection from full library
+        ensemble_random_full = filtered_eval_inds.sample(n=50, replace=True, random_state=run_num)
+        random_list_full = prep_ensemble(ensemble_random_full, X_train, y_train)
+        ensemble_random_test_proba_full = vote_soft_proba(estimators=random_list_full, X_test=X_test)
+
+        if len(np.unique(y_test)) == 2:
+            ensemble_random_test_auroc_full = roc_auc_score(
+                y_test,
+                ensemble_random_test_proba_full[:, 1]
+            )
+        else:
+            ensemble_random_test_auroc_full = roc_auc_score(
+                y_test,
+                ensemble_random_test_proba_full,
+                multi_class="ovr",
+                average="macro"
+            )
+
         # prune to top 100 and evaluate ensemble from pruned library
         top100 = filtered_eval_inds.nlargest(100, "roc_auc_score")
         top100_list = prep_ensemble(top100, X_train, y_train)
@@ -408,8 +426,9 @@ def main():
                             "run #": run_num,
                             "individual": individual_score,
                             "ensemble_full": ensemble_full_auroc,
+                            "ensemble_random_full": ensemble_random_test_auroc_full,
                             "ensemble_top_100": ensemble_pruned_auroc_100,
-                            "ensemble_random": ensemble_random_test_auroc_100,
+                            "ensemble_random_100": ensemble_random_test_auroc_100,
                             "ensemble_greedy": ensemble_greedy_auroc,
                             })
 
